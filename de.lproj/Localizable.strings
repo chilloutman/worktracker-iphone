@@ -1,0 +1,50 @@
+/* No comment provided by engineer. */
+"Add" = "Hinzufügen";
+
+/* No comment provided by engineer. */
+"Cancel" = "Abbrechen";
+
+/* Delete some trackings */
+"Clear" = "Aufräumen";
+
+/* Title for delete confirmation */
+"Clear trackings" = "Trackings löschen";
+
+/* No comment provided by engineer. */
+"Delete all" = "Alle löschen";
+
+/* No comment provided by engineer. */
+"Delete old ones" = "Ältere löschen";
+
+/* Ask the user for a project name */
+"Enter a name for the new project" = "Gib einen Namen für\ndas neue Projekt ein";
+
+/* Previous trackings */
+"History" = "Übersicht";
+
+/* Title for trackings that are older than some days old */
+"Older" = "Frühere";
+
+/* Ask user to select a project */
+"Pick the project you would like to track" = "Wähle ein Projekt um mit dem erfassen zu beginnen";
+
+/* No comment provided by engineer. */
+"Projects" = "Projekte";
+
+/* Status, Ready and waiting */
+"Standby" = "Bereit";
+
+/* Status, Inform the user that the are no projects */
+"There are no projects..." = "Es sind noch keine Projekte vorhanden...";
+
+/* No comment provided by engineer. */
+"Today" = "Heute";
+
+/* tabBarTitle */
+"Track" = "Erfassen";
+
+/* Status, Currently tracking 'a project' */
+"Tracking '%@'" = "'%@' wird erfasst";
+
+/* No comment provided by engineer. */
+"Yesterday" = "Gestern";

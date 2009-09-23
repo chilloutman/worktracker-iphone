@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* WorkTrackerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* WorkTrackerAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		EF06A58A100B71C800C71656 /* WTMainBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF06A589100B71C800C71656 /* WTMainBackgroundView.m */; };
+		EF08F48F101059E400A83A37 /* backwards.png in Resources */ = {isa = PBXBuildFile; fileRef = EF08F48E101059E400A83A37 /* backwards.png */; };
+		EF08F4B11010635400A83A37 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF08F4AF1010635400A83A37 /* Localizable.strings */; };
+		EF08F68F1010BAEE00A83A37 /* tableSectionHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = EF08F68E1010BAEE00A83A37 /* tableSectionHeader.png */; };
+		EF08F6921010BB3C00A83A37 /* WTTableSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08F6911010BB3C00A83A37 /* WTTableSectionHeader.m */; };
+		EF20E065100DE6A600C86B75 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF20E063100DE6A600C86B75 /* ABTableViewCell.m */; };
+		EF20E068100DE78F00C86B75 /* WTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF20E067100DE78F00C86B75 /* WTTableViewCell.m */; };
+		EF28D3060FEC0E5900AF7431 /* WTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF28D3050FEC0E5900AF7431 /* WTMainViewController.m */; };
+		EF4ED5A9101EEEA20031C9B5 /* WTUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4ED5A8101EEEA20031C9B5 /* WTUtil.m */; };
+		EF5CDBC1101DA876004EFC4D /* WTHistoryTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5CDBC0101DA876004EFC4D /* WTHistoryTableViewModel.m */; };
+		EF5DEB04100E041300E0F836 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5DEB03100E041300E0F836 /* icon.png */; };
+		EF5DEB06100E043400E0F836 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5DEB05100E043400E0F836 /* shadow.png */; };
+		EF6651FB100F22DF00F8D9CD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EF6651FA100F22DF00F8D9CD /* Default.png */; };
+		EF695F84100D1005006F680F /* blackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EF695F83100D1005006F680F /* blackButton.png */; };
+		EF9E540E1006410500BAE8B4 /* WTProjectAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = EF9E540D1006410500BAE8B4 /* WTProjectAdd.m */; };
+		EFACDA0E100E208100B2043E /* WTEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = EFACDA0D100E208100B2043E /* WTEngine.m */; };
+		EFBBA2840FFBBA5C00183DE7 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = EFBBA2820FFBBA5C00183DE7 /* clock.png */; };
+		EFBBA2850FFBBA5C00183DE7 /* cabinet.png in Resources */ = {isa = PBXBuildFile; fileRef = EFBBA2830FFBBA5C00183DE7 /* cabinet.png */; };
+		EFBC3797100C6EBB00DC7621 /* WTTableBackgorund.m in Sources */ = {isa = PBXBuildFile; fileRef = EFBC3796100C6EBB00DC7621 /* WTTableBackgorund.m */; };
+		EFBC38CD100CAE5100DC7621 /* redButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EFBC38CB100CAE5000DC7621 /* redButton.png */; };
+		EFBC38CE100CAE5100DC7621 /* greenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EFBC38CC100CAE5100DC7621 /* greenButton.png */; };
+		EFBC391E100CB73400DC7621 /* background-small.png in Resources */ = {isa = PBXBuildFile; fileRef = EFBC391D100CB73400DC7621 /* background-small.png */; };
+		EFC214C00FEC14B300441E03 /* WTProjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC214BF0FEC14B300441E03 /* WTProjectsViewController.m */; };
+		EFC216100FEC307500441E03 /* WTDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC2160F0FEC307500441E03 /* WTDataModel.m */; };
+		EFCD05DF100A3A87002AE917 /* WTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCD05DE100A3A87002AE917 /* WTConstants.m */; };
+		EFCFAE110FED5E0C00BAB6BE /* WTProjectPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCFAE100FED5E0C00BAB6BE /* WTProjectPicker.m */; };
+		EFF1A9ED0FFE9052009E63BD /* WTHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF1A9EC0FFE9052009E63BD /* WTHistoryViewController.m */; };
+		EFF1A9EF0FFE9161009E63BD /* barChart.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF1A9EE0FFE9161009E63BD /* barChart.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* WorkTrackerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkTrackerAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* WorkTrackerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkTrackerAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* WorkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* WorkTracker_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkTracker_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* WorkTracker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WorkTracker-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		EF06A588100B71C800C71656 /* WTMainBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMainBackgroundView.h; sourceTree = "<group>"; };
+		EF06A589100B71C800C71656 /* WTMainBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMainBackgroundView.m; sourceTree = "<group>"; };
+		EF08F48E101059E400A83A37 /* backwards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backwards.png; path = Resources/backwards.png; sourceTree = "<group>"; };
+		EF08F4B21010636100A83A37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EF08F68E1010BAEE00A83A37 /* tableSectionHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tableSectionHeader.png; path = Resources/tableSectionHeader.png; sourceTree = "<group>"; };
+		EF08F6901010BB3C00A83A37 /* WTTableSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTableSectionHeader.h; sourceTree = "<group>"; };
+		EF08F6911010BB3C00A83A37 /* WTTableSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTableSectionHeader.m; sourceTree = "<group>"; };
+		EF20E063100DE6A600C86B75 /* ABTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTableViewCell.m; sourceTree = "<group>"; };
+		EF20E064100DE6A600C86B75 /* ABTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTableViewCell.h; sourceTree = "<group>"; };
+		EF20E066100DE78F00C86B75 /* WTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTableViewCell.h; sourceTree = "<group>"; };
+		EF20E067100DE78F00C86B75 /* WTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTableViewCell.m; sourceTree = "<group>"; };
+		EF28D3040FEC0E5900AF7431 /* WTMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMainViewController.h; sourceTree = "<group>"; };
+		EF28D3050FEC0E5900AF7431 /* WTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMainViewController.m; sourceTree = "<group>"; };
+		EF4ED5A7101EEEA20031C9B5 /* WTUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTUtil.h; sourceTree = "<group>"; };
+		EF4ED5A8101EEEA20031C9B5 /* WTUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTUtil.m; sourceTree = "<group>"; };
+		EF5CDBBF101DA876004EFC4D /* WTHistoryTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHistoryTableViewModel.h; sourceTree = "<group>"; };
+		EF5CDBC0101DA876004EFC4D /* WTHistoryTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHistoryTableViewModel.m; sourceTree = "<group>"; };
+		EF5DEB03100E041300E0F836 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Resources/icon.png; sourceTree = "<group>"; };
+		EF5DEB05100E043400E0F836 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadow.png; path = Resources/shadow.png; sourceTree = "<group>"; };
+		EF6651FA100F22DF00F8D9CD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
+		EF695F83100D1005006F680F /* blackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blackButton.png; path = Resources/blackButton.png; sourceTree = "<group>"; };
+		EF9E540C1006410500BAE8B4 /* WTProjectAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTProjectAdd.h; sourceTree = "<group>"; };
+		EF9E540D1006410500BAE8B4 /* WTProjectAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTProjectAdd.m; sourceTree = "<group>"; };
+		EFACDA0C100E208100B2043E /* WTEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTEngine.h; sourceTree = "<group>"; };
+		EFACDA0D100E208100B2043E /* WTEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTEngine.m; sourceTree = "<group>"; };
+		EFBBA2820FFBBA5C00183DE7 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.png; path = Resources/clock.png; sourceTree = "<group>"; };
+		EFBBA2830FFBBA5C00183DE7 /* cabinet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cabinet.png; path = Resources/cabinet.png; sourceTree = "<group>"; };
+		EFBC3795100C6EBB00DC7621 /* WTTableBackgorund.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTableBackgorund.h; sourceTree = "<group>"; };
+		EFBC3796100C6EBB00DC7621 /* WTTableBackgorund.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTableBackgorund.m; sourceTree = "<group>"; };
+		EFBC38CB100CAE5000DC7621 /* redButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redButton.png; path = Resources/redButton.png; sourceTree = "<group>"; };
+		EFBC38CC100CAE5100DC7621 /* greenButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greenButton.png; path = Resources/greenButton.png; sourceTree = "<group>"; };
+		EFBC391D100CB73400DC7621 /* background-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-small.png"; path = "Resources/background-small.png"; sourceTree = "<group>"; };
+		EFC214BE0FEC14B300441E03 /* WTProjectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTProjectsViewController.h; sourceTree = "<group>"; };
+		EFC214BF0FEC14B300441E03 /* WTProjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTProjectsViewController.m; sourceTree = "<group>"; };
+		EFC2160E0FEC307500441E03 /* WTDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTDataModel.h; sourceTree = "<group>"; };
+		EFC2160F0FEC307500441E03 /* WTDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTDataModel.m; sourceTree = "<group>"; };
+		EFC6D35D10144DB90069F02C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EFCD05DE100A3A87002AE917 /* WTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTConstants.m; sourceTree = "<group>"; };
+		EFCFAE0F0FED5E0C00BAB6BE /* WTProjectPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTProjectPicker.h; sourceTree = "<group>"; };
+		EFCFAE100FED5E0C00BAB6BE /* WTProjectPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTProjectPicker.m; sourceTree = "<group>"; };
+		EFCFAF880FED776B00BAB6BE /* WTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTConstants.h; sourceTree = "<group>"; };
+		EFF1A9EB0FFE9052009E63BD /* WTHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHistoryViewController.h; sourceTree = "<group>"; };
+		EFF1A9EC0FFE9052009E63BD /* WTHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHistoryViewController.m; sourceTree = "<group>"; };
+		EFF1A9EE0FFE9161009E63BD /* barChart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = barChart.png; path = Resources/barChart.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				EFCFAF880FED776B00BAB6BE /* WTConstants.h */,
+				EFCD05DE100A3A87002AE917 /* WTConstants.m */,
+				1D3623240D0F684500981E51 /* WorkTrackerAppDelegate.h */,
+				1D3623250D0F684500981E51 /* WorkTrackerAppDelegate.m */,
+				EFCFAC900FED2DE900BAB6BE /* ViewControllers */,
+				EF06A5F7100B7A6800C71656 /* Views */,
+				EFCFAC940FED2E0000BAB6BE /* Foundation Classes */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* WorkTracker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* WorkTracker_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EF08F4AF1010635400A83A37 /* Localizable.strings */,
+				8D1107310486CEB800E47090 /* WorkTracker-Info.plist */,
+				EF5DEB03100E041300E0F836 /* icon.png */,
+				EF6651FA100F22DF00F8D9CD /* Default.png */,
+				EFBC391D100CB73400DC7621 /* background-small.png */,
+				EF5DEB05100E043400E0F836 /* shadow.png */,
+				EF08F68E1010BAEE00A83A37 /* tableSectionHeader.png */,
+				EF6651DF100F222600F8D9CD /* Buttons */,
+				EFBBA2860FFBBA6400183DE7 /* tabBar icons */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF06A5F7100B7A6800C71656 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EF06A588100B71C800C71656 /* WTMainBackgroundView.h */,
+				EF06A589100B71C800C71656 /* WTMainBackgroundView.m */,
+				EF08F6931010BF9800A83A37 /* TableView */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		EF08F6931010BF9800A83A37 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				EFBC3795100C6EBB00DC7621 /* WTTableBackgorund.h */,
+				EFBC3796100C6EBB00DC7621 /* WTTableBackgorund.m */,
+				EF20E064100DE6A600C86B75 /* ABTableViewCell.h */,
+				EF20E063100DE6A600C86B75 /* ABTableViewCell.m */,
+				EF20E066100DE78F00C86B75 /* WTTableViewCell.h */,
+				EF20E067100DE78F00C86B75 /* WTTableViewCell.m */,
+				EF08F6901010BB3C00A83A37 /* WTTableSectionHeader.h */,
+				EF08F6911010BB3C00A83A37 /* WTTableSectionHeader.m */,
+			);
+			name = TableView;
+			sourceTree = "<group>";
+		};
+		EF5CDBC8101DB989004EFC4D /* 1st Tab */ = {
+			isa = PBXGroup;
+			children = (
+				EF28D3040FEC0E5900AF7431 /* WTMainViewController.h */,
+				EF28D3050FEC0E5900AF7431 /* WTMainViewController.m */,
+				EFCFAE0F0FED5E0C00BAB6BE /* WTProjectPicker.h */,
+				EFCFAE100FED5E0C00BAB6BE /* WTProjectPicker.m */,
+			);
+			name = "1st Tab";
+			sourceTree = "<group>";
+		};
+		EF5CDBC9101DB9A4004EFC4D /* 2nd Tab */ = {
+			isa = PBXGroup;
+			children = (
+				EFC214BE0FEC14B300441E03 /* WTProjectsViewController.h */,
+				EFC214BF0FEC14B300441E03 /* WTProjectsViewController.m */,
+				EF9E540C1006410500BAE8B4 /* WTProjectAdd.h */,
+				EF9E540D1006410500BAE8B4 /* WTProjectAdd.m */,
+			);
+			name = "2nd Tab";
+			sourceTree = "<group>";
+		};
+		EF5CDBCA101DB9AF004EFC4D /* 3rd Tab */ = {
+			isa = PBXGroup;
+			children = (
+				EFF1A9EB0FFE9052009E63BD /* WTHistoryViewController.h */,
+				EFF1A9EC0FFE9052009E63BD /* WTHistoryViewController.m */,
+			);
+			name = "3rd Tab";
+			sourceTree = "<group>";
+		};
+		EF6651DF100F222600F8D9CD /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				EFBC38CB100CAE5000DC7621 /* redButton.png */,
+				EFBC38CC100CAE5100DC7621 /* greenButton.png */,
+				EF695F83100D1005006F680F /* blackButton.png */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
+		EFBBA2860FFBBA6400183DE7 /* tabBar icons */ = {
+			isa = PBXGroup;
+			children = (
+				EFBBA2820FFBBA5C00183DE7 /* clock.png */,
+				EFBBA2830FFBBA5C00183DE7 /* cabinet.png */,
+				EF08F48E101059E400A83A37 /* backwards.png */,
+				EFF1A9EE0FFE9161009E63BD /* barChart.png */,
+			);
+			name = "tabBar icons";
+			sourceTree = "<group>";
+		};
+		EFCFAC900FED2DE900BAB6BE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EF5CDBC8101DB989004EFC4D /* 1st Tab */,
+				EF5CDBC9101DB9A4004EFC4D /* 2nd Tab */,
+				EF5CDBCA101DB9AF004EFC4D /* 3rd Tab */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EFCFAC940FED2E0000BAB6BE /* Foundation Classes */ = {
+			isa = PBXGroup;
+			children = (
+				EFC2160E0FEC307500441E03 /* WTDataModel.h */,
+				EFC2160F0FEC307500441E03 /* WTDataModel.m */,
+				EFACDA0C100E208100B2043E /* WTEngine.h */,
+				EFACDA0D100E208100B2043E /* WTEngine.m */,
+				EF5CDBBF101DA876004EFC4D /* WTHistoryTableViewModel.h */,
+				EF5CDBC0101DA876004EFC4D /* WTHistoryTableViewModel.m */,
+				EF4ED5A7101EEEA20031C9B5 /* WTUtil.h */,
+				EF4ED5A8101EEEA20031C9B5 /* WTUtil.m */,
+			);
+			name = "Foundation Classes";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* WorkTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "WorkTracker" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WorkTracker;
+			productName = WorkTracker;
+			productReference = 1D6058910D05DD3D006BFB54 /* WorkTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WorkTracker" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				de,
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* WorkTracker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFBBA2840FFBBA5C00183DE7 /* clock.png in Resources */,
+				EFBBA2850FFBBA5C00183DE7 /* cabinet.png in Resources */,
+				EFF1A9EF0FFE9161009E63BD /* barChart.png in Resources */,
+				EFBC38CD100CAE5100DC7621 /* redButton.png in Resources */,
+				EFBC38CE100CAE5100DC7621 /* greenButton.png in Resources */,
+				EFBC391E100CB73400DC7621 /* background-small.png in Resources */,
+				EF695F84100D1005006F680F /* blackButton.png in Resources */,
+				EF5DEB04100E041300E0F836 /* icon.png in Resources */,
+				EF5DEB06100E043400E0F836 /* shadow.png in Resources */,
+				EF6651FB100F22DF00F8D9CD /* Default.png in Resources */,
+				EF08F48F101059E400A83A37 /* backwards.png in Resources */,
+				EF08F4B11010635400A83A37 /* Localizable.strings in Resources */,
+				EF08F68F1010BAEE00A83A37 /* tableSectionHeader.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* WorkTrackerAppDelegate.m in Sources */,
+				EF28D3060FEC0E5900AF7431 /* WTMainViewController.m in Sources */,
+				EFC214C00FEC14B300441E03 /* WTProjectsViewController.m in Sources */,
+				EFC216100FEC307500441E03 /* WTDataModel.m in Sources */,
+				EFCFAE110FED5E0C00BAB6BE /* WTProjectPicker.m in Sources */,
+				EFF1A9ED0FFE9052009E63BD /* WTHistoryViewController.m in Sources */,
+				EF9E540E1006410500BAE8B4 /* WTProjectAdd.m in Sources */,
+				EFCD05DF100A3A87002AE917 /* WTConstants.m in Sources */,
+				EF06A58A100B71C800C71656 /* WTMainBackgroundView.m in Sources */,
+				EFBC3797100C6EBB00DC7621 /* WTTableBackgorund.m in Sources */,
+				EF20E065100DE6A600C86B75 /* ABTableViewCell.m in Sources */,
+				EF20E068100DE78F00C86B75 /* WTTableViewCell.m in Sources */,
+				EFACDA0E100E208100B2043E /* WTEngine.m in Sources */,
+				EF08F6921010BB3C00A83A37 /* WTTableSectionHeader.m in Sources */,
+				EF5CDBC1101DA876004EFC4D /* WTHistoryTableViewModel.m in Sources */,
+				EF4ED5A9101EEEA20031C9B5 /* WTUtil.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EF08F4AF1010635400A83A37 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF08F4B21010636100A83A37 /* en */,
+				EFC6D35D10144DB90069F02C /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WorkTracker_Prefix.pch;
+				INFOPLIST_FILE = "WorkTracker-Info.plist";
+				PRODUCT_NAME = WorkTracker;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WorkTracker_Prefix.pch;
+				INFOPLIST_FILE = "WorkTracker-Info.plist";
+				PRODUCT_NAME = WorkTracker;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.0;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "WorkTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WorkTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
