@@ -42,11 +42,11 @@ static WTDataModel *sharedInstace= nil;
 		NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 		NSString *finalPath;
 		
-		finalPath= [path stringByAppendingString:[NSString stringWithFormat:@"/%@.plist", cProjects]];
+		finalPath= [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", cProjects]];
 		self.projects= [NSMutableArray arrayWithContentsOfFile:finalPath];
 		if (!self.projects) self.projects= [NSMutableArray array];
 		
-		finalPath= [path stringByAppendingString:[NSString stringWithFormat:@"/%@.plist", cTrackingIntervals]];
+		finalPath= [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", cTrackingIntervals]];
 		self.trackingIntervals= [NSMutableArray arrayWithContentsOfFile:finalPath];
 		if (!self.trackingIntervals) self.trackingIntervals= [NSMutableArray array];
 	}
@@ -67,10 +67,8 @@ static WTDataModel *sharedInstace= nil;
 // Manual implementation of KVO because Apple's KVO fails when using collections
 - (void)didChangeCollection:(NSString *)keyPath {
 	NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-	NSString *finalPath= [path stringByAppendingString:[NSString stringWithFormat:@"/%@.plist", keyPath]];
+	NSString *finalPath= [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", keyPath]];
 	
-			NSLog(finalPath);
-			
 	// Save whaterver object just changed
 	[[self valueForKey:keyPath] writeToFile:finalPath atomically:YES];
 }
