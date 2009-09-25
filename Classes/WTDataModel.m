@@ -34,14 +34,21 @@ static WTDataModel *sharedInstace= nil;
 		NSUserDefaults *userDefaults= [NSUserDefaults standardUserDefaults];
 		
 		self.status= [userDefaults objectForKey:cStatus];
-		if (self.status == nil) {
+		if (!self.status) {
 			self.status= cStatusStandby;
 		}
 		[self addObserver:self forKeyPath:cStatus options:0 context:NULL];
 		
-		self.projects= [NSMutableArray arrayWithArray:[userDefaults objectForKey:cProjects]];
+		NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+		NSString *finalPath;
 		
-		self.trackingIntervals= [NSMutableArray arrayWithArray:[userDefaults objectForKey:cTrackingIntervals]];
+		finalPath= [path stringByAppendingString:[NSString stringWithFormat:@"/%@.plist", cProjects]];
+		self.projects= [NSMutableArray arrayWithContentsOfFile:finalPath];
+		if (!self.projects) self.projects= [NSMutableArray array];
+		
+		finalPath= [path stringByAppendingString:[NSString stringWithFormat:@"/%@.plist", cTrackingIntervals]];
+		self.trackingIntervals= [NSMutableArray arrayWithContentsOfFile:finalPath];
+		if (!self.trackingIntervals) self.trackingIntervals= [NSMutableArray array];
 	}
 	
 	return self;
@@ -59,10 +66,13 @@ static WTDataModel *sharedInstace= nil;
 
 // Manual implementation of KVO because Apple's KVO fails when using collections
 - (void)didChangeCollection:(NSString *)keyPath {
-	NSUserDefaults *userDefaults= [NSUserDefaults standardUserDefaults];
+	NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	NSString *finalPath= [path stringByAppendingString:[NSString stringWithFormat:@"/%@.plist", keyPath]];
 	
+			NSLog(finalPath);
+			
 	// Save whaterver object just changed
-	[userDefaults setObject:[self valueForKey:keyPath] forKey:keyPath];
+	[[self valueForKey:keyPath] writeToFile:finalPath atomically:YES];
 }
 
 #pragma mark Delete data

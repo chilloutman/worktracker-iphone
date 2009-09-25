@@ -39,10 +39,8 @@ static WTSort *sharedSortingModel= nil;
 #pragma mark Getters for tableView building
 
 - (NSMutableArray *)trackingIntervalsForMostRecentDay {
-	//if (!self.sectionsAreUpToDate) [self setupDays];
-	
-	[self setupDays];
-	
+	if (!self.sectionsAreUpToDate) [self setupDays];
+		
 	if (daySections) {
 		if ([daySections count] > 0) return [daySections objectAtIndex:0];
 	}
@@ -115,7 +113,6 @@ static WTSort *sharedSortingModel= nil;
 			[curArray addObject:trackingInterval];
 		} else {
 			if ([curArray count] > 0) {
-				NSLog(@"Finalized a section: %@", curArray);
 				// Add a title for the section
 				[dayTitles addObject:[WTUtil dayForDate:lastDate]];
 				// Add current array as a section
