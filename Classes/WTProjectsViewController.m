@@ -8,7 +8,6 @@
 
 #import "WTProjectsViewController.h"
 #import "WTProjectAdd.h"
-#import "WTTableBackgorund.h"
 
 #import "WTDataModel.h"
 
@@ -38,11 +37,6 @@
 	tableView.delegate= self;
 	tableView.dataSource= self;
 	tableView.delaysContentTouches= NO;
-	
-	// Create a custom view with a gray background and a shadow for the top
-	tableView.tableHeaderView= [[[WTTableBackgorund alloc] initWithFrame:CGRectMake(0, 0, screen.size.width, screen.size.height / 2)] autorelease];
-	// Have the tableview ignore the headerView when computing size
-	tableView.contentInset = UIEdgeInsetsMake(-(tableView.tableHeaderView.frame.size.height), 0, 0, 0);
 	
 	// Container
 	tableController= [[[UITableViewController alloc] initWithStyle:UITableViewStylePlain] autorelease];

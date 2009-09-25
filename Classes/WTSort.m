@@ -12,242 +12,142 @@
 #import "WTEngine.h"
 #import "WTUtil.h"
 
-static WTSort *sharedInstace= nil;
+static WTSort *sharedSortingModel= nil;
 
 @implementation WTSort
 
 + (WTSort *)sharedSortingModel {
 	@synchronized(self) {
-		if (sharedInstace == nil) {
-			sharedInstace= [[self alloc] init];
+		if (sharedSortingModel == nil) {
+			sharedSortingModel= [[self alloc] init];
 		}
 	}
-	return sharedInstace;
+	return sharedSortingModel;
 }
+
+@synthesize sectionsAreUpToDate;
 
 - (id)init {
 	if (self= [super init]) {
 		model= [WTDataModel sharedDataModel];
 		engine= [WTEngine sharedEngine];
+		self.sectionsAreUpToDate= NO;
 	}
 	return self;
 }
 
-#pragma mark Generic methods for tableView building
+#pragma mark Getters for tableView building
 
-- (NSMutableArray *)headerTitlesForSortingType:(WTSortingType)sortingType {	
-	if (sortingType == WTSortingByDay) {
-		// Days
-		return dayTitles;
-	} else if (sortingType == WTSortingByWeek) {
-		// weeks
-		return weekTitles;
-	} else if (sortingType == WTSortingByMonth) {
-		// months
-		return nil;
+- (NSMutableArray *)trackingIntervalsForMostRecentDay {
+	//if (!self.sectionsAreUpToDate) [self setupDays];
+	
+	[self setupDays];
+	
+	if (daySections) {
+		if ([daySections count] > 0) return [daySections objectAtIndex:0];
 	}
 	
 	return nil;
 }
 
-- (NSInteger)numberOfSectionsForSortingType:(WTSortingType)sortingType {
-	NSInteger numberOfSections= 0;
-	
-	if (sortingType  == WTSortingByDay) {
-		numberOfSections= [dayTitles count];
-	} else if (sortingType == WTSortingByWeek) {
-		numberOfSections= [weekTitles count];
-	} else if (sortingType == WTSortingByMonth) {
-		// Months
-	}
-	
-	return numberOfSections;
-}
-
-- (NSInteger)numberOfIntervalsForSection:(NSInteger)section withSortingType:(WTSortingType)sortingType {
-	NSInteger numberOfIntervals= 0;
-	
+- (NSMutableArray *)headerTitlesForSortingType:(WTSortingType)sortingType {	
 	if (sortingType == WTSortingByDay) {
-		numberOfIntervals= [self numberOfIntervalsForDay:section withActive:NO];
+		if (!sectionsAreUpToDate) {
+			[self setupDays];
+		}
+		return dayTitles;
 	} else if (sortingType == WTSortingByWeek) {
-		numberOfIntervals= [self numberOfIntervalsForWeek:section];
+		if (!sectionsAreUpToDate) {
+			[self setupWeeks];
+		}
+		return weekTitles;
 	} else if (sortingType == WTSortingByMonth) {
-		// Months
+		return nil;
+	} else {
+		return nil;
 	}
-	
-	return numberOfIntervals;
 }
 
-- (void)setupSections:(WTSortingType)sortingType {	
-	if (sortingType == WTSortingByDay && !dayTitles) {
-		[self setupDays];
+- (NSMutableArray *)sectionArrayForSortingType:(WTSortingType)sortingType {
+	if (sortingType == WTSortingByDay) {
+		if (!sectionsAreUpToDate) {
+			[self setupDays];
+		}
+		return daySections;
 	} else if (sortingType == WTSortingByWeek) {
-		[self setupWeeks];
+		return weekSections;
 	} else if (sortingType == WTSortingByMonth) {
-		// Months
+		return nil;
+	} else {
+		return nil;
 	}
 }
 
 #pragma mark Days
 
 - (void)setupDays {
-	NSCalendar *calendar= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	NSAutoreleasePool *pool= [[NSAutoreleasePool alloc] init];
+	
+	// These are the arrays this method is going to fill / renew
+	// TODO: A Standard C array would much faster and easier to read from (array[section][row])
+	[daySections release];
+	[dayTitles release];
+	daySections= [[NSMutableArray alloc] init];
+	dayTitles= [[NSMutableArray alloc] init];
+	
+	NSCalendar *calendar= [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
 	NSDate *date= [NSDate date];
-	NSDateComponents *dateComponents= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:date]; // Today at 00:00, reference
+	NSDateComponents *dateComponents;
 	
-	NSInteger dayID= 0; // 0= today, 1= yesterday, ..., 5= rest
-	if (!dayTitles) dayTitles= [[NSMutableArray alloc] initWithCapacity:6];
-	int i; // loop counter
-	NSDate *curDate; // loops through the startDates
-	NSDateComponents *curDateComponents; // components of curDate
+	NSMutableArray *curArray= [NSMutableArray array]; // Every Section is represented by an array
+	NSDate *curDate; // Loops through the startDates
+	NSDateComponents *curDateComponents; // Components of curDate
+	NSDate *lastDate;
 	
-	int lastDayID= -1;
-	
-	for (i= 0; i < [model.trackingIntervals count]; i++) {
-		curDate= [[model.trackingIntervals objectAtIndex:i] objectForKey:cStartTime];
+	for (NSMutableDictionary *trackingInterval in model.trackingIntervals) {
+		curDate= [trackingInterval objectForKey:cStartTime];
 		curDateComponents= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:curDate];
+		dateComponents= [calendar components: NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
 		
-		// if (curDate != date)
-		if ((curDateComponents.year != dateComponents.year) || (curDateComponents.month != dateComponents.month) || (curDateComponents.day != dateComponents.day)) {
-			// Decrease day by 1
-			date= [date addTimeInterval:-(60*60*24)]; // day--;
+		// Check if curDate is on the same day the current reference (dateComponents)
+		if ((curDateComponents.year == dateComponents.year) && (curDateComponents.month == dateComponents.month) && (curDateComponents.day == dateComponents.day)) {
+			// Add to current array
+			[curArray addObject:trackingInterval];
+		} else {
+			if ([curArray count] > 0) {
+				NSLog(@"Finalized a section: %@", curArray);
+				// Add a title for the section
+				[dayTitles addObject:[WTUtil dayForDate:lastDate]];
+				// Add current array as a section
+				[daySections addObject:curArray];
+				// Create a new current array
+				curArray= [NSMutableArray array];
+			}
+			// Set the date that maches
+			date= [trackingInterval objectForKey:cStartTime];
 			dateComponents= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:date];
 			
-			// Increase dayID by 1, dayID maches tableView section <- I'm not so sure about this one anymore...
-			dayID++;
-			
-			if (dayID == 5)  {
-				// Everything older than 5 days gets into 'Older'
-				break;
-			}
+			[curArray addObject:trackingInterval];
 		}
-		
-		// Check if curDate is on the same day the current reference (dayComponents)
-		if ((curDateComponents.year == dateComponents.year) && (curDateComponents.month == dateComponents.month) && (curDateComponents.day == dateComponents.day)) {
-			// Set dayID
-			[[model.trackingIntervals objectAtIndex:i] setObject:[NSNumber numberWithInteger:dayID] forKey:cDayID];
-			// Set title for dayID, no duplicates
-			if (dayID != lastDayID) {
-				[dayTitles addObject:[WTUtil dayForDate:curDate]];
-				lastDayID= dayID;
-			}
-		} else {
-			// Run the loop once again with the same object
-			i--;
-		}
+		lastDate= curDate;
 	}
 	
-	// The rest
-	while (i < [model.trackingIntervals count]) {
-		if (lastDayID != 5) {
-			[dayTitles addObject:NSLocalizedString(@"Older than a week", @"")]; // This gets added every time... major bug
-			lastDayID= 5;
-		}
-		
-		NSMutableDictionary *curInterval= [model.trackingIntervals objectAtIndex:i];
-		
-		// Break because if the current elements dayID is 5, all the older ones must be 5 too
-		if ([[curInterval objectForKey:cDayID] integerValue] == 5) break;
-		
-		[curInterval setObject:[NSNumber numberWithInteger:5] forKey:cDayID];
-		i++;
+	// Finalize the last section
+	if ([curArray count] > 0) {
+		// Add a title for the section
+		[dayTitles addObject:[WTUtil dayForDate:lastDate]];
+		// Add current array as a section
+		[daySections addObject:curArray];
 	}
 	
-	// Save data
-	[model didChangeCollection:cTrackingIntervals];
-	
-	[calendar release];
-}
-
-- (NSInteger)numberOfIntervalsForDay:(NSInteger)dayID withActive:(BOOL)active {
-	// TODO: Save this Values to iVar for more performance? Caution!: I have to make sure they stay up to date
-	
-	NSInteger numberOfIntervals= 0;
-	
-	// Count
-	for (NSMutableDictionary *trackingInterval in model.trackingIntervals) {
-		NSInteger curDayID= [[trackingInterval objectForKey:cDayID] integerValue];
-		
-		if (curDayID == dayID) {
-			numberOfIntervals++;
-		} else if (curDayID > dayID) {
-			break;
-		}
-	}
-	
-	// Caller doesn't want a running interval to be counted
-	if (!active && [engine running] && (dayID == 0)) numberOfIntervals--;
-	
-	return numberOfIntervals;
+	self.sectionsAreUpToDate= YES;
+	[pool drain];
 }
 
 #pragma mark Weeks
 
 - (void)setupWeeks {
-	// Idea: Every week gets an ID, The most recent one is 0
-	// I have to limit this, because I currently have no solutin that allows me to correcly implement weekIDs for more than a year
-	
-	NSCalendar *calendar= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-	NSDate *date= [NSDate date];
-	NSDateComponents *dateComponents= [calendar components:NSWeekCalendarUnit | NSYearCalendarUnit fromDate:date];
-	
-	NSInteger weekID= 0;
-	NSDate *curDate;
-	NSDateComponents *curDateComponents;
-	int i;
-	int trackingsCount= [model.trackingIntervals count];
-	int lastWeekID= -1;
-	
-	for (i= 0; i < trackingsCount; i++) {
-		curDate= [[model.trackingIntervals objectAtIndex:i] objectForKey:cStartTime];
-		curDateComponents= [calendar components:NSWeekCalendarUnit | NSYearCalendarUnit fromDate:curDate];
-		
-		if ((curDateComponents.year == dateComponents.year) && (curDateComponents.week == dateComponents.week)) {
-			// Set weekID
-			[[model.trackingIntervals objectAtIndex:i] setObject:[NSNumber numberWithInteger:weekID] forKey:cWeekID];
-			// Set title for weekID, no duplicates
-			if (weekID != lastWeekID) {
-				[weekTitles addObject:[WTUtil weekForDate:curDate]];
-				lastWeekID= weekID;
-			}
-		} else {
-			// Decrease week by 1
-			date= [date addTimeInterval:-(60*60*24*7)]; // Minus one week
-			dateComponents= [calendar components:NSWeekCalendarUnit | NSYearCalendarUnit fromDate:date];
-			
-			// Increase weekID by 1, weekID maches tableView section
-			weekID++;
-			
-			if (weekID == 5)  {
-				// Everything older than 5 days gets into 'Older'
-				break;
-			}
-			
-			// Run the loop once again with the same object
-			i--;
-		}
-	}
-	
-	// The rest
-	while (i < [model.trackingIntervals count]) {
-		if (lastWeekID != 5) {
-			[weekTitles addObject:NSLocalizedString(@"Older than a month", @"")];
-			lastWeekID= 5;
-		}
-		
-		NSMutableDictionary *curInterval= [model.trackingIntervals objectAtIndex:i];
-		
-		// Break because if the current elements dayID is 5, all the older ones must be 5 too
-		if ([[curInterval objectForKey:cDayID] integerValue] == 5) break;
-		
-		[curInterval setObject:[NSNumber numberWithInteger:5] forKey:cDayID];
-		i++;
-	}
-	
-	// Save data
-	[model didChangeCollection:cTrackingIntervals];
-	
-	[calendar release];
+
 }
 
 - (NSInteger)numberOfIntervalsForWeek:(NSInteger)section {
@@ -264,11 +164,11 @@ static WTSort *sharedInstace= nil;
 }
 
 - (id)retain {
-    return sharedInstace;
+    return sharedSortingModel;
 }
 
 - (id)autorelease {
-    return sharedInstace;
+    return sharedSortingModel;
 }
 
 @end

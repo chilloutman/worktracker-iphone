@@ -16,6 +16,7 @@
 #import "WTDataModel.h"
 #import "WTEngine.h"
 #import "WTSort.h"
+#import "WTUtil.h"
 
 #import "WTConstants.h"
 
@@ -132,10 +133,11 @@
 - (void)updateActiveElements:(NSTimer *)theTimer {
 	// Active table cell
 	WTTableViewCell *cell= (WTTableViewCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-	cell.lastText= [self.model formattedTimeIntervalForTrackingInterval:nil decimal:YES];
+	cell.lastText= [WTUtil formattedTimeIntervalForTrackingInterval:nil decimal:YES];
 	
 	// Table header
-	tableHeader.lastText= [self.model formattedTotalTimeForDay:0 withActive:YES];
+	NSMutableArray *sectionArray= [tableModel trackingIntervalsForMostRecentDay];
+	tableHeader.lastText= [WTUtil totalTimeForSection:sectionArray withActive:YES];
 }
 
 - (void)updateUIElements {
@@ -148,9 +150,9 @@
 	//	stopButton.enabled= NO;
 	
 	// Update Labels
-	statusLabel.text= [self.model formattedStatus];
-	startTimeLabel.text= [self.model formattedStartTimeForTrackingInterval:nil];
-	stopTimeLabel.text= [self.model formattedStopTimeForTrackingInterval:nil];
+	statusLabel.text= [WTUtil formattedStatus];
+	startTimeLabel.text= [WTUtil formattedStartTimeForTrackingInterval:nil];
+	stopTimeLabel.text= [WTUtil formattedStopTimeForTrackingInterval:nil];
 	
 	// Update Buttons
 	if ([self.engine running]) {
@@ -221,15 +223,12 @@
 
 - (NSInteger)tableView:(UITableView *)tV numberOfRowsInSection:(NSInteger)section {
 	// 0 == Today
-	NSInteger numberOfRows= [tableModel numberOfIntervalsForDay:0 withActive:YES];
+	NSInteger numberOfRows= [[tableModel trackingIntervalsForMostRecentDay] count];
 	
 	if (section == 0) {
 		return numberOfRows;
 	} else {
-		if (numberOfRows < 5) {
-			numberOfFakeCells= 4 - numberOfRows;
-		}
-		return numberOfFakeCells;
+		return 4 - numberOfRows;
 	}
 }
 
@@ -242,9 +241,9 @@
 	}
 	
 	if (indexPath.section == 0) {
-		NSMutableDictionary *interval= [self.model.trackingIntervals objectAtIndex:indexPath.row];
-		cell.firstText= [self.model formattedProjectNameForTrackingInterval:interval];
-		cell.lastText= [self.model formattedTimeIntervalForTrackingInterval:interval decimal:YES];
+		NSMutableDictionary *interval= [[tableModel trackingIntervalsForMostRecentDay] objectAtIndex:indexPath.row];
+		cell.firstText= [WTUtil formattedProjectNameForTrackingInterval:interval];
+		cell.lastText= [WTUtil formattedTimeIntervalForTrackingInterval:interval decimal:YES];
 	} else {
 		cell.firstText= @"";
 		cell.lastText= @"";
@@ -258,7 +257,8 @@
 	if (!tableHeader) {
 		tableHeader= [[WTTableSectionHeader alloc] initWithFrame:CGRectZero];
 		tableHeader.firstText= NSLocalizedString(@"Today", @"");
-		tableHeader.lastText= [self.model formattedTotalTimeForDay:0 withActive:YES];
+		NSMutableArray *sectionArray= [tableModel trackingIntervalsForMostRecentDay];
+		tableHeader.lastText= [WTUtil totalTimeForSection:sectionArray withActive:YES];
 	}
 
 	if (section == 0) {
@@ -284,7 +284,6 @@
 	
 	[super dealloc];
 }
-
 
 @end
 

@@ -26,14 +26,6 @@
 - (void)didChangeCollection:(NSString *)keyPath;
 - (void)deleteTrackingIntervals:(BOOL)all;
 
-- (NSTimeInterval)timeIntervalForTrackingInterval: (NSMutableDictionary *)pInterval;
-
-// Strings for the UI
-- (NSString *)formattedTotalTimeForDay:(NSInteger)dayID withActive:(BOOL)active;
-- (NSString *)formattedStatus;
-- (NSString *)formattedStartTimeForTrackingInterval:(NSMutableDictionary *)pInterval;
-- (NSString *)formattedStopTimeForTrackingInterval:(NSMutableDictionary *)pInterval;
-- (NSString	*)formattedTimeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval decimal:(BOOL)decimal;
-- (NSString *)formattedProjectNameForTrackingInterval:(NSMutableDictionary *)pInterval;
+- (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval;
 
 @end

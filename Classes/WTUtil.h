@@ -10,10 +10,21 @@
 
 
 @interface WTUtil : NSObject {
-
+	
 }
+
+// Strings for the UI
 
 + (NSString *)dayForDate:(NSDate *)pDate;
 + (NSString *)weekForDate:(NSDate *)pDate;
+
++ (NSString *)formattedStatus;
++ (NSString *)totalTimeForSection:(NSMutableArray *)section withActive:(BOOL)active;
+
++ (NSString *)formattedProjectNameForTrackingInterval:(NSMutableDictionary *)pInterval;
++ (NSString *)formattedTimeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval decimal:(BOOL)decimal;
++ (NSString *)formattedStartTimeForTrackingInterval:(NSMutableDictionary *)pInterval;
++ (NSString *)formattedStopTimeForTrackingInterval:(NSMutableDictionary *)pInterval;
+
 
 @end

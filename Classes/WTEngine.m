@@ -8,25 +8,27 @@
 
 #import "WTEngine.h"
 #import "WTDataModel.h"
+#import "WTSort.h"
 
 #import "WTConstants.h"
 
-static WTEngine *sharedInstace= nil;
+static WTEngine *sharedEngine= nil;
 
 @implementation WTEngine
 
 + (WTEngine *)sharedEngine {
 	@synchronized(self) {
-		if (sharedInstace == nil) {
-			sharedInstace= [[self alloc] init];
+		if (sharedEngine == nil) {
+			sharedEngine= [[self alloc] init];
 		}
 	}
-	return sharedInstace;
+	return sharedEngine;
 }
 
 - (id)init {
 	if (self= [super init]) {
 		model= [WTDataModel sharedDataModel];
+		//sortModel= [WTSort sharedSortingModel];
 	}
 	return self;
 }
@@ -39,16 +41,16 @@ static WTEngine *sharedInstace= nil;
 
 - (void)startTrackingProjectAtIndex:(NSInteger)index {
 	model.status= cStatusRunning;
+	[WTSort sharedSortingModel].sectionsAreUpToDate= NO;
 	
-	NSMutableDictionary *activeInterval= [[NSMutableDictionary alloc] init];	
+	NSMutableDictionary *activeInterval= [[NSMutableDictionary alloc] init];
 	[activeInterval setObject:[NSDate date] forKey:cStartTime];
-	[activeInterval setObject:[NSNumber numberWithInt:0] forKey:cDayID];
 	[activeInterval setObject:[model.projects objectAtIndex:index] forKey:cProject];
 	
 	[model.trackingIntervals insertObject:activeInterval atIndex:0];
 	[activeInterval release];
 	
-	// Notify of changes
+	// Notify models about the changes
 	[model didChangeCollection:cTrackingIntervals];
 }
 
@@ -58,7 +60,8 @@ static WTEngine *sharedInstace= nil;
 	NSMutableDictionary *trackingInterval= [model.trackingIntervals objectAtIndex:0];
 	
 	[trackingInterval setObject:[NSDate date] forKey:cStopTime];
-	[trackingInterval setObject:[NSNumber numberWithDouble:[model timeIntervalForTrackingInterval:nil]] forKey:cTimeInterval];
+	NSDate *startTime= [trackingInterval objectForKey:cStartTime];
+	[trackingInterval setObject:[NSNumber numberWithDouble:[startTime timeIntervalSinceNow]] forKey:cTimeInterval];
 	
 	[model didChangeCollection:cTrackingIntervals];
 }
@@ -96,11 +99,11 @@ static WTEngine *sharedInstace= nil;
 }
 
 - (id)retain {
-    return sharedInstace;
+    return sharedEngine;
 }
 
 - (id)autorelease {
-    return sharedInstace;
+    return sharedEngine;
 }
 
 @end

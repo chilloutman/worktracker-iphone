@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@class WTDataModel;
+@class WTDataModel, WTSort;
 
 // Controls status
 @interface WTEngine : NSObject {
 	WTDataModel *model;
+	WTSort *sortModel;
 	NSMutableDictionary *timers;
 }
 

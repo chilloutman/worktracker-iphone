@@ -8,7 +8,6 @@
 
 #import "WTHistoryViewController.h"
 
-#import "WTTableBackgorund.h"
 #import "WTTableViewCell.h"
 #import "WTTableSectionHeader.h"
 
@@ -17,6 +16,7 @@
 #import "WTEngine.h"
 
 #import "WTConstants.h"
+#import "WTUtil.h"
 
 @implementation WTHistoryViewController
 
@@ -45,11 +45,6 @@
 	tableView.delegate= self;
 	tableView.dataSource= self;
 	tableView.allowsSelection= NO;
-	
-	// Create a view with a gray background for the top
-	tableView.tableHeaderView= [[[WTTableBackgorund alloc] initWithFrame:CGRectMake(0, 0, screen.size.width, screen.size.height / 2)] autorelease];
-	// Have the tableview ignore our headerView when computing size
-	tableView.contentInset = UIEdgeInsetsMake(-(tableView.tableHeaderView.frame.size.height), 0, 0, 0);
 	
 	// viewController
 	
@@ -89,7 +84,6 @@
 	
 	// TODO: can't update cells because of a "tableView fail" when refreshing. Currently not displaying active/running stuff at all. Excuse: Because of 'History'...
 	
-	[tableModel setupSections:activeSortingType];
 	[tableView reloadData];
 }
 
@@ -113,9 +107,11 @@
 		[self.model deleteTrackingIntervals:YES];
 		[tableView reloadData];
 		//[tableView deleteSections:[NSIndexSet ind] withRowAnimation:UITableViewRowAnimationTop];
+		tableModel.sectionsAreUpToDate= NO;
 	} else if (buttonIndex == 1) {
 		[self.model deleteTrackingIntervals:NO];
 		[tableView deleteSections:[NSIndexSet indexSetWithIndex:5] withRowAnimation:UITableViewRowAnimationTop];
+		tableModel.sectionsAreUpToDate= NO;
 	} else {
 		return;
 	}
@@ -134,11 +130,11 @@
 #pragma mark tableView dataSource / delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)pTableView {
-	return [tableModel numberOfSectionsForSortingType:activeSortingType];
+	return [[tableModel sectionArrayForSortingType:activeSortingType] count];
 }
 
 - (NSInteger)tableView:(UITableView *)pTableView numberOfRowsInSection:(NSInteger)section {
-	return [tableModel numberOfIntervalsForSection:section withSortingType:activeSortingType];
+	return [[[tableModel sectionArrayForSortingType:activeSortingType] objectAtIndex:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)pTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -148,17 +144,11 @@
 	if(cell == nil) {
 		cell= [[[WTTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellID] autorelease];
 	}
+
+	NSMutableDictionary *trackingInterval= [[[tableModel sectionArrayForSortingType:activeSortingType] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	
-	NSInteger index= indexPath.row; // indexPath.row is just the row inside the section
-	if ([self.engine running]) index++; // Skip the active one
-	// Add the previous section counts to find the position inside the Array
-	for (int i= 0; i < indexPath.section; i++) {
-		index+= [tableModel numberOfIntervalsForDay:i withActive:NO];
-	}
-	NSMutableDictionary *trackingInterval= [self.model.trackingIntervals objectAtIndex:index];
-	
-	cell.firstText= [self.model formattedProjectNameForTrackingInterval:trackingInterval];
-	cell.lastText= [self.model formattedTimeIntervalForTrackingInterval:trackingInterval decimal:YES];
+	cell.firstText= [WTUtil formattedProjectNameForTrackingInterval:trackingInterval];
+	cell.lastText= [WTUtil formattedTimeIntervalForTrackingInterval:trackingInterval decimal:YES];
 	
 	return cell;
 }
@@ -170,7 +160,8 @@
 	
 	WTTableSectionHeader *tableHeader= [[[WTTableSectionHeader alloc] initWithFrame:CGRectZero] autorelease];
 	tableHeader.firstText= [headerTitles objectAtIndex:section];
-	tableHeader.lastText= [self.model formattedTotalTimeForDay:section withActive:NO];
+	NSMutableArray *sectionArray= [[tableModel sectionArrayForSortingType:activeSortingType] objectAtIndex:section];
+	tableHeader.lastText= [WTUtil totalTimeForSection:sectionArray withActive:NO];
 	
 	return tableHeader;
 }

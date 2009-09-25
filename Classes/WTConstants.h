@@ -43,8 +43,6 @@ extern NSString * const cProject;
 extern NSString * const cStartTime;
 extern NSString * const cStopTime;
 extern NSString * const cTimeInterval;
-extern NSString * const cWeekID;
-extern NSString * const cDayID;
 
 // Engine Keys
 extern NSString * const cTimerMainView;

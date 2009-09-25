@@ -15,8 +15,6 @@ NSString *cStatusStandby= @"standby";
 
 // TrackingInterval : NSMutableDictionary keys 
 NSString *cProject= @"project";
-NSString *cDayID= @"dayID";
-NSString *cWeekID= @"weekID";
 NSString *cTimeInterval= @"timeInterval";
 NSString *cStartTime= @"startTime";
 NSString *cStopTime= @"stopTime";

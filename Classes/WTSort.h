@@ -22,27 +22,29 @@
 	WTDataModel *model;
 	WTEngine *engine;
 	
-	NSMutableArray *dayTitles;	
+	BOOL sectionsAreUpToDate;
+	
+	NSMutableArray *daySections;
+	NSMutableArray *weekSections;
+	
+	NSMutableArray *dayTitles;
 	NSMutableArray *weekTitles;
 }
 
+@property (nonatomic, assign) BOOL sectionsAreUpToDate;
+
 + (WTSort *)sharedSortingModel;
 
-- (void)setupSections:(WTSortingType)sortingType;
+- (NSMutableArray *)sectionArrayForSortingType:(WTSortingType)sortingType;
 - (NSMutableArray *)headerTitlesForSortingType:(WTSortingType)sortingType;
-- (NSInteger)numberOfSectionsForSortingType:(WTSortingType)sortingType;
-- (NSInteger)numberOfIntervalsForSection:(NSInteger)section withSortingType:(WTSortingType)sortingType;
+- (NSMutableArray *)trackingIntervalsForMostRecentDay;
 
 #pragma mark Private
 
 // Days
 - (void)setupDays;
-- (NSInteger)numberOfIntervalsForDay:(NSInteger)dayID withActive:(BOOL)active;
 
 // Weeks
 - (void)setupWeeks;
-- (NSInteger)numberOfIntervalsForWeek:(NSInteger)section;
-
-
 
 @end
