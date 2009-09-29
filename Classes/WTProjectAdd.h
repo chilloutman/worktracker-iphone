@@ -10,8 +10,9 @@
 
 @class WTProjectsViewController;
 
-@interface WTProjectAdd : UIViewController <UITextFieldDelegate> {
-	UITextField *textField;
+@interface WTProjectAdd : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+	UITableView * tableView;
+	UITextField *nameField;
 	UIBarButtonItem *doneButton;
 	WTProjectsViewController *superController;
 }

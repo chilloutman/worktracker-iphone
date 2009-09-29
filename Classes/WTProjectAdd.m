@@ -20,48 +20,22 @@
 - (void)loadView {
 	CGRect screen= [[UIScreen mainScreen] applicationFrame];
 	
-	self.view= [[[UIView alloc] initWithFrame:screen] autorelease];
-	self.view.backgroundColor= [UIColor groupTableViewBackgroundColor];
+	self.view= [[UIView alloc] initWithFrame:screen];
 	
-	/*
-	UILabel *titleLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screen.size.width, 50)];
-	titleLabel.text= NSLocalizedString(@"Enter a name for the new project", @"Ask the user for a project name");
-	titleLabel.textAlignment= UITextAlignmentCenter;
-	titleLabel.backgroundColor= [UIColor lightGrayColor];
-	titleLabel.numberOfLines= 2;
-	titleLabel.font= [UIFont fontWithName:titleLabel.font.fontName size:18];
-	[self.view addSubview:titleLabel];
-	[titleLabel release];
-	
-	textField= [[UITextField alloc] initWithFrame:CGRectMake(20, 90, 280, 30)];
-	textField.borderStyle= UITextBorderStyleRoundedRect;
-	[textField setFont:[UIFont systemFontOfSize:16]];
-	[self.view addSubview:textField];
-	
-	UIButton *doneButton= [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	doneButton.frame= CGRectMake(170, 160, 120, 50);
-	[doneButton setTitle:NSLocalizedString(@"Add", @"") forState: UIControlStateNormal];
-	[doneButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-	[doneButton addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:doneButton];
-	
-	UIButton *cancelButton= [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	cancelButton.frame= CGRectMake(20, 160, 120, 50);
-	[cancelButton setTitle:NSLocalizedString(@"Cancel", @"") forState: UIControlStateNormal];
-	[cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-	[cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:cancelButton];
-	*/
+	tableView= [[UITableView alloc] initWithFrame:CGRectMake(screen.origin.x, screen.origin.y + 23, screen.size.width, screen.size.height - 45) style:UITableViewStyleGrouped];
+	tableView.dataSource= self;
+	tableView.delegate= self;
 	
 	// Toolbar
 	
 	UIBarButtonItem *cancelButton= [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(cancel)];
 	doneButton= [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Add", @"") style:UIBarButtonItemStyleDone target:self action:@selector(done)];
-	doneButton.enabled= NO;
+	doneButton.enabled= YES;
 	UIBarButtonItem *flexSpace= [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+	UIBarButtonItem *title= [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"New Project", @"") style:UIBarButtonItemStylePlain target:nil action:nil];
 	
 	UIToolbar *toolbar= [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, screen.size.width, 45)];
-	[toolbar setItems:[NSArray arrayWithObjects:cancelButton, flexSpace, doneButton, nil]];
+	[toolbar setItems:[NSArray arrayWithObjects:cancelButton, flexSpace, title, flexSpace, doneButton, nil]];
 	[self.view addSubview:toolbar];
 	
 	[toolbar release];
@@ -70,39 +44,33 @@
 	
 	// ---
 	
-	UILabel *titleLabel= [[UILabel alloc] initWithFrame:CGRectMake(15, 60, screen.size.width-30, 60)];
-	titleLabel.text= NSLocalizedString(@"Enter a name for the new project", @"Ask the user for a project name");
-	titleLabel.textAlignment= UITextAlignmentCenter;
-	titleLabel.backgroundColor= [UIColor clearColor];
-	titleLabel.numberOfLines= 2;
-	titleLabel.font= [UIFont fontWithName:titleLabel.font.fontName size:18];
-	[self.view addSubview:titleLabel];
-	[titleLabel release];
+	nameField= [[UITextField alloc] init];
+	nameField.adjustsFontSizeToFitWidth= YES;
+	//[nameField setFont:[UIFont systemFontOfSize:22]];
+	nameField.autocorrectionType= UITextAutocorrectionTypeNo;
+	nameField.autocapitalizationType= UITextAutocapitalizationTypeNone;
+	nameField.returnKeyType= UIReturnKeyDone;
+	nameField.clearButtonMode= UITextFieldViewModeWhileEditing;
 	
-	textField= [[UITextField alloc] initWithFrame:CGRectMake(15, 135, screen.size.width - 30, 30)];
-	textField.borderStyle= UITextBorderStyleRoundedRect;
-	[textField setFont:[UIFont systemFontOfSize:16]];
-	textField.returnKeyType= UIReturnKeyDone;
-	textField.delegate= self;
-	[self.view addSubview:textField];
+	[self.view addSubview:tableView];
 	
-	// TODO: select a color for the proj.
+	// TODO: select a color for the proj. - UISegmentControl
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	textField.text= nil;
-	[textField becomeFirstResponder];
+	nameField.text= nil;
+	[nameField becomeFirstResponder];
 }
 
 #pragma mark Buttons
 
 - (void)done {
-	if ([textField.text isEqualToString:@""] || textField.text == nil) {
+	if ([nameField.text isEqualToString:@""] || nameField.text == nil) {
 		return;
 	}
-	[self.superController shouldAddNewProjectWithName:textField.text];
+	[self.superController shouldAddNewProjectWithName:nameField.text];
 	
 	[self.superController dismissModalViewControllerAnimated:YES];
 }
@@ -112,20 +80,53 @@
 	[self.superController dismissModalViewControllerAnimated:YES];
 }
 
-#pragma mark textField delegate & KVO
-- (BOOL)textFieldShouldReturn:(UITextField *)tF {
-	if ([textField.text isEqualToString:@""] || textField.text == nil) {
-		return NO;
+#pragma mark UITableView delegate & dataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)pTableView {
+	return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	switch (section) {
+		case 0: return @"Project Name";
+		case 1: return @"Project Color";
+	} 
+	
+	return nil;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)pTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	static NSString *cellID= @"cellID";
+	
+	UITableViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellID];
+	if(cell == nil) {
+		cell= [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellID] autorelease];
+		cell.selectionStyle= UITableViewCellSelectionStyleNone;
 	}
 	
-	[self done];
-	return YES;
+	CGRect rect= CGRectInset(cell.contentView.bounds, 20.0, 10.0);
+	
+	switch (indexPath.section) {
+		case 0:
+			nameField.frame= rect;
+			[cell.contentView addSubview:nameField];
+			break;
+		case 1:
+			break;
+	}
+	
+	
+	return cell;
 }
 
 #pragma mark -
 
 - (void)dealloc {
-	[textField release];
+	[nameField release];
 	[doneButton release];
 	[self.superController release];
     [super dealloc];
