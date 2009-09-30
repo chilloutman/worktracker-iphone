@@ -211,10 +211,10 @@
 				<string>XCToolbarPerspectiveControl</string>
 				<string>NSToolbarSeparatorItem</string>
 				<string>active-combo-popup</string>
-				<string>action</string>
 				<string>NSToolbarFlexibleSpaceItem</string>
+				<string>debugger-enable-breakpoints</string>
 				<string>buildOrClean</string>
-				<string>build-and-goOrGo</string>
+				<string>build-and-go</string>
 				<string>com.apple.ide.PBXToolbarStopButton</string>
 				<string>NSToolbarFlexibleSpaceItem</string>
 				<string>com.apple.pbx.toolbar.searchfield</string>
@@ -230,13 +230,14 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
 						<array>
 							<string>1C37FBAC04509CD000000102</string>
 							<string>1C37FAAC04509CD000000102</string>
-							<string>1C08E77C0454961000C914BD</string>
 							<string>1C37FABC05509CD000000102</string>
 							<string>1C37FABC05539CD112110102</string>
 							<string>E2644B35053B69B200211256</string>
@@ -312,14 +313,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>EF28D2F10FEC0D7300AF7431</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>WTDataModel.m</string>
+								<string>WTConstants.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -327,38 +326,15 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>EF28D2F20FEC0D7300AF7431</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>WTDataModel.m</string>
+										<string>WTConstants.h</string>
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>EF1199281060DE0B007E620A</string>
+										<string>EF9E32F210734FF0001361EF</string>
 										<key>history</key>
 										<array>
-											<string>EF1193FB10590656007E620A</string>
-											<string>EF1193FC10590656007E620A</string>
-											<string>EF1193FF10590656007E620A</string>
-											<string>EF11940210590656007E620A</string>
-											<string>EF1194131059086F007E620A</string>
-											<string>EF1194141059086F007E620A</string>
-											<string>EF1199211060DE0B007E620A</string>
-											<string>EF1199221060DE0B007E620A</string>
-											<string>EF1199231060DE0B007E620A</string>
-											<string>EF1199241060DE0B007E620A</string>
-										</array>
-										<key>prevStack</key>
-										<array>
-											<string>EF11940510590656007E620A</string>
-											<string>EF11940610590656007E620A</string>
-											<string>EF11940710590656007E620A</string>
-											<string>EF11940810590656007E620A</string>
-											<string>EF11940910590656007E620A</string>
-											<string>EF11940A10590656007E620A</string>
-											<string>EF11940B10590656007E620A</string>
-											<string>EF11940C10590656007E620A</string>
-											<string>EF1194161059086F007E620A</string>
-											<string>EF1199251060DE0B007E620A</string>
-											<string>EF1199261060DE0B007E620A</string>
-											<string>EF1199271060DE0B007E620A</string>
+											<string>EF9E32F010734FF0001361EF</string>
+											<string>EF9E32F110734FF0001361EF</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -372,18 +348,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1330, 689}}</string>
+								<string>{{0, 0}, {1330, 678}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 55 1612 973 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>689pt</string>
+							<string>678pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>238pt</string>
+							<string>249pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -397,7 +373,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1330, 211}}</string>
+										<string>{{10, 27}, {1330, 222}}</string>
+										<key>RubberWindowFrame</key>
+										<string>0 55 1612 973 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -414,8 +392,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1330, 211}}</string>
-										<key>RubberWindowFrame</key>
-										<string>0 55 1612 973 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXProjectFindModule</string>
@@ -425,6 +401,27 @@
 									<dict>
 										<key>PBXCVSModuleFilterTypeKey</key>
 										<integer>1032</integer>
+										<key>PBXCVSModuleTreeModuleColumnData</key>
+										<dict>
+											<key>PBXCVSModuleTreeModuleColumnWidthsKey</key>
+											<array>
+												<real>200</real>
+												<real>56</real>
+												<real>63</real>
+												<real>60</real>
+												<real>63</real>
+												<real>139</real>
+											</array>
+											<key>PBXCVSModuleTreeModuleColumnsKey</key>
+											<array>
+												<string>Name</string>
+												<string>Status</string>
+												<string>Update</string>
+												<string>Revision</string>
+												<string>Author</string>
+												<string>Date</string>
+											</array>
+										</dict>
 										<key>PBXProjectModuleGUID</key>
 										<string>1CA23EE10692099D00951B8B</string>
 										<key>PBXProjectModuleLabel</key>
@@ -444,7 +441,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>XCMainBuildResultsModuleGUID</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Build</string>
+										<string>Build Results</string>
 										<key>XCBuildResultsTrigger_Collapse</key>
 										<integer>1021</integer>
 										<key>XCBuildResultsTrigger_Open</key>
@@ -453,7 +450,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1330, 211}}</string>
+										<string>{{10, 27}, {1330, 216}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -481,16 +478,18 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>EF1199291060DE0B007E620A</string>
+				<string>EF9E32F310734FF0001361EF</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>EF11992A1060DE0B007E620A</string>
+				<string>EF9E32F410734FF0001361EF</string>
 				<string>EF28D2F10FEC0D7300AF7431</string>
-				<string>EF11992B1060DE0B007E620A</string>
+				<string>EF9E32F510734FF0001361EF</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
+			<key>ToolbarConfigUserDefaultsMinorVersion</key>
+			<string>2</string>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.defaultV3</string>
 		</dict>
@@ -501,6 +500,7 @@
 				<string>NSToolbarSeparatorItem</string>
 				<string>active-combo-popup</string>
 				<string>NSToolbarFlexibleSpaceItem</string>
+				<string>debugger-enable-breakpoints</string>
 				<string>build-and-go</string>
 				<string>com.apple.ide.PBXToolbarStopButton</string>
 				<string>debugger-restart-executable</string>
@@ -508,10 +508,9 @@
 				<string>debugger-step-over</string>
 				<string>debugger-step-into</string>
 				<string>debugger-step-out</string>
-				<string>debugger-enable-breakpoints</string>
 				<string>NSToolbarFlexibleSpaceItem</string>
-				<string>com.apple.ide.XCBreakpointsToolbarItem</string>
-				<string>clear-log</string>
+				<string>servicesModulebreakpoints</string>
+				<string>debugger-show-console-window</string>
 			</array>
 			<key>ControllerClassBaseName</key>
 			<string>PBXDebugSessionModule</string>
@@ -632,15 +631,17 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>EF11936E1058E00E007E620A</string>
+				<string>EF9E32F610734FF0001361EF</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>EF11936F1058E00E007E620A</string>
-				<string>EF1193701058E00E007E620A</string>
-				<string>EF1193711058E00E007E620A</string>
-				<string>EF1193721058E00E007E620A</string>
-				<string>EF28D2F10FEC0D7300AF7431</string>
+				<string>EF9E32F710734FF0001361EF</string>
+				<string>EF9E32F810734FF0001361EF</string>
+				<string>EF9E32F910734FF0001361EF</string>
+				<string>EF9E32FA10734FF0001361EF</string>
+				<string>EF9E32FB10734FF0001361EF</string>
 			</array>
+			<key>ToolbarConfigUserDefaultsMinorVersion</key>
+			<string>2</string>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
 		</dict>
@@ -669,7 +670,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>/home/lneiva/Dropbox/iPhoneApps/WorkTracker/WorkTracker.xcodeproj</string>
+		<string>/Users/Shared/lneiva/worktracker-svn/trunk/WorkTracker.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 55 1612 973 0 0 1680 1028 </string>
