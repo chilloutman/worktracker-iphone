@@ -42,19 +42,21 @@
 	[cancelButton release];
 	[flexSpace release];
 	
-	// ---
-	
+	// This is where the user types a name for the new project
 	nameField= [[UITextField alloc] init];
+	nameField.frame= CGRectMake(10, 7, 280, 31);
 	nameField.adjustsFontSizeToFitWidth= YES;
-	//[nameField setFont:[UIFont systemFontOfSize:22]];
+	nameField.font= [UIFont systemFontOfSize:20];
+	nameField.contentVerticalAlignment= UIControlContentVerticalAlignmentCenter;
 	nameField.autocorrectionType= UITextAutocorrectionTypeNo;
 	nameField.autocapitalizationType= UITextAutocapitalizationTypeNone;
 	nameField.returnKeyType= UIReturnKeyDone;
 	nameField.clearButtonMode= UITextFieldViewModeWhileEditing;
 	
-	[self.view addSubview:tableView];
 	
-	// TODO: select a color for the proj. - UISegmentControl
+	// TODO: select a color for the proj. - UISegmentControl?
+	
+	[self.view addSubview:tableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,8 +90,8 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
-		case 0: return @"Project Name";
-		case 1: return @"Project Color";
+		case 0: return NSLocalizedString(@"Project Name", @"Title for the textField where the project name is supposed to be entered");
+		case 1: return NSLocalizedString(@"Project Color", @"Title for the place where the user can select a color for the project");
 	} 
 	
 	return nil;
@@ -108,11 +110,8 @@
 		cell.selectionStyle= UITableViewCellSelectionStyleNone;
 	}
 	
-	CGRect rect= CGRectInset(cell.contentView.bounds, 20.0, 10.0);
-	
 	switch (indexPath.section) {
 		case 0:
-			nameField.frame= rect;
 			[cell.contentView addSubview:nameField];
 			break;
 		case 1:
