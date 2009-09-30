@@ -27,7 +27,7 @@
 
 #pragma mark Build
 
-- (id)init{
+- (id)init {
 	if (self= [super init]) {
 		self.tabBarItem= [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Track", @"tabBarTitle") image:[UIImage imageNamed:@"clock.png"] tag:0];
 		self.model= [WTDataModel sharedDataModel];
