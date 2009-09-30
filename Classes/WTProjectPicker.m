@@ -29,38 +29,7 @@
 	CGRect screen= [[UIScreen mainScreen] applicationFrame];
 	self.view= [[[UIView alloc] initWithFrame:screen] autorelease];
 	self.view.backgroundColor= [UIColor groupTableViewBackgroundColor];
-	/*
-	UILabel *titleLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screen.size.width, 60)];
-	titleLabel.text= NSLocalizedString(@"Pick the project you\nwould like to track", @"Ask user to select a project");
-	titleLabel.textAlignment= UITextAlignmentCenter;
-	titleLabel.backgroundColor= [UIColor lightGrayColor];
-	titleLabel.numberOfLines= 2;
-	titleLabel.font= [UIFont fontWithName:titleLabel.font.fontName size:18];
-	[self.view addSubview:titleLabel];
-	
-	self.picker= [[UIPickerView alloc] initWithFrame:CGRectMake(0, 110, screen.size.width, 220)];
-	picker.delegate= self;
-	picker.dataSource= self;
-	picker.showsSelectionIndicator= YES;
-	[self.view addSubview:self.picker];
-	
-	UIButton *okButton= [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[okButton setTitle:@"Ok" forState:UIControlStateNormal];
-	[okButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-	okButton.frame= cButtonFrame;
-	okButton.center= CGPointMake(240, 385);
-	[okButton addTarget:self action:@selector(projectWasSelected) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:okButton];
-	
-	UIButton *cancelButton= [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[cancelButton setTitle:NSLocalizedString(@"Cancel", @"") forState:UIControlStateNormal];
-	[cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-	cancelButton.frame= cButtonFrame;
-	cancelButton.center= CGPointMake(80, 385);
-	[cancelButton addTarget:self action:@selector(userCanceled) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:cancelButton];
-	*/
-	
+
 	// Toolbar
 	
 	UIBarButtonItem *cancelButton= [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(userCanceled)];
@@ -78,6 +47,7 @@
 	
 	// ---
 	
+	// TODO: remove this and itroduce more features to fill up the view
 	UILabel *titleLabel= [[UILabel alloc] initWithFrame:CGRectMake(15, 60, screen.size.width-30, 60)];
 	titleLabel.text= NSLocalizedString(@"Pick the project you would like to track", @"Ask user to select a project");
 	titleLabel.textAlignment= UITextAlignmentCenter;
@@ -87,7 +57,8 @@
 	[self.view addSubview:titleLabel];
 	[titleLabel release];
 	
-	self.picker= [[UIPickerView alloc] initWithFrame:CGRectMake(0, 135, screen.size.width, 220)];
+	// Project selection
+	self.picker= [[UIPickerView alloc] initWithFrame:CGRectMake(0, screen.size.height/2+14, screen.size.width, screen.size.height/2)];
 	picker.delegate= self;
 	picker.dataSource= self;
 	picker.showsSelectionIndicator= YES;
