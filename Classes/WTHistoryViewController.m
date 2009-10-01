@@ -107,12 +107,12 @@
 		// Delete everything
 		[self.model deleteTrackingIntervals:YES];
 		
-		tableModel.sectionsAreUpToDate= NO;
+		[tableModel invalidateSectionsForSortingType:WTSortingByAll];
 		[tableView reloadData];
 	} else if (buttonIndex == 1) {
 		[self.model deleteTrackingIntervals:NO];
 		
-		tableModel.sectionsAreUpToDate= NO;
+		[tableModel invalidateSectionsForSortingType:WTSortingByAll];
 		[tableView reloadData];
 	}
 }
@@ -152,11 +152,9 @@
 }
 
 - (UIView *)tableView:(UITableView *)tV viewForHeaderInSection:(NSInteger)section {
-	// Cache because this gets called all the time and slows down scrolling
+	WTTableSectionHeader *tableHeader= [[[WTTableSectionHeader alloc] initWithFrame:CGRectZero] autorelease];
 	
 	NSMutableArray *headerTitles= [tableModel headerTitlesForSortingType:activeSortingType];
-	
-	WTTableSectionHeader *tableHeader= [[[WTTableSectionHeader alloc] initWithFrame:CGRectZero] autorelease];
 	tableHeader.firstText= [headerTitles objectAtIndex:section];
 	NSMutableArray *sectionArray= [[tableModel sectionArrayForSortingType:activeSortingType] objectAtIndex:section];
 	tableHeader.lastText= [WTUtil totalTimeForSection:sectionArray withActive:NO];

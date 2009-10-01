@@ -52,6 +52,7 @@ extern NSString * const cTimerHistoryView;
 typedef enum {
 	WTSortingByDay= 0,
 	WTSortingByWeek= 1,
-	WTSortingByMonth= 2
+	WTSortingByMonth= 2,
+	WTSortingByAll= 10
 } WTSortingType;
 

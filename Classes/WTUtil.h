@@ -17,6 +17,7 @@
 
 + (NSString *)dayForDate:(NSDate *)pDate;
 + (NSString *)weekForDate:(NSDate *)pDate;
++ (NSString *)monthForDate:(NSDate *)pDate;
 
 + (NSString *)formattedStatus;
 + (NSString *)totalTimeForSection:(NSMutableArray *)section withActive:(BOOL)active;

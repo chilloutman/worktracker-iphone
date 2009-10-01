@@ -18,20 +18,18 @@
 
 + (NSString *)dayForDate:(NSDate *)pDate {	
 	NSCalendar *cal= [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
-	
 	NSDate *date= [NSDate date];
 	NSDateComponents *dC= [cal components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
+	NSDateComponents *pDateComps= [cal components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:pDate];
 	
-	NSDateComponents *pDateComponents= [cal components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:pDate];
-	
-	if (pDateComponents.year == dC.year && pDateComponents.month == dC.month && pDateComponents.day == dC.day) {
+	if (pDateComps.year == dC.year && pDateComps.month == dC.month && pDateComps.day == dC.day) {
 		return NSLocalizedString(@"Today", @"");
 	}
 	
 	[date addTimeInterval:-86400];
 	dC= [cal components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
 	
-	if (pDateComponents.year == dC.year && pDateComponents.month == dC.month && pDateComponents.day == dC.day) {
+	if (pDateComps.year == dC.year && pDateComps.month == dC.month && pDateComps.day == dC.day) {
 		return NSLocalizedString(@"Yesterday", @"");
 	}
 	
@@ -43,14 +41,54 @@
 
 + (NSString *)weekForDate:(NSDate *)pDate {
 	NSCalendar *cal= [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
-	NSDateComponents *dateComponents= [cal components:NSWeekCalendarUnit fromDate:pDate];
+	NSDate *date= [NSDate date];
+	NSDateComponents *dateComps= [cal components:NSWeekCalendarUnit | NSYearCalendarUnit fromDate:date];
+	NSDateComponents *pDateComps= [cal components:NSWeekCalendarUnit | NSYearCalendarUnit fromDate:pDate];
+
 	
-	NSString *weekString= [NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Week", @""), dateComponents.week];
+	if ((pDateComps.year == dateComps.year) && (pDateComps.week == dateComps.week)) {
+		return NSLocalizedString(@"This Week", @"");
+	}
+
+	[date addTimeInterval:-604800];
+	dateComps= [cal components:NSWeekCalendarUnit | NSYearCalendarUnit fromDate:date];
 	
-	// TODO: Starting on...
+	if ((pDateComps.year == dateComps.year) && (pDateComps.week == dateComps.week)) {
+		return NSLocalizedString(@"Last Week", @"");
+	}
+	
+	NSString *weekString= [NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Week", @""), pDateComps.week];
 	
 	return weekString;
 }
+
++ (NSString *)monthForDate:(NSDate *)pDate {
+	NSCalendar *cal= [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+	NSDate *date= [NSDate date];
+	NSDateComponents *dateComps= [cal components:NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
+	NSDateComponents *pDateComps= [cal components:NSMonthCalendarUnit | NSYearCalendarUnit fromDate:pDate];
+	
+	
+	if ((pDateComps.year == dateComps.year) && (pDateComps.month == dateComps.month)) {
+		return NSLocalizedString(@"This Month", @"");
+	}
+	
+	if (--dateComps.month == 0) {
+		dateComps.month= 12;
+		dateComps.year--;
+	}
+	
+	if ((pDateComps.year == dateComps.year) && (pDateComps.month == dateComps.month)) {
+		return NSLocalizedString(@"Last Month", @"");
+	}
+	
+	NSDateFormatter *formatter= [[[NSDateFormatter alloc] init] autorelease];
+	[formatter setDateFormat:@"MMMM yyyy"];
+	
+	return [formatter stringFromDate:pDate];
+}
+
+#pragma mark Status & project name
 
 + (NSString *)formattedStatus {
 	WTDataModel *model= [WTDataModel sharedDataModel];

@@ -25,69 +25,88 @@ static WTSort *sharedSortingModel= nil;
 	return sharedSortingModel;
 }
 
-@synthesize sectionsAreUpToDate;
-
 - (id)init {
 	if (self= [super init]) {
 		model= [WTDataModel sharedDataModel];
 		engine= [WTEngine sharedEngine];
-		self.sectionsAreUpToDate= NO;
+		[self invalidateSectionsForSortingType:WTSortingByAll];
 	}
 	return self;
+}
+
+#pragma mark Caching switch
+
+- (void)invalidateSectionsForSortingType:(WTSortingType)sortingType {
+	// Thanks to this the expensive setup* methods get called less often
+	
+	switch (sortingType) {
+		case WTSortingByDay:
+			daySectionsAreUpToDate= NO;
+			break;
+		case WTSortingByWeek:
+			weekSectionsAreUpToDate= NO;
+			break;
+		case WTSortingByMonth:
+			monthSectionsAreUpToDate= NO;
+			break;
+		case WTSortingByAll:
+			daySectionsAreUpToDate= NO;
+			weekSectionsAreUpToDate= NO;
+			monthSectionsAreUpToDate= NO;
+			break;
+
+	}
 }
 
 #pragma mark Getters for tableView building
 
 - (NSMutableArray *)trackingIntervalsForMostRecentDay {
-	if (!self.sectionsAreUpToDate) [self setupDays];
+	if (!daySectionsAreUpToDate) [self setupDays];
 		
-	if (daySections) {
-		if ([daySections count] > 0) return [daySections objectAtIndex:0];
-	}
+	if ([daySections count] > 0) return [daySections objectAtIndex:0];
 	
 	return nil;
 }
 
 - (NSMutableArray *)headerTitlesForSortingType:(WTSortingType)sortingType {	
-	if (sortingType == WTSortingByDay) {
-		if (!sectionsAreUpToDate) {
-			[self setupDays];
-		}
-		return dayTitles;
-	} else if (sortingType == WTSortingByWeek) {
-		if (!sectionsAreUpToDate) {
-			[self setupWeeks];
-		}
-		return weekTitles;
-	} else if (sortingType == WTSortingByMonth) {
-		return nil;
-	} else {
-		return nil;
+	switch (sortingType) {
+		case WTSortingByDay:
+			if (!daySectionsAreUpToDate) [self setupDays];
+			return dayTitles;
+		case WTSortingByWeek:
+			if (!weekSectionsAreUpToDate) [self setupWeeks];
+			return weekTitles;
+		case WTSortingByMonth:
+			if (!monthSectionsAreUpToDate) [self setupMonths];
+			return monthTitles;
+		default:
+			return nil;
 	}
 }
 
 - (NSMutableArray *)sectionArrayForSortingType:(WTSortingType)sortingType {
-	if (sortingType == WTSortingByDay) {
-		if (!sectionsAreUpToDate) {
-			[self setupDays];
-		}
-		return daySections;
-	} else if (sortingType == WTSortingByWeek) {
-		return weekSections;
-	} else if (sortingType == WTSortingByMonth) {
-		return nil;
-	} else {
-		return nil;
+	switch (sortingType) {
+		case WTSortingByDay:
+			if (!daySectionsAreUpToDate) [self setupDays];
+			return daySections;
+		case WTSortingByWeek:
+			if (!weekSectionsAreUpToDate) [self setupWeeks];
+			return weekSections;
+		case WTSortingByMonth:
+			if (!monthSectionsAreUpToDate) [self setupMonths];
+			return monthSections;
+		default:
+			return nil;
 	}
 }
 
-#pragma mark Days
+#pragma mark Sorting
 
 - (void)setupDays {
 	NSAutoreleasePool *pool= [[NSAutoreleasePool alloc] init];
 	
 	// These are the arrays this method is going to fill / renew
-	// TODO: A Standard C array would much faster and easier to read from (array[section][row])
+	// TODO: A Standard C array would be easier to read from (array[section][row]) but harder to create (malloc)
 	[daySections release];
 	[dayTitles release];
 	daySections= [[NSMutableArray alloc] init];
@@ -95,20 +114,20 @@ static WTSort *sharedSortingModel= nil;
 	
 	NSCalendar *calendar= [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
 	NSDate *date= [NSDate date];
-	NSDateComponents *dateComponents;
+	NSDateComponents *dateComps;
 	
 	NSMutableArray *curArray= [NSMutableArray array]; // Every Section is represented by an array
 	NSDate *curDate; // Loops through the startDates
-	NSDateComponents *curDateComponents; // Components of curDate
+	NSDateComponents *curDateComps; // Components of curDate
 	NSDate *lastDate;
 	
 	for (NSMutableDictionary *trackingInterval in model.trackingIntervals) {
 		curDate= [trackingInterval objectForKey:cStartTime];
-		curDateComponents= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:curDate];
-		dateComponents= [calendar components: NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
+		curDateComps= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:curDate];
+		dateComps= [calendar components: NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
 		
 		// Check if curDate is on the same day the current reference (dateComponents)
-		if ((curDateComponents.year == dateComponents.year) && (curDateComponents.month == dateComponents.month) && (curDateComponents.day == dateComponents.day)) {
+		if ((curDateComps.year == dateComps.year) && (curDateComps.month == dateComps.month) && (curDateComps.day == dateComps.day)) {
 			// Add to current array
 			[curArray addObject:trackingInterval];
 		} else {
@@ -122,7 +141,7 @@ static WTSort *sharedSortingModel= nil;
 			}
 			// Set the date that maches
 			date= [trackingInterval objectForKey:cStartTime];
-			dateComponents= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:date];
+			dateComps= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:date];
 			
 			[curArray addObject:trackingInterval];
 		}
@@ -137,18 +156,125 @@ static WTSort *sharedSortingModel= nil;
 		[daySections addObject:curArray];
 	}
 	
-	self.sectionsAreUpToDate= YES;
+	// Mark the Arrays as upToDate
+	daySectionsAreUpToDate= YES;
 	[pool drain];
 }
 
-#pragma mark Weeks
-
 - (void)setupWeeks {
-
+	NSAutoreleasePool *pool= [[NSAutoreleasePool alloc] init];
+	
+	// These are the arrays this method is going to fill / renew
+	[weekSections release];
+	[weekTitles release];
+	weekSections= [[NSMutableArray alloc] init];
+	weekTitles= [[NSMutableArray alloc] init];
+	
+	NSCalendar *calendar= [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+	NSDate *date= [NSDate date];
+	NSDateComponents *dateComps;
+	
+	NSMutableArray *curArray= [NSMutableArray array]; // Every Section is represented by an array
+	NSDate *curDate; // Loops through the startDates
+	NSDateComponents *curDateComps; // Components of curDate
+	NSDate *lastDate;
+	
+	for (NSMutableDictionary *trackingInterval in model.trackingIntervals) {
+		curDate= [trackingInterval objectForKey:cStartTime];
+		curDateComps= [calendar components:NSYearCalendarUnit | NSWeekCalendarUnit fromDate:curDate];
+		dateComps= [calendar components: NSYearCalendarUnit | NSWeekCalendarUnit fromDate:date];
+		
+		// Check if curDate is on the same week the current reference (dateComps)
+		if ((curDateComps.year == dateComps.year) && (curDateComps.week == dateComps.week)) {
+			// Add to current array
+			[curArray addObject:trackingInterval];
+		} else {
+			if ([curArray count] > 0) {
+				// Add a title for the section
+				[weekTitles addObject:[WTUtil weekForDate:lastDate]];
+				// Add current array as a section
+				[weekSections addObject:curArray];
+				// Create a new current array
+				curArray= [NSMutableArray array];
+			}
+			// Set the date that maches
+			date= [trackingInterval objectForKey:cStartTime];
+			dateComps= [calendar components:NSYearCalendarUnit | NSWeekCalendarUnit fromDate:date];
+			
+			[curArray addObject:trackingInterval];
+		}
+		lastDate= curDate;
+	}
+	
+	// Finalize the last section
+	if ([curArray count] > 0) {
+		// Add a title for the section
+		[weekTitles addObject:[WTUtil weekForDate:lastDate]];
+		// Add current array as a section
+		[weekSections addObject:curArray];
+	}
+	
+	// Mark the Arrays as upToDate
+	weekSectionsAreUpToDate= YES;
+	[pool drain];
 }
 
-- (NSInteger)numberOfIntervalsForWeek:(NSInteger)section {
-	return 0;
+- (void)setupMonths {
+	NSAutoreleasePool *pool= [[NSAutoreleasePool alloc] init];
+	
+	// These are the arrays this method is going to fill / renew
+	[monthSections release];
+	[monthTitles release];
+	monthSections= [[NSMutableArray alloc] init];
+	monthTitles= [[NSMutableArray alloc] init];
+	
+	NSCalendar *calendar= [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+	NSDate *date= [NSDate date];
+	NSDateComponents *dateComps;
+	
+	NSMutableArray *curArray= [NSMutableArray array]; // Every Section is represented by an array
+	NSDate *curDate; // Loops through the startDates
+	NSDateComponents *curDateComps; // Components of curDate
+	NSDate *lastDate;
+	
+	for (NSMutableDictionary *trackingInterval in model.trackingIntervals) {
+		curDate= [trackingInterval objectForKey:cStartTime];
+		curDateComps= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit fromDate:curDate];
+		dateComps= [calendar components: NSYearCalendarUnit | NSMonthCalendarUnit fromDate:date];
+		
+		// Check if curDate is on the same month the current reference (dateComps)
+		if ((curDateComps.year == dateComps.year) && (curDateComps.month == dateComps.month)) {
+			// Add to current array
+			[curArray addObject:trackingInterval];
+		} else {
+			if ([curArray count] > 0) {
+				// Add a title for the section
+				[monthTitles addObject:[WTUtil monthForDate:lastDate]];
+				// Add current array as a section
+				[monthSections addObject:curArray];
+				// Create a new current array
+				curArray= [NSMutableArray array];
+			}
+			// Set the date that maches
+			date= [trackingInterval objectForKey:cStartTime];
+			dateComps= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit fromDate:date];
+			
+			[curArray addObject:trackingInterval];
+		}
+		lastDate= curDate;
+	}
+	
+	// Finalize the last section
+	if ([curArray count] > 0) {
+		// Add a title for the section
+		[monthTitles addObject:[WTUtil monthForDate:lastDate]];
+		// Add current array as a section
+		[monthSections addObject:curArray];
+	}
+	
+	// Mark the Arrays as upToDate
+	monthSectionsAreUpToDate= YES;
+	[pool drain];
 }
 
 #pragma mark -

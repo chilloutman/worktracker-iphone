@@ -41,7 +41,7 @@ static WTEngine *sharedEngine= nil;
 
 - (void)startTrackingProjectAtIndex:(NSInteger)index {
 	model.status= cStatusRunning;
-	[WTSort sharedSortingModel].sectionsAreUpToDate= NO;
+	[[WTSort sharedSortingModel] invalidateSectionsForSortingType:WTSortingByAll];
 	
 	NSMutableDictionary *activeInterval= [[NSMutableDictionary alloc] init];
 	[activeInterval setObject:[NSDate date] forKey:cStartTime];

@@ -22,18 +22,22 @@
 	WTDataModel *model;
 	WTEngine *engine;
 	
-	BOOL sectionsAreUpToDate;
+	BOOL daySectionsAreUpToDate;
+	BOOL weekSectionsAreUpToDate;
+	BOOL monthSectionsAreUpToDate;
 	
 	NSMutableArray *daySections;
 	NSMutableArray *weekSections;
+	NSMutableArray *monthSections;
 	
 	NSMutableArray *dayTitles;
 	NSMutableArray *weekTitles;
+	NSMutableArray *monthTitles;	
 }
 
-@property (nonatomic, assign) BOOL sectionsAreUpToDate;
-
 + (WTSort *)sharedSortingModel;
+
+- (void)invalidateSectionsForSortingType:(WTSortingType)sortingType;
 
 - (NSMutableArray *)sectionArrayForSortingType:(WTSortingType)sortingType;
 - (NSMutableArray *)headerTitlesForSortingType:(WTSortingType)sortingType;
@@ -41,10 +45,9 @@
 
 #pragma mark Private
 
-// Days
+// Methods which create the section and title arrays
 - (void)setupDays;
-
-// Weeks
 - (void)setupWeeks;
+- (void)setupMonths;
 
 @end
