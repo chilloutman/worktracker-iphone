@@ -230,11 +230,6 @@
 	return 2;
 }
 
-//- (NSString *)tableView:(UITableView *)tV titleForHeaderInSection:(NSInteger)section {
-//	if (section == 0) return NSLocalizedString(@"Today", @"");
-//	else return nil;
-//}
-
 - (NSInteger)tableView:(UITableView *)tV numberOfRowsInSection:(NSInteger)section {
 	// 0 == Today
 	NSInteger numberOfRows= [[tableModel trackingIntervalsForMostRecentDay] count];
