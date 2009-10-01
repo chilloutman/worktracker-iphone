@@ -78,21 +78,21 @@ static WTDataModel *sharedInstace= nil;
 - (void)deleteTrackingIntervals:(BOOL)all {
 	NSMutableArray *toKeep= [NSMutableArray array];
 	
-	//if ([self.status isEqualToString:cStatusRunning]) {
-//		[toKeep addObject:[self.trackingIntervals objectAtIndex:0]];
-//	}
-//	if (!all) {
-//		for (int i= 0; i < [self.trackingIntervals count]; i++) {
-//			NSMutableDictionary *currentInterval= [self.trackingIntervals objectAtIndex:i];
-//			if ([[currentInterval objectForKey:cDayID] intValue] == 5) {
-//				break;
-//			} else {
-//				[toKeep addObject:currentInterval];
-//			}
-//		}
-//	}
+	if (!all) {
+		NSDate * date= [NSDate dateWithTimeIntervalSinceNow:-604800];
+		
+		for (NSMutableDictionary *trackingInterval in self.trackingIntervals) {
+			if ([date compare:[trackingInterval objectForKey:cStartTime]] == NSOrderedAscending) {
+				[toKeep addObject:trackingInterval];
+			} else {
+				break;
+			}
+		}
+	} else if ([self.status isEqualToString:cStatusRunning]) {
+		[toKeep addObject:[self.trackingIntervals objectAtIndex:0]];
+	}
 	
-	[self.trackingIntervals removeAllObjects];
+	[self.trackingIntervals release];
 	self.trackingIntervals= toKeep;
 	
 	// Notify

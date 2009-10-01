@@ -61,7 +61,7 @@ static WTEngine *sharedEngine= nil;
 	
 	[trackingInterval setObject:[NSDate date] forKey:cStopTime];
 	NSDate *startTime= [trackingInterval objectForKey:cStartTime];
-	[trackingInterval setObject:[NSNumber numberWithDouble:[startTime timeIntervalSinceNow]] forKey:cTimeInterval];
+	[trackingInterval setObject:[NSNumber numberWithDouble:-[startTime timeIntervalSinceNow]] forKey:cTimeInterval];
 	
 	[model didChangeCollection:cTrackingIntervals];
 }
