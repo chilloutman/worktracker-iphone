@@ -7,21 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WTConstants.h"
 
-@class WTDataModel, WTEngine, WTSort;
-
-@interface WTHistoryViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>{
+@interface WTHistoryViewController : UIViewController <UINavigationControllerDelegate>{
 	UINavigationController *navController;
-	UITableView *tableView;
-	WTSortingType activeSortingType;
-	
-	WTDataModel *model;
-	WTSort *tableModel;
-	WTEngine *engine;
 }
 
-@property (nonatomic, assign) WTDataModel *model;
-@property (nonatomic, assign) WTEngine *engine;
+- (void)pushDetailViewWithInterval:(NSMutableDictionary *)trackingInterval;
 
 @end
