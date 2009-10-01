@@ -102,21 +102,19 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	[actionSheet release];
-	
+		
 	if (buttonIndex == 0) {
+		// Delete everything
 		[self.model deleteTrackingIntervals:YES];
-		[tableView reloadData];
-		//[tableView deleteSections:[NSIndexSet ind] withRowAnimation:UITableViewRowAnimationTop];
+		
 		tableModel.sectionsAreUpToDate= NO;
+		[tableView reloadData];
 	} else if (buttonIndex == 1) {
 		[self.model deleteTrackingIntervals:NO];
-		[tableView deleteSections:[NSIndexSet indexSetWithIndex:5] withRowAnimation:UITableViewRowAnimationTop];
+		
 		tableModel.sectionsAreUpToDate= NO;
-	} else {
-		return;
+		[tableView reloadData];
 	}
-
-	[tableView reloadData];
 }
 
 // SegmentControl
