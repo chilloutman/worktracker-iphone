@@ -8,6 +8,7 @@
 
 #import "WTMainViewController.h"
 #import "WTProjectPicker.h"
+#import "WTInfo.h"
 
 #import "WTMainBackgroundView.h"
 #import "WTTableViewCell.h"
@@ -42,7 +43,7 @@
 
 	self.view= [[WTMainBackgroundView alloc] initWithFrame:screen];
 	
-	// label that shows the current status
+	// Label that shows the current status
 	
 	statusLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, 25, screen.size.width, 25)];
 	statusLabel.textAlignment= UITextAlignmentCenter;
@@ -107,6 +108,12 @@
 	tableView.separatorColor= cColorLightGray;
 	tableView.rowHeight-= 5;
 	[self.view addSubview:tableView];
+	
+	// Info button
+	infoButton= [UIButton buttonWithType:UIButtonTypeInfoLight];
+	[infoButton addTarget:self action:@selector(displayInfoPage) forControlEvents:UIControlEventTouchUpInside];
+	infoButton.center= CGPointMake(screen.size.width-15, 15);
+	[self.view addSubview:infoButton];
 }
 
 #pragma mark UI refresh
@@ -175,7 +182,7 @@
 #pragma mark Handle buttons
 
 - (void)start {
-	if (projectPicker == nil) {
+	if (!projectPicker) {
 		projectPicker= [[WTProjectPicker alloc] init];
 		projectPicker.superController= self;
 	}
@@ -194,8 +201,6 @@
 		
 		// Dismiss the picker and move on
 		[self dismissModalViewControllerAnimated:YES];
-	} else {
-		return;
 	}
 }
 - (void)userCanceledProjectPicker {
@@ -207,6 +212,15 @@
 	[self.engine stopTracking];
 	[self.engine stopPinging:cTimerMainView];
 	[self updateUIElements];
+}
+
+- (void)displayInfoPage {
+	if (!infoPage) {
+		infoPage= [[WTInfo alloc] init];
+		infoPage.superController= self;
+		infoPage.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
+	}
+	[self presentModalViewController:infoPage animated:YES];
 }
 
 #pragma mark UITableView delegate / dataSource
@@ -268,8 +282,6 @@
 	}
 }
 
-
-
 #pragma mark -
 
 - (void)dealloc {
@@ -278,6 +290,8 @@
 	[statusLabel release];
 	[startTimeLabel release];
 	[stopTimeLabel release];
+	[infoButton release];
+	[infoPage release];
 	[projectPicker release];
 	[self.model release];
 	[self.engine release];

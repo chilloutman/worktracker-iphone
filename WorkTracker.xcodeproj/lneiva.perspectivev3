@@ -230,8 +230,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -256,10 +254,12 @@
 						<dict>
 							<key>PBXSmartGroupTreeModuleColumnWidthsKey</key>
 							<array>
-								<real>260</real>
+								<real>22</real>
+								<real>238</real>
 							</array>
 							<key>PBXSmartGroupTreeModuleColumnsKey_v4</key>
 							<array>
+								<string>SCMStatusColumn</string>
 								<string>MainColumn</string>
 							</array>
 						</dict>
@@ -275,17 +275,17 @@
 								<string>EF5CDBCA101DB9AF004EFC4D</string>
 								<string>EFCFAC940FED2E0000BAB6BE</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
+								<string>E2644B35053B69B200211256</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>2</integer>
-									<integer>1</integer>
-									<integer>0</integer>
+									<integer>45</integer>
+									<integer>43</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {260, 914}}</string>
+							<string>{{0, 599}, {260, 914}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -298,8 +298,10 @@
 						<string>{{0, 0}, {277, 932}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
+							<string>SCMStatusColumn</string>
+							<real>22</real>
 							<string>MainColumn</string>
-							<real>260</real>
+							<real>238</real>
 						</array>
 						<key>RubberWindowFrame</key>
 						<string>0 55 1612 973 0 0 1680 1028 </string>
@@ -313,12 +315,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>EF28D2F10FEC0D7300AF7431</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>WTConstants.h</string>
+								<string>WTProjectPicker.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,15 +330,23 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>EF28D2F20FEC0D7300AF7431</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>WTConstants.h</string>
+										<string>WTProjectPicker.m</string>
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>EF9E32F210734FF0001361EF</string>
+										<string>EF85E3DB10738EB4002B683A</string>
 										<key>history</key>
 										<array>
-											<string>EF9E32F010734FF0001361EF</string>
-											<string>EF9E32F110734FF0001361EF</string>
+											<string>EF85E3CF10738EB4002B683A</string>
+											<string>EF85E3D010738EB4002B683A</string>
+											<string>EF85E3D110738EB4002B683A</string>
+											<string>EF85E3D310738EB4002B683A</string>
+											<string>EF85E3D410738EB4002B683A</string>
+											<string>EF85E3D610738EB4002B683A</string>
+											<string>EF85E3D710738EB4002B683A</string>
+											<string>EF85E3D810738EB4002B683A</string>
+											<string>EF85E3D910738EB4002B683A</string>
+											<string>EF85E3DA10738EB4002B683A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -348,18 +360,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1330, 678}}</string>
+								<string>{{0, 0}, {1330, 660}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 55 1612 973 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>678pt</string>
+							<string>660pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>249pt</string>
+							<string>267pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -373,7 +385,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1330, 222}}</string>
+										<string>{{10, 27}, {1330, 240}}</string>
 										<key>RubberWindowFrame</key>
 										<string>0 55 1612 973 0 0 1680 1028 </string>
 									</dict>
@@ -405,7 +417,7 @@
 										<dict>
 											<key>PBXCVSModuleTreeModuleColumnWidthsKey</key>
 											<array>
-												<real>200</real>
+												<real>914</real>
 												<real>56</real>
 												<real>63</real>
 												<real>60</real>
@@ -430,7 +442,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1330, 211}}</string>
+										<string>{{10, 27}, {1330, 222}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXCVSModule</string>
@@ -478,11 +490,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>EF9E32F310734FF0001361EF</string>
+				<string>EF85E3DC10738EB4002B683A</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>EF9E32F410734FF0001361EF</string>
+				<string>EF85E3DD10738EB4002B683A</string>
 				<string>EF28D2F10FEC0D7300AF7431</string>
-				<string>EF9E32F510734FF0001361EF</string>
+				<string>EF85E3DE10738EB4002B683A</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -631,14 +643,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>EF9E32F610734FF0001361EF</string>
+				<string>EF85E3DF10738EB4002B683A</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>EF9E32F710734FF0001361EF</string>
-				<string>EF9E32F810734FF0001361EF</string>
-				<string>EF9E32F910734FF0001361EF</string>
-				<string>EF9E32FA10734FF0001361EF</string>
-				<string>EF9E32FB10734FF0001361EF</string>
+				<string>EF85E3E010738EB4002B683A</string>
+				<string>EF85E3E110738EB4002B683A</string>
+				<string>EF85E3E210738EB4002B683A</string>
+				<string>EF85E3E310738EB4002B683A</string>
+				<string>EF85E3E410738EB4002B683A</string>
 			</array>
 			<key>ToolbarConfigUserDefaultsMinorVersion</key>
 			<string>2</string>

@@ -26,6 +26,7 @@
 		EF5DEB06100E043400E0F836 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5DEB05100E043400E0F836 /* shadow.png */; };
 		EF6651FB100F22DF00F8D9CD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EF6651FA100F22DF00F8D9CD /* Default.png */; };
 		EF695F84100D1005006F680F /* blackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EF695F83100D1005006F680F /* blackButton.png */; };
+		EF85E3CB10738E77002B683A /* WTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EF85E3CA10738E77002B683A /* WTInfo.m */; };
 		EF9E540E1006410500BAE8B4 /* WTProjectAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = EF9E540D1006410500BAE8B4 /* WTProjectAdd.m */; };
 		EFACDA0E100E208100B2043E /* WTEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = EFACDA0D100E208100B2043E /* WTEngine.m */; };
 		EFBBA2840FFBBA5C00183DE7 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = EFBBA2820FFBBA5C00183DE7 /* clock.png */; };
@@ -72,6 +73,8 @@
 		EF5DEB05100E043400E0F836 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadow.png; path = Resources/shadow.png; sourceTree = "<group>"; };
 		EF6651FA100F22DF00F8D9CD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
 		EF695F83100D1005006F680F /* blackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blackButton.png; path = Resources/blackButton.png; sourceTree = "<group>"; };
+		EF85E3C910738E77002B683A /* WTInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTInfo.h; sourceTree = "<group>"; };
+		EF85E3CA10738E77002B683A /* WTInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTInfo.m; sourceTree = "<group>"; };
 		EF9E540C1006410500BAE8B4 /* WTProjectAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTProjectAdd.h; sourceTree = "<group>"; };
 		EF9E540D1006410500BAE8B4 /* WTProjectAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTProjectAdd.m; sourceTree = "<group>"; };
 		EFACDA0C100E208100B2043E /* WTEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTEngine.h; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 				EF28D3050FEC0E5900AF7431 /* WTMainViewController.m */,
 				EFCFAE0F0FED5E0C00BAB6BE /* WTProjectPicker.h */,
 				EFCFAE100FED5E0C00BAB6BE /* WTProjectPicker.m */,
+				EF85E3C910738E77002B683A /* WTInfo.h */,
+				EF85E3CA10738E77002B683A /* WTInfo.m */,
 			);
 			name = "1st Tab";
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 				EF08F6921010BB3C00A83A37 /* WTTableSectionHeader.m in Sources */,
 				EF5CDBC1101DA876004EFC4D /* WTSort.m in Sources */,
 				EF4ED5A9101EEEA20031C9B5 /* WTUtil.m in Sources */,
+				EF85E3CB10738E77002B683A /* WTInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

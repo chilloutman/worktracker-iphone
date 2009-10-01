@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class WTDataModel, WTSort, WTEngine, WTProjectPicker, WTTableSectionHeader;
+@class WTDataModel, WTSort, WTEngine, WTProjectPicker, WTInfo, WTTableSectionHeader;
 
 @interface WTMainViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
 	UILabel *statusLabel;
@@ -16,8 +16,8 @@
 	UIButton *stopButton;
 	UILabel *startTimeLabel;
 	UILabel *stopTimeLabel;
+	UIButton *infoButton;
 	UITableView *tableView;
-	NSInteger numberOfFakeCells;
 	WTTableSectionHeader *tableHeader;
 	
 	WTDataModel *model;
@@ -25,10 +25,11 @@
 	WTEngine *engine;
 	
 	WTProjectPicker *projectPicker;
+	WTInfo *infoPage;
 }
 
-@property (nonatomic, retain) WTDataModel *model;
-@property (nonatomic, retain) WTEngine *engine;
+@property (nonatomic, assign) WTDataModel *model;
+@property (nonatomic, assign) WTEngine *engine;
 
 - (void)userPickedProjectAtIndex: (NSInteger)index;
 - (void)userCanceledProjectPicker;
