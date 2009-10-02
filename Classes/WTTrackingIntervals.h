@@ -13,6 +13,7 @@
 
 @interface WTTrackingIntervals : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate> {
 	UITableView *tableView;
+	UIBarButtonItem *deleteButton;
 	WTSortingType activeSortingType;
 	WTHistoryViewController *superController;
 	

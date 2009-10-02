@@ -36,13 +36,16 @@ extern NSString * const cStatus;
 extern NSString * const cStatusRunning;
 extern NSString * const cStatusStandby;
 
-extern NSString * const cAlreadySortedToday;
-
 // TrackingInterval : NSMutableDictionary keys 
 extern NSString * const cProject;
 extern NSString * const cStartTime;
 extern NSString * const cStopTime;
 extern NSString * const cTimeInterval;
+
+// Project : NSMutableDictionary keys
+extern NSString * const cProjectName;
+extern NSString * const cNumberOfIntervals;
+extern NSString * const cTotalTime;
 
 // Engine Keys
 extern NSString * const cTimerMainView;

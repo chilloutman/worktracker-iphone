@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@class WTProjectsViewController;
+@class WTProjects;
 
 @interface WTProjectAdd : UIViewController <UITableViewDataSource, UITableViewDelegate> {
 	UITableView * tableView;
 	UITextField *nameField;
 	UIBarButtonItem *doneButton;
-	WTProjectsViewController *superController;
+	WTProjects *superController;
 }
 
-@property (nonatomic, retain) WTProjectsViewController *superController;
+@property (nonatomic, retain) WTProjects *superController;
 
 @end

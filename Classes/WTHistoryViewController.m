@@ -51,7 +51,7 @@
 
 - (void)navigationController:(UINavigationController *)navC willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
 	// Somehow viewWillAppear is not getting called so I'm doing it manually...
-	[navController.topViewController viewWillAppear:animated];
+	[viewController viewWillAppear:animated];
 }
 
 #pragma mark -

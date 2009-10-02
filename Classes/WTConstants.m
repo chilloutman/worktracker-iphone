@@ -19,6 +19,11 @@ NSString *cTimeInterval= @"timeInterval";
 NSString *cStartTime= @"startTime";
 NSString *cStopTime= @"stopTime";
 
+// Projects : NSMutableDictionary keys
+NSString *cProjectName= @"projectName";
+NSString *cNumberOfIntervals= @"numberOfInervals";
+NSString *cTotalTime= @"totalTime";
+
 // Engine keys
 NSString *cTimerMainView= @"mainViewTimer";
 NSString *cTimerHistoryView= @"historyViewTimer";

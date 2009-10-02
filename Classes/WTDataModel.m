@@ -102,11 +102,7 @@ static WTDataModel *sharedInstace= nil;
 #pragma mark Getter
 
 - (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval {	
-	// Get the newest interval if argument is nil
-	if (pInterval == nil) {
-		if ([self.trackingIntervals count] > 0) pInterval= [self.trackingIntervals objectAtIndex:0];
-		else return 0.0;
-	}
+	if (pInterval == nil) return 0;
 	
 	NSNumber *timeInterval= [pInterval objectForKey:cTimeInterval];
 	NSDate *startTime= [pInterval objectForKey:cStartTime];
@@ -119,6 +115,10 @@ static WTDataModel *sharedInstace= nil;
 	}else {
 		return 0.0;
 	}
+}
+
+- (NSArray *)trackingIntervalsForProject:(NSString *)project {
+	return nil;
 }
 
 #pragma mark -

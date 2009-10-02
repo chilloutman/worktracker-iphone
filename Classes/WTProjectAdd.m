@@ -7,7 +7,7 @@
 //
 
 #import "WTProjectAdd.h"
-#import "WTProjectsViewController.h"
+#import "WTProjects.h"
 
 #import "WTConstants.h"
 
@@ -63,7 +63,8 @@
 	[super viewWillAppear:animated];
 	
 	nameField.text= nil;
-	[nameField becomeFirstResponder];
+	[nameField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.0];
+	//[nameField becomeFirstResponder];
 }
 
 #pragma mark Buttons
@@ -130,6 +131,5 @@
 	[self.superController release];
     [super dealloc];
 }
-
 
 @end

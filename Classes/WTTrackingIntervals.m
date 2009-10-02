@@ -40,7 +40,7 @@
 		self.navigationItem.titleView= segmentedControl;
 		[segmentedControl release];
 		
-		UIBarButtonItem *deleteButton= [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Clear", @"Delete some trackings")
+		deleteButton= [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Clear", @"Delete some trackings")
 																			style:UIBarButtonItemStyleBordered
 																		   target:self action:@selector(clearIntervals)];
 		self.navigationItem.rightBarButtonItem= deleteButton;
@@ -66,6 +66,8 @@
 	[super viewWillAppear:(BOOL)animated];
 	// TODO: can't update cells because of a "tableView fail" when refreshing. Currently not displaying active/running stuff at all. Excuse: Because of 'History'...
 	[tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:animated];
+	
+	deleteButton.enabled= ([model.trackingIntervals count] > 0);
 }
 
 #pragma mark navigationBar Buttons

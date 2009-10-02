@@ -11,7 +11,7 @@
 // Manages and saves data
 @interface WTDataModel : NSObject {
 	NSString *status; // This is an object and not a BOOL because of some advantages with KVO and NSUserDefaults. However, it could be an NSNumber...
-	NSMutableArray *projects; // Could be expanded as dictionary for more statistics.
+	NSMutableArray *projects;
 	NSMutableArray *trackingIntervals; // Contains all trackingIntervals. sorted by startDate (0 == newest). See WTConstants.h for more info.
 }
 
@@ -26,6 +26,8 @@
 - (void)didChangeCollection:(NSString *)keyPath;
 - (void)deleteTrackingIntervals:(BOOL)all;
 
+// Getters for specific data
 - (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval;
+- (NSArray *)trackingIntervalsForProject:(NSString *)project;
 
 @end

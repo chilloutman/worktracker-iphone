@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>10</integer>
 						<key>bookmark</key>
-						<string>EF85E7F61075DF7E002B683A</string>
+						<string>EF85E957107614D3002B683A</string>
 						<key>history</key>
 						<array>
 							<string>EF85E78D1075CE2B002B683A</string>
@@ -320,8 +320,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>25</integer>
-									<integer>19</integer>
+									<integer>16</integer>
+									<integer>14</integer>
 									<integer>6</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -347,7 +347,7 @@
 							<real>238</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>0 55 1612 973 0 0 1680 1028 </string>
+						<string>0 55 1616 973 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -365,7 +365,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>EF28D2F10FEC0D7300AF7431</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>WTUtil.m</string>
+								<string>WTProjectsRootController.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -373,23 +373,23 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>EF28D2F20FEC0D7300AF7431</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>WTUtil.m</string>
+										<string>WTProjectsRootController.h</string>
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>EF85E7F51075DF7E002B683A</string>
+										<string>EF85E956107614D3002B683A</string>
 										<key>history</key>
 										<array>
-											<string>EF85E75210750023002B683A</string>
-											<string>EF85E7AC1075D407002B683A</string>
-											<string>EF85E7AD1075D407002B683A</string>
-											<string>EF85E7AE1075D407002B683A</string>
-											<string>EF85E7AF1075D407002B683A</string>
-											<string>EF85E7B11075D407002B683A</string>
-											<string>EF85E7B21075D407002B683A</string>
-											<string>EF85E7C31075D517002B683A</string>
-											<string>EF85E7E91075DF49002B683A</string>
-											<string>EF85E7EA1075DF49002B683A</string>
+											<string>EF85E9311076142D002B683A</string>
+											<string>EF85E9321076142D002B683A</string>
+											<string>EF85E9351076142D002B683A</string>
+											<string>EF85E9371076142D002B683A</string>
+											<string>EF85E9381076142D002B683A</string>
+											<string>EF85E9391076142D002B683A</string>
+											<string>EF85E9411076145E002B683A</string>
+											<string>EF85E94D107614BD002B683A</string>
+											<string>EF85E955107614D3002B683A</string>
+											<string>EF85E9331076142D002B683A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -403,9 +403,9 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1330, 692}}</string>
+								<string>{{0, 0}, {1334, 692}}</string>
 								<key>RubberWindowFrame</key>
-								<string>0 55 1612 973 0 0 1680 1028 </string>
+								<string>0 55 1616 973 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -503,9 +503,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1330, 208}}</string>
+										<string>{{10, 27}, {1334, 208}}</string>
 										<key>RubberWindowFrame</key>
-										<string>0 55 1612 973 0 0 1680 1028 </string>
+										<string>0 55 1616 973 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -514,7 +514,7 @@
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>1330pt</string>
+					<string>1334pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -725,13 +725,14 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>EF771AF90FF7E7B500071BA2</string>
 		<string>EF85E4E71074BE43002B683A</string>
 		<string>EF85E4E81074BE43002B683A</string>
 		<string>EF85E7B61075D407002B683A</string>
 		<string>/Users/Shared/lneiva/worktracker-svn/trunk/WorkTracker.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>0 55 1612 973 0 0 1680 1028 </string>
+	<string>0 55 1616 973 0 0 1680 1028 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -1595,7 +1596,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>EF771AF90FF7E7B500071BA2</string>
-				<string>EF3D6D50104FB6D600326ECC</string>
+				<string>EF85E8B410760080002B683A</string>
 				<string>EF771AF80FF7E7B500071BA2</string>
 			</array>
 			<key>WindowString</key>

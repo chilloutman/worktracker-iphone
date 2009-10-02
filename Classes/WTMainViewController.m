@@ -140,7 +140,9 @@
 - (void)updateActiveElements:(NSTimer *)theTimer {
 	// Active table cell
 	WTTableViewCell *cell= (WTTableViewCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-	cell.lastText= [WTUtil formattedTimeIntervalForTrackingInterval:[model.trackingIntervals objectAtIndex:0] decimal:YES];
+	NSMutableDictionary *interval= nil;
+	if ([model.trackingIntervals count] > 0) interval= [model.trackingIntervals objectAtIndex:0];
+	cell.lastText= [WTUtil formattedTimeIntervalForTrackingInterval:interval decimal:YES];
 	
 	// Table header
 	NSMutableArray *sectionArray= [tableModel trackingIntervalsForMostRecentDay];
@@ -158,8 +160,10 @@
 	
 	// Update Labels
 	statusLabel.text= [engine formattedStatus];
-	startTimeLabel.text= [WTUtil formattedStartTimeForTrackingInterval:[model.trackingIntervals objectAtIndex:0]];
-	stopTimeLabel.text= [WTUtil formattedStopTimeForTrackingInterval:[model.trackingIntervals objectAtIndex:0]];
+	NSMutableDictionary *interval= nil;
+	if ([model.trackingIntervals count] > 0) interval= [model.trackingIntervals objectAtIndex:0];
+	startTimeLabel.text= [WTUtil formattedStartTimeForTrackingInterval:interval];
+	stopTimeLabel.text= [WTUtil formattedStopTimeForTrackingInterval:interval];
 	
 	// Update Buttons
 	if ([self.engine running]) {
