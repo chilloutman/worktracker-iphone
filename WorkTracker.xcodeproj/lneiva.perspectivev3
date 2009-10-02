@@ -197,7 +197,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>EF85E7B61075D407002B683A</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>WTUtil.h</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>EF85E7B71075D407002B683A</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>WTUtil.h</string>
+						<key>_historyCapacity</key>
+						<integer>10</integer>
+						<key>bookmark</key>
+						<string>EF85E7F61075DF7E002B683A</string>
+						<key>history</key>
+						<array>
+							<string>EF85E78D1075CE2B002B683A</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {1076, 843}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>-1497 114 1076 884 -1920 -150 1920 1200 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>1612</integer>
@@ -273,15 +314,15 @@
 								<string>EF5CDBC8101DB989004EFC4D</string>
 								<string>EF5CDBC9101DB9A4004EFC4D</string>
 								<string>EF5CDBCA101DB9AF004EFC4D</string>
-								<string>EF06A5F7100B7A6800C71656</string>
 								<string>EFCFAC940FED2E0000BAB6BE</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>34</integer>
-									<integer>26</integer>
+									<integer>25</integer>
+									<integer>19</integer>
+									<integer>6</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -336,19 +377,19 @@
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>EF85E5871074D5DB002B683A</string>
+										<string>EF85E7F51075DF7E002B683A</string>
 										<key>history</key>
 										<array>
-											<string>EF85E5181074C2F5002B683A</string>
-											<string>EF85E5191074C2F5002B683A</string>
-											<string>EF85E51B1074C2F5002B683A</string>
-											<string>EF85E5481074C760002B683A</string>
-											<string>EF85E56D1074D38D002B683A</string>
-											<string>EF85E56E1074D38D002B683A</string>
-											<string>EF85E56F1074D38D002B683A</string>
-											<string>EF85E5711074D38D002B683A</string>
-											<string>EF85E5851074D5DB002B683A</string>
-											<string>EF85E5861074D5DB002B683A</string>
+											<string>EF85E75210750023002B683A</string>
+											<string>EF85E7AC1075D407002B683A</string>
+											<string>EF85E7AD1075D407002B683A</string>
+											<string>EF85E7AE1075D407002B683A</string>
+											<string>EF85E7AF1075D407002B683A</string>
+											<string>EF85E7B11075D407002B683A</string>
+											<string>EF85E7B21075D407002B683A</string>
+											<string>EF85E7C31075D517002B683A</string>
+											<string>EF85E7E91075DF49002B683A</string>
+											<string>EF85E7EA1075DF49002B683A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -404,8 +445,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1330, 208}}</string>
-										<key>RubberWindowFrame</key>
-										<string>0 55 1612 973 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXProjectFindModule</string>
@@ -465,6 +504,8 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1330, 208}}</string>
+										<key>RubberWindowFrame</key>
+										<string>0 55 1612 973 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -686,6 +727,7 @@
 	<array>
 		<string>EF85E4E71074BE43002B683A</string>
 		<string>EF85E4E81074BE43002B683A</string>
+		<string>EF85E7B61075D407002B683A</string>
 		<string>/Users/Shared/lneiva/worktracker-svn/trunk/WorkTracker.xcodeproj</string>
 	</array>
 	<key>WindowString</key>

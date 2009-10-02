@@ -140,7 +140,7 @@
 - (void)updateActiveElements:(NSTimer *)theTimer {
 	// Active table cell
 	WTTableViewCell *cell= (WTTableViewCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-	cell.lastText= [WTUtil formattedTimeIntervalForTrackingInterval:nil decimal:YES];
+	cell.lastText= [WTUtil formattedTimeIntervalForTrackingInterval:[model.trackingIntervals objectAtIndex:0] decimal:YES];
 	
 	// Table header
 	NSMutableArray *sectionArray= [tableModel trackingIntervalsForMostRecentDay];
@@ -157,9 +157,9 @@
 	//	stopButton.enabled= NO;
 	
 	// Update Labels
-	statusLabel.text= [WTUtil formattedStatus];
-	startTimeLabel.text= [WTUtil formattedStartTimeForTrackingInterval:nil];
-	stopTimeLabel.text= [WTUtil formattedStopTimeForTrackingInterval:nil];
+	statusLabel.text= [engine formattedStatus];
+	startTimeLabel.text= [WTUtil formattedStartTimeForTrackingInterval:[model.trackingIntervals objectAtIndex:0]];
+	stopTimeLabel.text= [WTUtil formattedStopTimeForTrackingInterval:[model.trackingIntervals objectAtIndex:0]];
 	
 	// Update Buttons
 	if ([self.engine running]) {
@@ -251,7 +251,9 @@
 	
 	if (indexPath.section == 0) {
 		NSMutableDictionary *interval= [[tableModel trackingIntervalsForMostRecentDay] objectAtIndex:indexPath.row];
-		cell.firstText= [WTUtil formattedProjectNameForTrackingInterval:interval];
+		BOOL running= NO;
+		if (indexPath.row == 0) running= [engine running]; // Display the green bubble to indicate that the project is being tracked
+		cell.firstText= [WTUtil formattedProjectNameForTrackingInterval:interval running:running];
 		cell.lastText= [WTUtil formattedTimeIntervalForTrackingInterval:interval decimal:YES];
 	} else {
 		cell.firstText= @"";

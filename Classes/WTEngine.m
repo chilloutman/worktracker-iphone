@@ -28,13 +28,23 @@ static WTEngine *sharedEngine= nil;
 - (id)init {
 	if (self= [super init]) {
 		model= [WTDataModel sharedDataModel];
-		//sortModel= [WTSort sharedSortingModel];
 	}
 	return self;
 }
 
 - (BOOL)running {
 	return [model.status isEqualToString:cStatusRunning];
+}
+
+- (NSString *)formattedStatus {
+	if ([self running] && [model.trackingIntervals count] > 0) {
+		return [NSString stringWithFormat:NSLocalizedString(@"Tracking '%@'", @"Status, Currently tracking 'a project'"), [[model.trackingIntervals objectAtIndex:0] objectForKey:cProject]];
+	} else if ([model.projects count] == 0) {
+		return NSLocalizedString(@"There are no projects...", @"Status, Inform the user that the are no projects");
+	} else {
+		// return [NSString stringWithFormat:@"Standby %@", cCharSleeping];
+		return NSLocalizedString(@"Standby", @"Status, Ready and waiting");
+	}
 }
 
 #pragma mark Start & stop tracking

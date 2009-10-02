@@ -9,7 +9,6 @@
 #import "WTUtil.h"
 
 #import "WTConstants.h"
-#import "WTDataModel.h"
 #import "WTEngine.h"
 
 @implementation WTUtil
@@ -33,7 +32,7 @@
 		return NSLocalizedString(@"Yesterday", @"");
 	}
 	
-	NSDateFormatter *formatter= [[[NSDateFormatter alloc] init] autorelease];
+	NSDateFormatter *formatter= [[NSDateFormatter new] autorelease];
 	[formatter setDateStyle:NSDateFormatterMediumStyle];
 	
 	return [formatter stringFromDate:pDate];
@@ -82,37 +81,32 @@
 		return NSLocalizedString(@"Last Month", @"");
 	}
 	
-	NSDateFormatter *formatter= [[[NSDateFormatter alloc] init] autorelease];
+	NSDateFormatter *formatter= [[NSDateFormatter new] autorelease];
 	[formatter setDateFormat:@"MMMM yyyy"];
+	
+	return [formatter stringFromDate:pDate];
+}
+
++ (NSString *)timeForDate:(NSDate *)pDate {
+	NSDateFormatter *formatter= [[NSDateFormatter new] autorelease];
+	[formatter setTimeStyle:NSDateFormatterShortStyle];
+	
+	return [formatter stringFromDate:pDate];
+}
+
++ (NSString *)dateForDate:(NSDate *)pDate {
+	NSDateFormatter *formatter= [[NSDateFormatter new] autorelease];
+	[formatter setDateStyle:NSDateFormatterFullStyle];
 	
 	return [formatter stringFromDate:pDate];
 }
 
 #pragma mark Status & project name
 
-+ (NSString *)formattedStatus {
-	WTDataModel *model= [WTDataModel sharedDataModel];
-	WTEngine *engine=  [WTEngine sharedEngine];
++ (NSString *)formattedProjectNameForTrackingInterval:(NSMutableDictionary *)pInterval running:(BOOL)running {
+	if (pInterval == nil) return nil;
 	
-	if ([engine running] && [model.trackingIntervals count] > 0) {
-		return [NSString stringWithFormat:NSLocalizedString(@"Tracking '%@'", @"Status, Currently tracking 'a project'"), [[model.trackingIntervals objectAtIndex:0] objectForKey:cProject]];
-	} else if ([model.projects count] == 0) {
-		return NSLocalizedString(@"There are no projects...", @"Status, Inform the user that the are no projects");
-	} else {
-		// return [NSString stringWithFormat:@"Standby %@", cCharSleeping];
-		return NSLocalizedString(@"Standby", @"Status, Ready and waiting");
-	}
-}
-
-+ (NSString *)formattedProjectNameForTrackingInterval:(NSMutableDictionary *)pInterval {
-	WTDataModel *model= [WTDataModel sharedDataModel];
-	WTEngine *engine=  [WTEngine sharedEngine];
-	
-	if (pInterval == nil) {
-		return nil;
-	}
-	
-	if ([engine running] && pInterval == [model.trackingIntervals objectAtIndex:0]) {
+	if (running) {
 		// Display a green circle to indicate that the project is currently being tracked
 		return [NSString stringWithFormat:@"%@ %@", cCharCircleGreen, [pInterval objectForKey:cProject]];
 	} else {
@@ -141,31 +135,38 @@
 }
 
 + (NSString *)formattedTimeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval decimal:(BOOL)decimal  {
-	WTDataModel *model= [WTDataModel sharedDataModel];
+	if (pInterval == nil) return nil;
 	
-	if (pInterval == nil) {
-		if ([model.trackingIntervals count] > 0) pInterval= [model.trackingIntervals objectAtIndex:0];
-		else return nil;
-	}
+	double interval= [self timeIntervalForTrackingInterval:pInterval];
+	NSString *timeString= nil;
 	
-	// Format timeInterval
 	if (decimal) {
-		double hours= [model timeIntervalForTrackingInterval:pInterval] / 3600;
-		return [NSString stringWithFormat:@"%.3lf h", hours];
+		double hours= interval / 3600;
+		timeString= [NSString stringWithFormat:@"%.3lf h", hours];
 	} else {
-		return @"This was not yet implemented";
+		int minutes= (int)interval / 60;
+		if (minutes > 59) {
+			minutes= minutes % 60;
+			int hours= (int)interval / 3600;
+			if (hours > 23) {
+				int days= (int)interval / 86400;
+				timeString= [NSString stringWithFormat:@"%d d %d h %d m", days, hours, minutes];
+			} else {
+				timeString= [NSString stringWithFormat:@"%d h %d m", hours, minutes];
+			}
+
+		} else {
+			timeString= [NSString stringWithFormat:@"%d m", minutes];
+		}
+
 	}
+	
+	return timeString;
 }
 
-+ (NSString *)formattedStartTimeForTrackingInterval: (NSMutableDictionary *)pInterval {	
-	WTDataModel *model= [WTDataModel sharedDataModel];
-	WTEngine *engine= [WTEngine sharedEngine];
-	
-	// Use the newest intervall if parameter is nil
-	if (pInterval == nil && [model.trackingIntervals count] > 0) {
-		pInterval= [model.trackingIntervals objectAtIndex:0];
-	}
-	if (![engine running]) {
++ (NSString *)formattedStartTimeForTrackingInterval: (NSMutableDictionary *)pInterval {		
+	if (pInterval == nil) return nil;
+	if (![[WTEngine sharedEngine] running]) {
 		return @"-";
 	}
 	
@@ -173,26 +174,40 @@
 	if (startDate == nil) return @"-";
 	
 	// Return formatted Time
-	NSDateFormatter *formatter= [[[NSDateFormatter alloc] init] autorelease];
+	NSDateFormatter *formatter= [[NSDateFormatter new] autorelease];
 	[formatter setTimeStyle:NSDateFormatterShortStyle];
 	
 	return [formatter stringFromDate:startDate];
 }
 
 + (NSString *)formattedStopTimeForTrackingInterval: (NSMutableDictionary *)pInterval {
-	WTDataModel *model= [WTDataModel sharedDataModel];
-	
-	if (pInterval == nil && [model.trackingIntervals count] > 0) {
-		pInterval= [model.trackingIntervals objectAtIndex:0];
-	}
+	if (pInterval == nil) return nil;
 	
 	NSDate *stopTime= [pInterval objectForKey:cStopTime];
 	if (stopTime == nil) return @"-";
 	
-	NSDateFormatter *formatter= [[[NSDateFormatter alloc] init] autorelease];
+	NSDateFormatter *formatter= [[NSDateFormatter new] autorelease];
 	[formatter setTimeStyle:NSDateFormatterShortStyle];
 	
 	return [formatter stringFromDate:stopTime];
+}
+
+#pragma mark private
+
++ (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval {	
+	if (pInterval == nil) return 0;
+	
+	NSNumber *timeInterval= [pInterval objectForKey:cTimeInterval];
+	NSDate *startTime= [pInterval objectForKey:cStartTime];
+	
+	if (timeInterval) {
+		// timeInterval is already set
+		return [timeInterval doubleValue]; // NSTimeInterval == double
+	} else if (startTime) {
+		return [[NSDate date] timeIntervalSinceDate:startTime];
+	}else {
+		return 0.0;
+	}
 }
 
 @end

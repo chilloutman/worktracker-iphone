@@ -18,14 +18,18 @@
 + (NSString *)dayForDate:(NSDate *)pDate;
 + (NSString *)weekForDate:(NSDate *)pDate;
 + (NSString *)monthForDate:(NSDate *)pDate;
++ (NSString *)timeForDate:(NSDate *)pDate;
++ (NSString *)dateForDate:(NSDate *)pDate;
 
-+ (NSString *)formattedStatus;
 + (NSString *)totalTimeForSection:(NSMutableArray *)section withActive:(BOOL)active;
 
-+ (NSString *)formattedProjectNameForTrackingInterval:(NSMutableDictionary *)pInterval;
++ (NSString *)formattedProjectNameForTrackingInterval:(NSMutableDictionary *)pInterval running:(BOOL)running;
 + (NSString *)formattedTimeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval decimal:(BOOL)decimal;
 + (NSString *)formattedStartTimeForTrackingInterval:(NSMutableDictionary *)pInterval;
 + (NSString *)formattedStopTimeForTrackingInterval:(NSMutableDictionary *)pInterval;
 
+// Private
+
++ (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval;
 
 @end

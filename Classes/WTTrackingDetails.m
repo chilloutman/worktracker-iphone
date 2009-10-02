@@ -7,7 +7,9 @@
 //
 
 #import "WTTrackingDetails.h"
+
 #import "WTConstants.h"
+#import "WTUtil.h"
 
 @implementation WTTrackingDetails
 
@@ -19,12 +21,64 @@
 	return self;
 }
 
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
-	CGRect screen= [UIScreen mainScreen].applicationFrame;
-	self.view= [[UIView alloc] initWithFrame:screen];
+	CGRect screen= [UIScreen mainScreen].bounds;
+	tableView= [[UITableView alloc] initWithFrame:screen style:UITableViewStyleGrouped];
+	tableView.delegate= self;
+	tableView.dataSource= self;
+	tableView.allowsSelection= NO;
+		
+	self.view= tableView;
+}
+
+#pragma mark UITableView delegate & dataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)pTableView {
+	return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	switch (section) {
+		case 0: return [WTUtil dateForDate:[trackingInterval objectForKey:cStartTime]];
+		case 1: return nil;
+		default: return nil;
+	} 
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	switch (section) {
+		case 0: return 2;
+		case 1: return 1;
+		default: return 0;
+	}
+}
+
+- (UITableViewCell *)tableView:(UITableView *)pTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	static NSString *cellID= @"cellID";
 	
-	self.view.backgroundColor= [UIColor groupTableViewBackgroundColor];
+	UITableViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellID];
+	if(cell == nil) {
+		cell= [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID] autorelease];
+		cell.selectionStyle= UITableViewCellSelectionStyleNone;
+	}
+	
+	switch (indexPath.section) {
+		case 0:
+			if (indexPath.row == 0) {
+				cell.textLabel.text= NSLocalizedString(@"Start Time", @"");
+				cell.detailTextLabel.text= [WTUtil timeForDate:[trackingInterval objectForKey:cStartTime]];
+			} else {
+				cell.textLabel.text= NSLocalizedString(@"Stop Time", @"");
+				cell.detailTextLabel.text= [WTUtil timeForDate:[trackingInterval objectForKey:cStopTime]];
+			}
+			break;
+		case 1:
+			cell.textLabel.text= NSLocalizedString(@"Tracked Time", @"");
+			cell.detailTextLabel.text= [WTUtil formattedTimeIntervalForTrackingInterval:trackingInterval decimal:NO];
+			break;
+	}
+	
+	return cell;
 }
 
 #pragma mark -

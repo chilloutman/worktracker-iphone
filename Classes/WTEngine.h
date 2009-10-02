@@ -20,6 +20,7 @@
 + (WTEngine *)sharedEngine;
 
 - (BOOL)running;
+- (NSString *)formattedStatus;
 
 - (void)startTrackingProjectAtIndex:(NSInteger)index;
 - (void)stopTracking;

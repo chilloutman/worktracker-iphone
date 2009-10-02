@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 
-@interface WTTrackingDetails : UIViewController {
+@interface WTTrackingDetails : UIViewController <UITableViewDelegate, UITableViewDataSource> {
 	NSMutableDictionary *trackingInterval;
+	UITableView *tableView;
 }
 
 - (id)initWithTrackingInterval:(NSMutableDictionary *)pTrackingInterval;

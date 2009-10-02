@@ -50,7 +50,7 @@
 #pragma mark UINavigationControllerDelegate
 
 - (void)navigationController:(UINavigationController *)navC willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-	// Somehow viewDidAppear is not getting called so I'm doing it manually...
+	// Somehow viewWillAppear is not getting called so I'm doing it manually...
 	[navController.topViewController viewWillAppear:animated];
 }
 
