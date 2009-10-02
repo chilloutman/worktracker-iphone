@@ -11,9 +11,13 @@
 @class WTProjects;
 
 @interface WTProjectAdd : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+	UIBarButtonItem *doneButton;
 	UITableView * tableView;
 	UITextField *nameField;
-	UIBarButtonItem *doneButton;
+	UISegmentedControl *colorPicker;
+	NSArray *colors;
+	UIColor *projectColor;
+	
 	WTProjects *superController;
 }
 

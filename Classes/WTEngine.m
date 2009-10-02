@@ -55,7 +55,7 @@ static WTEngine *sharedEngine= nil;
 	
 	NSMutableDictionary *activeInterval= [[NSMutableDictionary alloc] init];
 	[activeInterval setObject:[NSDate date] forKey:cStartTime];
-	[activeInterval setObject:[model.projects objectAtIndex:index] forKey:cProject];
+	[activeInterval setObject:[[model.projects objectAtIndex:index] objectForKey:cProjectName] forKey:cProject];
 	
 	[model.trackingIntervals insertObject:activeInterval atIndex:0];
 	[activeInterval release];

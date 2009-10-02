@@ -70,7 +70,9 @@ static WTDataModel *sharedInstace= nil;
 	NSString *finalPath= [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", keyPath]];
 	
 	// Save whaterver object just changed
-	[[self valueForKey:keyPath] writeToFile:finalPath atomically:YES];
+	if (![[self valueForKey:keyPath] writeToFile:finalPath atomically:YES]) {
+		NSLog(@"Writting to file failed");
+	}
 }
 
 #pragma mark Delete data

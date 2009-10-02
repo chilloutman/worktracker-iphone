@@ -119,7 +119,7 @@ static WTSort *sharedSortingModel= nil;
 	NSMutableArray *curArray= [NSMutableArray array]; // Every Section is represented by an array
 	NSDate *curDate; // Loops through the startDates
 	NSDateComponents *curDateComps; // Components of curDate
-	NSDate *lastDate;
+	NSDate *lastDate= nil;
 	
 	for (NSMutableDictionary *trackingInterval in model.trackingIntervals) {
 		curDate= [trackingInterval objectForKey:cStartTime];
@@ -141,7 +141,6 @@ static WTSort *sharedSortingModel= nil;
 			}
 			// Set the date that maches
 			date= [trackingInterval objectForKey:cStartTime];
-			dateComps= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:date];
 			
 			[curArray addObject:trackingInterval];
 		}
@@ -177,7 +176,7 @@ static WTSort *sharedSortingModel= nil;
 	NSMutableArray *curArray= [NSMutableArray array]; // Every Section is represented by an array
 	NSDate *curDate; // Loops through the startDates
 	NSDateComponents *curDateComps; // Components of curDate
-	NSDate *lastDate;
+	NSDate *lastDate= nil;
 	
 	for (NSMutableDictionary *trackingInterval in model.trackingIntervals) {
 		curDate= [trackingInterval objectForKey:cStartTime];
@@ -199,7 +198,6 @@ static WTSort *sharedSortingModel= nil;
 			}
 			// Set the date that maches
 			date= [trackingInterval objectForKey:cStartTime];
-			dateComps= [calendar components:NSYearCalendarUnit | NSWeekCalendarUnit fromDate:date];
 			
 			[curArray addObject:trackingInterval];
 		}
@@ -235,7 +233,7 @@ static WTSort *sharedSortingModel= nil;
 	NSMutableArray *curArray= [NSMutableArray array]; // Every Section is represented by an array
 	NSDate *curDate; // Loops through the startDates
 	NSDateComponents *curDateComps; // Components of curDate
-	NSDate *lastDate;
+	NSDate *lastDate= nil;
 	
 	for (NSMutableDictionary *trackingInterval in model.trackingIntervals) {
 		curDate= [trackingInterval objectForKey:cStartTime];
@@ -257,7 +255,6 @@ static WTSort *sharedSortingModel= nil;
 			}
 			// Set the date that maches
 			date= [trackingInterval objectForKey:cStartTime];
-			dateComps= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit fromDate:date];
 			
 			[curArray addObject:trackingInterval];
 		}

@@ -23,7 +23,8 @@
 
 @property (nonatomic, retain) WTProjectsRootController *superController;
 
-- (void)shouldAddNewProjectWithName:(NSString *)projectName;
+- (void)shouldAddNewProjectWithName:(NSString *)projectName color:(UIColor *)projectColor;
+- (void)shouldDeleteProjectAtIndexPath:(NSIndexPath *)indexPath;
 
 // Private
 - (void)editTableView;

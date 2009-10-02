@@ -196,7 +196,7 @@
 	
 	// Now we wait until a project gets picked
 }
-- (void)userPickedProjectAtIndex: (NSInteger)index {
+- (void)userPickedProjectAtIndex: (NSUInteger)index {
 	if (index >= 0) {
 		[self.engine startTrackingProjectAtIndex:index];
 		

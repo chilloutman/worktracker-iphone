@@ -36,16 +36,19 @@ extern NSString * const cStatus;
 extern NSString * const cStatusRunning;
 extern NSString * const cStatusStandby;
 
-// TrackingInterval : NSMutableDictionary keys 
+// TrackingInterval : NSMutableDictionary keys
+#define cIntervalDictSize 4
 extern NSString * const cProject;
 extern NSString * const cStartTime;
 extern NSString * const cStopTime;
 extern NSString * const cTimeInterval;
 
 // Project : NSMutableDictionary keys
+#define cProjectDictSize 4
 extern NSString * const cProjectName;
 extern NSString * const cNumberOfIntervals;
 extern NSString * const cTotalTime;
+extern NSString * const cProjectColor;
 
 // Engine Keys
 extern NSString * const cTimerMainView;

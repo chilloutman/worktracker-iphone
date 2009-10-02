@@ -101,6 +101,24 @@
 	return [formatter stringFromDate:pDate];
 }
 
++ (UIImage *)imageWithColor:(UIColor *)color {
+	// This method draws little UIImages because that what a segmented control is able to display
+	CGSize size= CGSizeMake(20, 20);
+	
+	UIGraphicsBeginImageContext(size);
+	CGContextRef ctx= UIGraphicsGetCurrentContext();
+	
+	UIGraphicsPushContext(ctx);{
+		[color setFill];
+		CGContextFillRect(ctx, CGRectMake(0, 0, size.width, size.height));
+	} UIGraphicsPopContext();
+	
+	UIImage *image= UIGraphicsGetImageFromCurrentImageContext();
+	
+	UIGraphicsEndImageContext();	
+	return image;
+}
+
 #pragma mark Status & project name
 
 + (NSString *)formattedProjectNameForTrackingInterval:(NSMutableDictionary *)pInterval running:(BOOL)running {

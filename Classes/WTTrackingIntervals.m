@@ -68,6 +68,7 @@
 	[tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:animated];
 	
 	deleteButton.enabled= ([model.trackingIntervals count] > 0);
+	[tableView reloadData];
 }
 
 #pragma mark navigationBar Buttons

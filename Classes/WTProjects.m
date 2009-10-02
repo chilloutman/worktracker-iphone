@@ -23,7 +23,7 @@
 - (id)init {
 	if (self= [super init]) {
 		model= [WTDataModel sharedDataModel];
-		self.title= self.tabBarItem.title;
+		self.title= NSLocalizedString(@"Projects", @"");
 	}
 	return self;
 }
@@ -42,7 +42,6 @@
 	tableView= [[UITableView alloc] initWithFrame:screen style:UITableViewStylePlain];
 	tableView.delegate= self;
 	tableView.dataSource= self;
-	tableView.delaysContentTouches= NO;
 	
 	self.view= tableView;
 }
@@ -70,11 +69,12 @@
 }
 
 // User entered a name and pressed the done button 
-- (void)shouldAddNewProjectWithName:(NSString *)projectName {
+- (void)shouldAddNewProjectWithName:(NSString *)projectName color:(UIColor *)projectColor {
 	//if ([model.projects containsObject:projectName]) return;
 	
-	NSMutableDictionary *project= [NSMutableDictionary dictionaryWithCapacity:3];
+	NSMutableDictionary *project= [NSMutableDictionary dictionaryWithCapacity:cProjectDictSize];
 	[project setObject:projectName forKey:cProjectName];
+	[project setObject:[NSKeyedArchiver archivedDataWithRootObject:projectColor] forKey:cProjectColor];
 	
 	// Add new project
 	[model.projects insertObject:project atIndex:0];
@@ -95,7 +95,7 @@
 	}
 }
 
-- (void)shouldDeleteRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)shouldDeleteProjectAtIndexPath:(NSIndexPath *)indexPath {
 	NSMutableDictionary *project= [model.projects objectAtIndex:indexPath.row];
 	
 	UIAlertView *alert= [[UIAlertView alloc] initWithTitle:nil
@@ -107,7 +107,7 @@
 	// Remove Data from model
 	[model.projects removeObjectAtIndex:indexPath.row];
 	[model didChangeCollection:cProjects];
-	[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+	[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
 }
 
 #pragma mark UIAlertViewDelegate
@@ -156,7 +156,7 @@
 
 - (void)tableView:(UITableView *)pTableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		[self shouldDeleteRowAtIndexPath:(NSIndexPath *)indexPath];
+		[self shouldDeleteProjectAtIndexPath:(NSIndexPath *)indexPath];
 	}
 }
 

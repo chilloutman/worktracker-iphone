@@ -78,13 +78,12 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)c {
-	return [superController.model.projects count];
+	return [[WTDataModel sharedDataModel].projects count];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)c {
-	return [superController.model.projects objectAtIndex:row];
+	return [[[WTDataModel sharedDataModel].projects objectAtIndex:row] objectForKey:cProjectName];
 }
-
 
 #pragma mark Buttons
 

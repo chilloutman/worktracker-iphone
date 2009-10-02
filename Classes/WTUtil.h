@@ -13,13 +13,15 @@
 	
 }
 
-// Strings for the UI
+// Stuff for the UI
 
 + (NSString *)dayForDate:(NSDate *)pDate;
 + (NSString *)weekForDate:(NSDate *)pDate;
 + (NSString *)monthForDate:(NSDate *)pDate;
 + (NSString *)timeForDate:(NSDate *)pDate;
 + (NSString *)dateForDate:(NSDate *)pDate;
+
++ (UIImage *)imageWithColor:(UIColor *)color;
 
 + (NSString *)totalTimeForSection:(NSMutableArray *)section withActive:(BOOL)active;
 
