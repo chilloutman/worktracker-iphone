@@ -20,9 +20,8 @@ NSString *cStartTime= @"startTime";
 NSString *cStopTime= @"stopTime";
 
 // Projects : NSMutableDictionary keys
-NSString *cProjectName= @"projectName";
-NSString *cNumberOfIntervals= @"numberOfInervals";
-NSString *cTotalTime= @"totalTime";
+NSString *cProjectNumber= @"numberOfInervals";
+NSString *cProjectTime= @"totalTime";
 NSString *cProjectColor= @"projectColor";
 
 // Engine keys

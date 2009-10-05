@@ -142,7 +142,7 @@
 	WTTableViewCell *cell= (WTTableViewCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 	NSMutableDictionary *interval= nil;
 	if ([model.trackingIntervals count] > 0) interval= [model.trackingIntervals objectAtIndex:0];
-	cell.lastText= [WTUtil formattedTimeIntervalForTrackingInterval:interval decimal:YES];
+	cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForTrackingInterval:interval] decimal:YES];
 	
 	// Table header
 	NSMutableArray *sectionArray= [tableModel trackingIntervalsForMostRecentDay];
@@ -196,9 +196,9 @@
 	
 	// Now we wait until a project gets picked
 }
-- (void)userPickedProjectAtIndex: (NSUInteger)index {
+- (void)userPickedProjectAtIndex:(NSUInteger)index {
 	if (index >= 0) {
-		[self.engine startTrackingProjectAtIndex:index];
+		[self.engine startTrackingProject:[[model.projects allKeys] objectAtIndex:index]];
 		
 		[self updateUIElements];
 		[self.engine pingEvery:cTimeRefreshRate target:self selector:@selector(updateActiveElements:) identifier:cTimerMainView];
@@ -258,7 +258,7 @@
 		BOOL running= NO;
 		if (indexPath.row == 0) running= [engine running]; // Display the green bubble to indicate that the project is being tracked
 		cell.firstText= [WTUtil formattedProjectNameForTrackingInterval:interval running:running];
-		cell.lastText= [WTUtil formattedTimeIntervalForTrackingInterval:interval decimal:YES];
+		cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForTrackingInterval:interval] decimal:YES];
 	} else {
 		cell.firstText= @"";
 		cell.lastText= @"";

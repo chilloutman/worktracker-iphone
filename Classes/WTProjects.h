@@ -15,6 +15,9 @@
 	UIBarButtonItem *editButton;
 	UIBarButtonItem *doneButton;
 	
+	NSArray *intervalsToRemove;
+	NSUInteger indexToDelete;
+	
 	WTProjectAdd *projectAddView;
 	WTProjectsRootController *superController;
 	
@@ -28,5 +31,6 @@
 
 // Private
 - (void)editTableView;
+- (void)deleteProjectAtIndex:(NSUInteger)indexPath;
 
 @end

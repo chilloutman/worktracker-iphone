@@ -11,8 +11,8 @@
 #import "WTProjectAdd.h"
 
 #import "WTDataModel.h"
-
 #import "WTConstants.h"
+#import "WTSort.h"
 
 @implementation WTProjects
 
@@ -73,11 +73,12 @@
 	//if ([model.projects containsObject:projectName]) return;
 	
 	NSMutableDictionary *project= [NSMutableDictionary dictionaryWithCapacity:cProjectDictSize];
-	[project setObject:projectName forKey:cProjectName];
+	[project setObject:[NSNumber numberWithInt:0] forKey:cProjectNumber];
+	[project setObject:[NSNumber numberWithDouble:0.0] forKey:cProjectTime];
 	[project setObject:[NSKeyedArchiver archivedDataWithRootObject:projectColor] forKey:cProjectColor];
 	
 	// Add new project
-	[model.projects insertObject:project atIndex:0];
+	[model.projects setObject:project forKey:projectName]; // The project name is used as key
 	// Notify the model so it can save the data
 	[model didChangeCollection:cProjects];
 	
@@ -96,35 +97,55 @@
 }
 
 - (void)shouldDeleteProjectAtIndexPath:(NSIndexPath *)indexPath {
-	NSMutableDictionary *project= [model.projects objectAtIndex:indexPath.row];
+	NSString *projectToDelete= [[model.projects allKeys] objectAtIndex:indexPath.row];
 	
-	UIAlertView *alert= [[UIAlertView alloc] initWithTitle:nil
-												   message:[NSString stringWithFormat:NSLocalizedString(@"Also delete all tracking intervals related to %@?", @""), [project objectForKey:cProjectName]]
-												  delegate:self 
-										 cancelButtonTitle:@"no" otherButtonTitles:@"No, just delete the project", @"delete everything", nil];
-	[alert show];
+	// Are there tracking intervals that are bound to this project?
+	intervalsToRemove= [[model.trackingIntervals filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(project == %@)", projectToDelete]] retain];
+	indexToDelete= indexPath.row;
 	
-	// Remove Data from model
-	[model.projects removeObjectAtIndex:indexPath.row];
+	if ([intervalsToRemove count] > 0) {
+		// Ask if the intervals should be deleted too
+		UIAlertView *alert= [[UIAlertView alloc] initWithTitle:nil
+													   message:[NSString stringWithFormat:NSLocalizedString(@"Also delete all tracking intervals related to %@?", @""), projectToDelete]
+													  delegate:self 
+											 cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
+											 otherButtonTitles:NSLocalizedString(@"Just delete the project", @""), NSLocalizedString(@"Delete everything", @""), nil];
+		[alert show];
+	} else {
+		// Remove the project
+		[self deleteProjectAtIndex:indexToDelete];
+		[intervalsToRemove release];
+	}
+}
+
+- (void)deleteProjectAtIndex:(NSUInteger)index {
+	NSString *projectToDelete= [[model.projects allKeys] objectAtIndex:index];
+	[model.projects removeObjectForKey:projectToDelete];
+	
 	[model didChangeCollection:cProjects];
-	[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+	[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 #pragma mark UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	[alertView release];
-	switch (buttonIndex) {
-		case 0:
-			// Cancel
-			break;
-		case 1:
-			// Only delete the project
-			break;
-		case 2:
-			// Delete the project and everyting related
-			break;
-			
+	if (buttonIndex == 0) {
+		[tableView setEditing:NO animated:YES];
+		return;
+	}
+	
+	// Remove the project
+	[self deleteProjectAtIndex:indexToDelete];
+	
+	if (buttonIndex == 2) {
+		// Also remove all related tracking intervals
+		[model.trackingIntervals removeObjectsInArray:intervalsToRemove];
+		[intervalsToRemove release];
+		
+		// Notify others
+		[model didChangeCollection:cTrackingIntervals];
+		[[WTSort sharedSortingModel] invalidateSectionsForSortingType:WTSortingByAll];
 	}
 }
 
@@ -143,7 +164,7 @@
 	}
 	
 	cell.showsReorderControl= YES;
-	cell.textLabel.text= [[model.projects objectAtIndex:indexPath.row] objectForKey:cProjectName];
+	cell.textLabel.text= [[model.projects allKeys] objectAtIndex:indexPath.row];
 	
 	return cell;
 }
@@ -167,18 +188,19 @@
 
 - (void)tableView:(UITableView *)tV moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
 	// Move the Object inside the Model
-	NSMutableDictionary *sourceObject= [[model.projects objectAtIndex:sourceIndexPath.row] retain];
-	[model.projects removeObjectAtIndex:sourceIndexPath.row];
-	[model.projects insertObject:sourceObject atIndex:destinationIndexPath.row];
-	[sourceObject release];
-	
-	[model didChangeCollection:cProjects];
+//	NSMutableDictionary *sourceObject= [[model.projects objectAtIndex:sourceIndexPath.row] retain];
+//	[model.projects removeObjectAtIndex:sourceIndexPath.row];
+//	[model.projects insertObject:sourceObject atIndex:destinationIndexPath.row];
+//	[sourceObject release];
+//	
+//	[model didChangeCollection:cProjects];
 }
 	
 // Selection
 - (void)tableView:(UITableView *)tV didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSMutableDictionary *project= [model.projects objectAtIndex:indexPath.row];
-	[self.superController pushDetailViewWithProject:project];
+	NSString *projectName= [[model.projects allKeys] objectAtIndex:indexPath.row];
+	NSMutableDictionary *project= [model.projects objectForKey:projectName];
+	[self.superController pushDetailViewWithProject:project name:projectName];
 }
 
 #pragma mark -

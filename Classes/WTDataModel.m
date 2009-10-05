@@ -43,8 +43,8 @@ static WTDataModel *sharedInstace= nil;
 		NSString *finalPath;
 		
 		finalPath= [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", cProjects]];
-		self.projects= [NSMutableArray arrayWithContentsOfFile:finalPath];
-		if (!self.projects) self.projects= [NSMutableArray array];
+		self.projects= [NSMutableDictionary dictionaryWithContentsOfFile:finalPath];
+		if (!self.projects) self.projects= [NSMutableDictionary dictionary];
 		
 		finalPath= [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", cTrackingIntervals]];
 		self.trackingIntervals= [NSMutableArray arrayWithContentsOfFile:finalPath];

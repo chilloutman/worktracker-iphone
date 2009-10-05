@@ -39,6 +39,11 @@
 	[self.view addSubview:navController.view];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	// Notify the currently visible view
+	[navController.visibleViewController viewWillAppear:animated];
+}
+
 #pragma mark push & pop
 
 - (void)pushDetailViewWithInterval:(NSMutableDictionary *)trackingInterval {

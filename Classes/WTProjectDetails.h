@@ -19,6 +19,6 @@
 
 @property (nonatomic, retain) WTProjects *superController;
 
-- (id)initWithProject:(NSMutableDictionary *)pProject;
+- (id)initWithProject:(NSMutableDictionary *)pProject projectName:(NSString *)projectName;
 
 @end

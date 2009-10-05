@@ -101,6 +101,33 @@
 	return [formatter stringFromDate:pDate];
 }
 
++ (NSString *)formattedTimeInterval:(NSTimeInterval)interval decimal:(BOOL)decimal  {
+	NSString *timeString= nil;
+	
+	if (decimal) {
+		double hours= interval / 3600;
+		timeString= [NSString stringWithFormat:@"%.3lf h", hours];
+	} else {
+		int minutes= (int)interval / 60;
+		if (minutes > 59) {
+			minutes= minutes % 60;
+			int hours= (int)interval / 3600;
+			if (hours > 23) {
+				int days= (int)interval / 86400;
+				timeString= [NSString stringWithFormat:@"%d d %d h %d m", days, hours, minutes];
+			} else {
+				timeString= [NSString stringWithFormat:@"%d h %d m", hours, minutes];
+			}
+			
+		} else {
+			timeString= [NSString stringWithFormat:@"%d m", minutes];
+		}
+		
+	}
+	
+	return timeString;
+}
+
 + (UIImage *)imageWithColor:(UIColor *)color {
 	// This method draws little UIImages because that what a segmented control is able to display
 	CGSize size= CGSizeMake(20, 20);
@@ -152,36 +179,6 @@
 	}
 }
 
-+ (NSString *)formattedTimeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval decimal:(BOOL)decimal  {
-	if (pInterval == nil) return nil;
-	
-	double interval= [self timeIntervalForTrackingInterval:pInterval];
-	NSString *timeString= nil;
-	
-	if (decimal) {
-		double hours= interval / 3600;
-		timeString= [NSString stringWithFormat:@"%.3lf h", hours];
-	} else {
-		int minutes= (int)interval / 60;
-		if (minutes > 59) {
-			minutes= minutes % 60;
-			int hours= (int)interval / 3600;
-			if (hours > 23) {
-				int days= (int)interval / 86400;
-				timeString= [NSString stringWithFormat:@"%d d %d h %d m", days, hours, minutes];
-			} else {
-				timeString= [NSString stringWithFormat:@"%d h %d m", hours, minutes];
-			}
-
-		} else {
-			timeString= [NSString stringWithFormat:@"%d m", minutes];
-		}
-
-	}
-	
-	return timeString;
-}
-
 + (NSString *)formattedStartTimeForTrackingInterval: (NSMutableDictionary *)pInterval {		
 	if (pInterval == nil) return nil;
 	if (![[WTEngine sharedEngine] running]) {
@@ -212,20 +209,20 @@
 
 #pragma mark private
 
-+ (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval {	
-	if (pInterval == nil) return 0;
-	
-	NSNumber *timeInterval= [pInterval objectForKey:cTimeInterval];
-	NSDate *startTime= [pInterval objectForKey:cStartTime];
-	
-	if (timeInterval) {
-		// timeInterval is already set
-		return [timeInterval doubleValue]; // NSTimeInterval == double
-	} else if (startTime) {
-		return [[NSDate date] timeIntervalSinceDate:startTime];
-	}else {
-		return 0.0;
-	}
-}
+//+ (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval {	
+//	if (pInterval == nil) return 0;
+//	
+//	NSNumber *timeInterval= [pInterval objectForKey:cTimeInterval];
+//	NSDate *startTime= [pInterval objectForKey:cStartTime];
+//	
+//	if (timeInterval) {
+//		// timeInterval is already set
+//		return [timeInterval doubleValue]; // NSTimeInterval == double
+//	} else if (startTime) {
+//		return [[NSDate date] timeIntervalSinceDate:startTime];
+//	}else {
+//		return 0.0;
+//	}
+//}
 
 @end

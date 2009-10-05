@@ -82,7 +82,7 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)c {
-	return [[[WTDataModel sharedDataModel].projects objectAtIndex:row] objectForKey:cProjectName];
+	return [[[WTDataModel sharedDataModel].projects allKeys] objectAtIndex:row];
 }
 
 #pragma mark Buttons

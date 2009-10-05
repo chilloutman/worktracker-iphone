@@ -10,8 +10,6 @@
 #import "WTProjects.h"
 #import "WTProjectDetails.h"
 
-#import "WTDataModel.h"
-
 #import "WTConstants.h"
 
 @implementation WTProjectsRootController
@@ -45,8 +43,8 @@
 
 #pragma mark UINavigationController
 
-- (void)pushDetailViewWithProject:(NSMutableDictionary *)project {
-	WTProjectDetails *detailViewController= [[WTProjectDetails alloc] initWithProject:project];
+- (void)pushDetailViewWithProject:(NSMutableDictionary *)project name:(NSString *)projectName {
+	WTProjectDetails *detailViewController= [[WTProjectDetails alloc] initWithProject:project projectName:projectName];
 	[navController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }

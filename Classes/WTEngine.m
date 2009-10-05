@@ -49,31 +49,42 @@ static WTEngine *sharedEngine= nil;
 
 #pragma mark Start & stop tracking
 
-- (void)startTrackingProjectAtIndex:(NSInteger)index {
+- (void)startTrackingProject:(NSString *)projectName {
 	model.status= cStatusRunning;
-	[[WTSort sharedSortingModel] invalidateSectionsForSortingType:WTSortingByAll];
+	[[WTSort sharedSortingModel] invalidateSectionsForSortingType:WTSortingByAll]; // I'm sure there is a more efficient way than reordering everything
 	
+	// TrackingInterval
 	NSMutableDictionary *activeInterval= [[NSMutableDictionary alloc] init];
 	[activeInterval setObject:[NSDate date] forKey:cStartTime];
-	[activeInterval setObject:[[model.projects objectAtIndex:index] objectForKey:cProjectName] forKey:cProject];
-	
+	[activeInterval setObject:projectName forKey:cProject];
 	[model.trackingIntervals insertObject:activeInterval atIndex:0];
 	[activeInterval release];
 	
+	// Project
+	NSMutableDictionary *project= [model.projects objectForKey:projectName];
+	NSInteger numberOfIntervals= [[project objectForKey:cProjectNumber] intValue] + 1;
+	[project setObject:[NSNumber numberWithInt:numberOfIntervals] forKey:cProjectNumber];
+	
 	// Notify models about the changes
 	[model didChangeCollection:cTrackingIntervals];
+	[model didChangeCollection:cProjects];
 }
 
 - (void)stopTracking {
 	model.status= cStatusStandby;
 	
 	NSMutableDictionary *trackingInterval= [model.trackingIntervals objectAtIndex:0];
-	
 	[trackingInterval setObject:[NSDate date] forKey:cStopTime];
 	NSDate *startTime= [trackingInterval objectForKey:cStartTime];
-	[trackingInterval setObject:[NSNumber numberWithDouble:-[startTime timeIntervalSinceNow]] forKey:cTimeInterval];
+	NSTimeInterval timeInterval= -[startTime timeIntervalSinceNow];
+	[trackingInterval setObject:[NSNumber numberWithDouble:timeInterval] forKey:cTimeInterval];
+	
+	NSMutableDictionary *project= [model.projects objectForKey:[trackingInterval objectForKey:cProject]];
+	NSTimeInterval totalTimeInterval= [[project objectForKey:cProjectTime] doubleValue] + timeInterval;
+	[project setObject:[NSNumber numberWithDouble:totalTimeInterval] forKey:cProjectTime];
 	
 	[model didChangeCollection:cTrackingIntervals];
+	[model didChangeCollection:cProjects];
 }
 
 #pragma mark Timer

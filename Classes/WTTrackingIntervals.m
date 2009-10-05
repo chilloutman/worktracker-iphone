@@ -130,7 +130,7 @@
 	NSMutableDictionary *trackingInterval= [[[tableModel sectionArrayForSortingType:activeSortingType] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	
 	cell.firstText= [WTUtil formattedProjectNameForTrackingInterval:trackingInterval running:NO];
-	cell.lastText= [WTUtil formattedTimeIntervalForTrackingInterval:trackingInterval decimal:YES];
+	cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForTrackingInterval:trackingInterval] decimal:YES];
 	
 	return cell;
 }

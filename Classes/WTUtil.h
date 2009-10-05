@@ -20,18 +20,17 @@
 + (NSString *)monthForDate:(NSDate *)pDate;
 + (NSString *)timeForDate:(NSDate *)pDate;
 + (NSString *)dateForDate:(NSDate *)pDate;
++ (NSString *)formattedTimeInterval:(NSTimeInterval)pInterval decimal:(BOOL)decimal;
 
 + (UIImage *)imageWithColor:(UIColor *)color;
 
 + (NSString *)totalTimeForSection:(NSMutableArray *)section withActive:(BOOL)active;
-
 + (NSString *)formattedProjectNameForTrackingInterval:(NSMutableDictionary *)pInterval running:(BOOL)running;
-+ (NSString *)formattedTimeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval decimal:(BOOL)decimal;
 + (NSString *)formattedStartTimeForTrackingInterval:(NSMutableDictionary *)pInterval;
 + (NSString *)formattedStopTimeForTrackingInterval:(NSMutableDictionary *)pInterval;
 
 // Private
 
-+ (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval;
+//+ (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval;
 
 @end

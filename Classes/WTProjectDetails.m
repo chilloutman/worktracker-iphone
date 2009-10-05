@@ -17,10 +17,10 @@
 
 @synthesize superController;
 
-- (id)initWithProject:(NSMutableDictionary *)pProject {
+- (id)initWithProject:(NSMutableDictionary *)pProject projectName:(NSString *)projectName {
 	if (self= [super init]) {
 		project= pProject;
-		self.title= [project objectForKey:cProjectName];
+		self.title= projectName;
 	}
 	return self;
 }
@@ -70,10 +70,10 @@
 		case 0:
 			if (indexPath.row == 0) {
 				cell.textLabel.text= NSLocalizedString(@"Number of trackings", @"");
-				cell.detailTextLabel.text= [project objectForKey:cNumberOfIntervals];
+				cell.detailTextLabel.text= [[project objectForKey:cProjectNumber] stringValue];
 			} else {
-				cell.textLabel.text= NSLocalizedString(@"Stop Time", @"");
-				cell.detailTextLabel.text= [project objectForKey:cTotalTime];
+				cell.textLabel.text= NSLocalizedString(@"Total Time", @"");
+				cell.detailTextLabel.text= [WTUtil formattedTimeInterval:[[project objectForKey:cProjectTime] doubleValue] decimal:NO];
 			}
 			break;
 		case 1:
