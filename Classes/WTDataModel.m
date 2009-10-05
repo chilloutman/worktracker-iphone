@@ -24,7 +24,7 @@ static WTDataModel *sharedInstace= nil;
 	return sharedInstace;
 }
 
-@synthesize status;
+@synthesize active;
 @synthesize projects;
 @synthesize trackingIntervals;
 
@@ -33,9 +33,9 @@ static WTDataModel *sharedInstace= nil;
 		// Load saved data
 		NSUserDefaults *userDefaults= [NSUserDefaults standardUserDefaults];
 		
-		self.status= [userDefaults objectForKey:cStatus];
-		if (!self.status) {
-			self.status= cStatusStandby;
+		self.active= [userDefaults objectForKey:cStatus];
+		if (!self.active) {
+			self.active= [NSNumber numberWithBool:NO];
 		}
 		[self addObserver:self forKeyPath:cStatus options:0 context:NULL];
 		
@@ -71,7 +71,7 @@ static WTDataModel *sharedInstace= nil;
 	
 	// Save whaterver object just changed
 	if (![[self valueForKey:keyPath] writeToFile:finalPath atomically:YES]) {
-		NSLog(@"Writting to file failed");
+		NSLog(@"Writting to '%@' failed!", finalPath);
 	}
 }
 
@@ -81,6 +81,7 @@ static WTDataModel *sharedInstace= nil;
 	NSMutableArray *toKeep= [NSMutableArray array];
 	
 	if (!all) {
+		// Just what's older than a week
 		NSDate * date= [NSDate dateWithTimeIntervalSinceNow:-604800];
 		
 		for (NSMutableDictionary *trackingInterval in self.trackingIntervals) {
@@ -90,7 +91,7 @@ static WTDataModel *sharedInstace= nil;
 				break;
 			}
 		}
-	} else if ([self.status isEqualToString:cStatusRunning]) {
+	} else if ([self.active boolValue]) {
 		[toKeep addObject:[self.trackingIntervals objectAtIndex:0]];
 	}
 	

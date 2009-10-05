@@ -33,7 +33,7 @@ static WTEngine *sharedEngine= nil;
 }
 
 - (BOOL)running {
-	return [model.status isEqualToString:cStatusRunning];
+	return [model.active boolValue];
 }
 
 - (NSString *)formattedStatus {
@@ -50,7 +50,7 @@ static WTEngine *sharedEngine= nil;
 #pragma mark Start & stop tracking
 
 - (void)startTrackingProject:(NSString *)projectName {
-	model.status= cStatusRunning;
+	model.active= [NSNumber numberWithBool:YES];
 	[[WTSort sharedSortingModel] invalidateSectionsForSortingType:WTSortingByAll]; // I'm sure there is a more efficient way than reordering everything
 	
 	// TrackingInterval
@@ -71,7 +71,7 @@ static WTEngine *sharedEngine= nil;
 }
 
 - (void)stopTracking {
-	model.status= cStatusStandby;
+	model.active= [NSNumber numberWithBool:NO];
 	
 	NSMutableDictionary *trackingInterval= [model.trackingIntervals objectAtIndex:0];
 	[trackingInterval setObject:[NSDate date] forKey:cStopTime];

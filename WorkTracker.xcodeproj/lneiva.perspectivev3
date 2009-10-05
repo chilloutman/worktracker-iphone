@@ -279,9 +279,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>20</integer>
-									<integer>14</integer>
-									<integer>6</integer>
+									<integer>32</integer>
+									<integer>31</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -324,7 +323,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>EF28D2F10FEC0D7300AF7431</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>WTProjectDetails.m</string>
+								<string>WTDataModel.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -332,15 +331,13 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>EF28D2F20FEC0D7300AF7431</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>WTProjectDetails.m</string>
+										<string>WTDataModel.m</string>
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>EFEE2246107A2B5A007FCC5D</string>
+										<string>EFEE224F107A2D9C007FCC5D</string>
 										<key>history</key>
 										<array>
-											<string>EFEE2153107A1815007FCC5D</string>
-											<string>EFEE216C107A192D007FCC5D</string>
 											<string>EFEE21AE107A1D81007FCC5D</string>
 											<string>EFEE21C2107A1DFF007FCC5D</string>
 											<string>EFEE21FC107A208D007FCC5D</string>
@@ -348,7 +345,9 @@
 											<string>EFEE2216107A21DD007FCC5D</string>
 											<string>EFEE2217107A21DD007FCC5D</string>
 											<string>EFEE2218107A21DD007FCC5D</string>
-											<string>EFEE2219107A21DD007FCC5D</string>
+											<string>EFEE224A107A2C7E007FCC5D</string>
+											<string>EFEE224B107A2C7E007FCC5D</string>
+											<string>EFEE224C107A2C7E007FCC5D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

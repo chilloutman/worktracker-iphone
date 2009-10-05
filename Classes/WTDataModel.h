@@ -10,12 +10,12 @@
 
 // Manages and saves data
 @interface WTDataModel : NSObject {
-	NSString *status; // This is an object and not a BOOL because of some advantages with KVO and NSUserDefaults. However, it could be an NSNumber...
+	NSNumber *active; // This is an object and not a BOOL because of some advantages with KVO and NSUserDefaults. However, it could be an NSNumber...
 	NSMutableDictionary *projects;
 	NSMutableArray *trackingIntervals; // Contains all trackingIntervals. sorted by startDate (0 == newest). See WTConstants.h for more info.
 }
 
-@property (copy) NSString *status;
+@property (retain) NSNumber *active;
 @property (retain) NSMutableDictionary *projects;
 @property (retain) NSMutableArray *trackingIntervals;
 
