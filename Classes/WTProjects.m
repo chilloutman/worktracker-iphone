@@ -9,6 +9,7 @@
 #import "WTProjects.h"
 #import "WTProjectsRootController.h"
 #import "WTProjectAdd.h"
+#import "WTProjectDetails.h"
 
 #import "WTDataModel.h"
 #import "WTConstants.h"
@@ -163,7 +164,7 @@
 		cell= [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier] autorelease];
 	}
 	
-	cell.showsReorderControl= YES;
+	cell.showsReorderControl= NO;
 	cell.textLabel.text= [[model.projects allKeys] objectAtIndex:indexPath.row];
 	
 	return cell;
@@ -200,7 +201,12 @@
 - (void)tableView:(UITableView *)tV didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSString *projectName= [[model.projects allKeys] objectAtIndex:indexPath.row];
 	NSMutableDictionary *project= [model.projects objectForKey:projectName];
-	[self.superController pushDetailViewWithProject:project name:projectName];
+	NSArray *trackingIntervals= [model.trackingIntervals filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"project == %@", projectName]];
+	
+	// Display detail view
+	WTProjectDetails *detailViewController= [[WTProjectDetails alloc] initWithProject:project name:projectName trackingIntervals:trackingIntervals];
+	[self.navigationController pushViewController:detailViewController animated:YES];
+	[detailViewController release];
 }
 
 #pragma mark -

@@ -16,6 +16,6 @@
 	WTProjects *tableController;
 }
 
-- (void)pushDetailViewWithProject:(NSMutableDictionary *)project name:(NSString *)projectName;
+- (void)pushDetailViewWithProject:(NSMutableDictionary *)project name:(NSString *)projectName trackingIntervals:(NSArray *)trackingIntervals;
 
 @end

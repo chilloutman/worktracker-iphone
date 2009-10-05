@@ -101,6 +101,13 @@
 	return [formatter stringFromDate:pDate];
 }
 
++ (NSString *)shortDateForDate:(NSDate *)pDate {
+	NSDateFormatter *formatter= [[NSDateFormatter new] autorelease];
+	[formatter setDateStyle:NSDateFormatterMediumStyle];
+	
+	return [formatter stringFromDate:pDate];
+}
+
 + (NSString *)formattedTimeInterval:(NSTimeInterval)interval decimal:(BOOL)decimal  {
 	NSString *timeString= nil;
 	
@@ -169,7 +176,7 @@
 	}
 	
 	if (!active && section == 0) {
-		// Don't count the Interval that is still running
+		// TODO: don't count the Interval that is still running
 	}
 	
 	if (total > 0) {

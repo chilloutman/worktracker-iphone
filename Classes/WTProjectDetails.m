@@ -15,11 +15,13 @@
 
 @implementation WTProjectDetails
 
-@synthesize superController;
+@synthesize trackingIntervals;
 
-- (id)initWithProject:(NSMutableDictionary *)pProject projectName:(NSString *)projectName {
+- (id)initWithProject:(NSMutableDictionary *)pProject name:(NSString *)projectName trackingIntervals:(NSArray *)pTrackingIntervals {
 	if (self= [super init]) {
 		project= pProject;
+		self.trackingIntervals= ([pTrackingIntervals count] > 0) ? pTrackingIntervals : nil;
+		
 		self.title= projectName;
 	}
 	return self;
@@ -38,21 +40,24 @@
 #pragma mark UITableView delegate & dataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)pTableView {
-	return 2;
+	if (trackingIntervals) return 3;
+	else return 2;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
 		case 0: return nil;
 		case 1: return nil;
+		case 2: return NSLocalizedString(@"Tracking Intervals", @"");
 		default: return nil;
 	} 
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tV numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
 		case 0: return 2;
 		case 1: return 1;
+		case 2: return [trackingIntervals count];
 		default: return 0;
 	}
 }
@@ -83,6 +88,13 @@
 			colorView.backgroundColor= [NSKeyedUnarchiver unarchiveObjectWithData:[project objectForKey:cProjectColor]];
 			[cell.contentView addSubview:colorView];
 			break;
+		case 2:{
+			NSMutableDictionary *interval= [trackingIntervals objectAtIndex:indexPath.row];
+			
+			cell.textLabel.text= [WTUtil shortDateForDate:[interval objectForKey:cStartTime]];
+			cell.detailTextLabel.text= [WTUtil formattedTimeInterval:[[interval objectForKey:cTimeInterval] doubleValue] decimal:NO];
+			}
+			break;
 	}
 	
 	return cell;
@@ -98,14 +110,10 @@
 }
 
 - (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
 }
-
 
 - (void)dealloc {
     [super dealloc];
 }
-
 
 @end

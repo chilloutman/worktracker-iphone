@@ -20,6 +20,7 @@
 + (NSString *)monthForDate:(NSDate *)pDate;
 + (NSString *)timeForDate:(NSDate *)pDate;
 + (NSString *)dateForDate:(NSDate *)pDate;
++ (NSString *)shortDateForDate:(NSDate *)pDate;
 + (NSString *)formattedTimeInterval:(NSTimeInterval)pInterval decimal:(BOOL)decimal;
 
 + (UIImage *)imageWithColor:(UIColor *)color;

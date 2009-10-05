@@ -43,8 +43,9 @@
 
 #pragma mark UINavigationController
 
-- (void)pushDetailViewWithProject:(NSMutableDictionary *)project name:(NSString *)projectName {
-	WTProjectDetails *detailViewController= [[WTProjectDetails alloc] initWithProject:project projectName:projectName];
+- (void)pushDetailViewWithProject:(NSMutableDictionary *)project name:(NSString *)projectName trackingIntervals:(NSArray *)trackingIntervals {
+	WTProjectDetails *detailViewController= [[WTProjectDetails alloc] initWithProject:project name:projectName trackingIntervals:trackingIntervals];
+	
 	[navController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }

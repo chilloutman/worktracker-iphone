@@ -279,15 +279,15 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>25</integer>
-									<integer>23</integer>
+									<integer>20</integer>
+									<integer>14</integer>
 									<integer>6</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {278, 914}}</string>
+							<string>{{0, 2}, {278, 914}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -324,7 +324,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>EF28D2F10FEC0D7300AF7431</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>WTProjects.m</string>
+								<string>WTProjectDetails.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -332,23 +332,23 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>EF28D2F20FEC0D7300AF7431</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>WTProjects.m</string>
+										<string>WTProjectDetails.m</string>
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>EFEE20721079FB5E007FCC5D</string>
+										<string>EFEE2246107A2B5A007FCC5D</string>
 										<key>history</key>
 										<array>
-											<string>EFEE1F861079E9A0007FCC5D</string>
-											<string>EFEE1EFF1079D7E7007FCC5D</string>
-											<string>EFEE1F161079D8E3007FCC5D</string>
-											<string>EFEE1FE01079F334007FCC5D</string>
-											<string>EFEE1FE11079F334007FCC5D</string>
-											<string>EFEE1FE51079F343007FCC5D</string>
-											<string>EFEE20031079F5B0007FCC5D</string>
-											<string>EFEE200E1079F5E9007FCC5D</string>
-											<string>EFEE200F1079F5E9007FCC5D</string>
-											<string>EFEE206B1079FAA7007FCC5D</string>
+											<string>EFEE2153107A1815007FCC5D</string>
+											<string>EFEE216C107A192D007FCC5D</string>
+											<string>EFEE21AE107A1D81007FCC5D</string>
+											<string>EFEE21C2107A1DFF007FCC5D</string>
+											<string>EFEE21FC107A208D007FCC5D</string>
+											<string>EFEE21FD107A208D007FCC5D</string>
+											<string>EFEE2216107A21DD007FCC5D</string>
+											<string>EFEE2217107A21DD007FCC5D</string>
+											<string>EFEE2218107A21DD007FCC5D</string>
+											<string>EFEE2219107A21DD007FCC5D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -684,7 +684,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>EFEE20711079FB2F007FCC5D</string>
+		<string>EFEE2247107A2B5A007FCC5D</string>
 		<string>EFEE1F081079D818007FCC5D</string>
 		<string>EFEE1F0A1079D818007FCC5D</string>
 		<string>/Users/Shared/lneiva/worktracker-svn/trunk/WorkTracker.xcodeproj</string>
