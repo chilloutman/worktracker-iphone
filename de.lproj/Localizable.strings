@@ -2,31 +2,61 @@
 "Add" = "Hinzufügen";
 
 /* No comment provided by engineer. */
+"Also delete all tracking intervals related to %@?" = "Auch alle mit dem Projekt %@ erfassten Intervale löschen?";
+
+/* No comment provided by engineer. */
 "Cancel" = "Abbrechen";
 
 /* Delete some trackings */
 "Clear" = "Aufräumen";
 
 /* Title for delete confirmation */
-"Clear trackings" = "Trackings löschen";
+"Clear trackings" = "Erfasste Intervale löschen";
+
+/* No comment provided by engineer. */
+"Color" = "Farbe";
+
+/* Segment, Show items from the last few days */
+"Days" = "Tage";
 
 /* No comment provided by engineer. */
 "Delete all" = "Alle löschen";
 
 /* No comment provided by engineer. */
-"Delete old ones" = "Ältere löschen";
+"Delete everything" = "Alles löschen";
 
-/* Ask the user for a project name */
-"Enter a name for the new project" = "Gib einen Namen für\ndas neue Projekt ein";
+/* No comment provided by engineer. */
+"Delete old ones" = "Nur Ältere löschen";
 
 /* Previous trackings */
 "History" = "Übersicht";
 
-/* Title for trackings that are older than some days old */
-"Older" = "Frühere";
+/* No comment provided by engineer. */
+"Just delete the project" = "Nur das Projekt löschen";
+
+/* No comment provided by engineer. */
+"Last Month" = "Letzter Monat";
+
+/* No comment provided by engineer. */
+"Last Week" = "Letzte Woche";
+
+/* ShowItems sorted by Months */
+"Months" = "Monate";
+
+/* No comment provided by engineer. */
+"New Project" = "Neues Projekt";
+
+/* No comment provided by engineer. */
+"Number of trackings" = "Anzahl erfasster Intervale";
 
 /* Ask user to select a project */
-"Pick the project you would like to track" = "Wähle ein Projekt um mit dem erfassen zu beginnen";
+"Pick the project you would like to track" = "Wähle ein Projekt um mit dem Erfassen zu beginnen";
+
+/* Title for the place where the user can select a color for the project */
+"Project Color" = "Projektfarbe";
+
+/* Title for the textField where the project name is supposed to be entered */
+"Project Name" = "Projectname";
 
 /* No comment provided by engineer. */
 "Projects" = "Projekte";
@@ -34,17 +64,45 @@
 /* Status, Ready and waiting */
 "Standby" = "Bereit";
 
+/* No comment provided by engineer. */
+"Start Time" = "Startzeit";
+
+/* No comment provided by engineer. */
+"Stop Time" = "Stopzeit";
+
 /* Status, Inform the user that the are no projects */
-"There are no projects..." = "Es sind noch keine Projekte vorhanden...";
+"There are no projects..." = "Es sind keine Projekte vorhanden...";
+
+/* No comment provided by engineer. */
+"This Month" = "Diesen Monat";
+
+/* No comment provided by engineer. */
+"This Week" = "Diese Woche";
 
 /* No comment provided by engineer. */
 "Today" = "Heute";
 
+/* No comment provided by engineer. */
+"Total Time" = "Totalzeit";
+
 /* tabBarTitle */
 "Track" = "Erfassen";
+
+/* No comment provided by engineer. */
+"Tracked Time" = "Erfasste Zeit";
 
 /* Status, Currently tracking 'a project' */
 "Tracking '%@'" = "'%@' wird erfasst";
 
 /* No comment provided by engineer. */
+"Tracking Intervals" = "Erfasste Intervale";
+
+/* No comment provided by engineer. */
+"Week" = "Woche";
+
+/* Show Items sorted by weeks */
+"Weeks" = "Wochen";
+
+/* No comment provided by engineer. */
 "Yesterday" = "Gestern";
+
