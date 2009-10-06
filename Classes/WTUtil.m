@@ -32,7 +32,7 @@
 		return NSLocalizedString(@"Yesterday", @"");
 	}
 	
-	NSDateFormatter *formatter= [[NSDateFormatter new] autorelease];
+	NSDateFormatter *formatter= [self dateFormatter];
 	[formatter setDateStyle:NSDateFormatterMediumStyle];
 	
 	return [formatter stringFromDate:pDate];
@@ -81,28 +81,28 @@
 		return NSLocalizedString(@"Last Month", @"");
 	}
 	
-	NSDateFormatter *formatter= [[NSDateFormatter new] autorelease];
+	NSDateFormatter *formatter= [self dateFormatter];
 	[formatter setDateFormat:@"MMMM yyyy"];
 	
 	return [formatter stringFromDate:pDate];
 }
 
 + (NSString *)timeForDate:(NSDate *)pDate {
-	NSDateFormatter *formatter= [[NSDateFormatter new] autorelease];
+	NSDateFormatter *formatter= [self timeFormatter];
 	[formatter setTimeStyle:NSDateFormatterShortStyle];
 	
 	return [formatter stringFromDate:pDate];
 }
 
 + (NSString *)dateForDate:(NSDate *)pDate {
-	NSDateFormatter *formatter= [[NSDateFormatter new] autorelease];
+	NSDateFormatter *formatter= [self dateFormatter];
 	[formatter setDateStyle:NSDateFormatterFullStyle];
 	
 	return [formatter stringFromDate:pDate];
 }
 
 + (NSString *)shortDateForDate:(NSDate *)pDate {
-	NSDateFormatter *formatter= [[NSDateFormatter new] autorelease];
+	NSDateFormatter *formatter= [self dateFormatter];
 	[formatter setDateStyle:NSDateFormatterMediumStyle];
 	
 	return [formatter stringFromDate:pDate];
@@ -129,7 +129,6 @@
 		} else {
 			timeString= [NSString stringWithFormat:@"%d m", minutes];
 		}
-		
 	}
 	
 	return timeString;
@@ -196,7 +195,7 @@
 	if (startDate == nil) return @"-";
 	
 	// Return formatted Time
-	NSDateFormatter *formatter= [[NSDateFormatter new] autorelease];
+	NSDateFormatter *formatter= [self timeFormatter];
 	[formatter setTimeStyle:NSDateFormatterShortStyle];
 	
 	return [formatter stringFromDate:startDate];
@@ -208,13 +207,31 @@
 	NSDate *stopTime= [pInterval objectForKey:cStopTime];
 	if (stopTime == nil) return @"-";
 	
-	NSDateFormatter *formatter= [[NSDateFormatter new] autorelease];
+	NSDateFormatter *formatter= [self timeFormatter];
 	[formatter setTimeStyle:NSDateFormatterShortStyle];
 	
 	return [formatter stringFromDate:stopTime];
 }
 
 #pragma mark private
+
+// NSDateFormatter caching
+
++ (NSDateFormatter *)dateFormatter {
+	static NSDateFormatter *formatter= nil; // Just leaking a little bit here... :-)
+	if (!formatter){
+		formatter= [[NSDateFormatter alloc] init];
+	}
+	return formatter;
+}
+
++ (NSDateFormatter *)timeFormatter {
+	static NSDateFormatter *formatter= nil;
+	if (!formatter){
+		formatter= [[NSDateFormatter alloc] init];
+	}
+	return formatter;
+}
 
 //+ (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval {	
 //	if (pInterval == nil) return 0;

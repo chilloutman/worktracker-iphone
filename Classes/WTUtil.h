@@ -32,6 +32,8 @@
 
 // Private
 
++ (NSDateFormatter *)dateFormatter;
++ (NSDateFormatter *)timeFormatter;
 //+ (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval;
 
 @end
