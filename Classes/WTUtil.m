@@ -16,7 +16,7 @@
 #pragma mark Generic
 
 + (NSString *)dayForDate:(NSDate *)pDate {	
-	NSCalendar *cal= [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+	NSCalendar *cal= [self calendar];
 	NSDate *date= [NSDate date];
 	NSDateComponents *dC= [cal components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
 	NSDateComponents *pDateComps= [cal components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:pDate];
@@ -39,7 +39,7 @@
 }
 
 + (NSString *)weekForDate:(NSDate *)pDate {
-	NSCalendar *cal= [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+	NSCalendar *cal= [self calendar];
 	NSDate *date= [NSDate date];
 	NSDateComponents *dateComps= [cal components:NSWeekCalendarUnit | NSYearCalendarUnit fromDate:date];
 	NSDateComponents *pDateComps= [cal components:NSWeekCalendarUnit | NSYearCalendarUnit fromDate:pDate];
@@ -62,7 +62,7 @@
 }
 
 + (NSString *)monthForDate:(NSDate *)pDate {
-	NSCalendar *cal= [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+	NSCalendar *cal= [self calendar];
 	NSDate *date= [NSDate date];
 	NSDateComponents *dateComps= [cal components:NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
 	NSDateComponents *pDateComps= [cal components:NSMonthCalendarUnit | NSYearCalendarUnit fromDate:pDate];
@@ -213,9 +213,7 @@
 	return [formatter stringFromDate:stopTime];
 }
 
-#pragma mark private
-
-// NSDateFormatter caching
+#pragma mark Caches
 
 + (NSDateFormatter *)dateFormatter {
 	static NSDateFormatter *formatter= nil; // Just leaking a little bit here... :-)
@@ -231,6 +229,14 @@
 		formatter= [[NSDateFormatter alloc] init];
 	}
 	return formatter;
+}
+
++ (NSCalendar *)calendar {
+	static NSCalendar *calendar= nil;
+	if (!calendar) {
+		calendar= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	}
+	return calendar;
 }
 
 //+ (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval {	

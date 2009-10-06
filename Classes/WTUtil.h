@@ -30,10 +30,11 @@
 + (NSString *)formattedStartTimeForTrackingInterval:(NSMutableDictionary *)pInterval;
 + (NSString *)formattedStopTimeForTrackingInterval:(NSMutableDictionary *)pInterval;
 
-// Private
+// Caches - Leaks
 
 + (NSDateFormatter *)dateFormatter;
 + (NSDateFormatter *)timeFormatter;
++ (NSCalendar *)calendar;
 //+ (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval;
 
 @end

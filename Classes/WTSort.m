@@ -112,7 +112,7 @@ static WTSort *sharedSortingModel= nil;
 	daySections= [[NSMutableArray alloc] init];
 	dayTitles= [[NSMutableArray alloc] init];
 	
-	NSCalendar *calendar= [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+	NSCalendar *calendar= [WTUtil calendar];
 	NSDate *date= [NSDate date];
 	NSDateComponents *dateComps;
 	
@@ -169,7 +169,7 @@ static WTSort *sharedSortingModel= nil;
 	weekSections= [[NSMutableArray alloc] init];
 	weekTitles= [[NSMutableArray alloc] init];
 	
-	NSCalendar *calendar= [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+	NSCalendar *calendar= [WTUtil calendar];
 	NSDate *date= [NSDate date];
 	NSDateComponents *dateComps;
 	
@@ -226,7 +226,7 @@ static WTSort *sharedSortingModel= nil;
 	monthSections= [[NSMutableArray alloc] init];
 	monthTitles= [[NSMutableArray alloc] init];
 	
-	NSCalendar *calendar= [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+	NSCalendar *calendar= [WTUtil calendar];
 	NSDate *date= [NSDate date];
 	NSDateComponents *dateComps;
 	
