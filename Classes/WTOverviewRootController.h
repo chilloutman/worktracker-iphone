@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class WTTrackingIntervals;
+
 @interface WTOverviewRootController : UIViewController <UINavigationControllerDelegate>{
 	UINavigationController *navController;
+	WTTrackingIntervals *tableController;
 }
 
 - (void)pushDetailViewWithInterval:(NSMutableDictionary *)trackingInterval;

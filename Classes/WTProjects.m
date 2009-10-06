@@ -48,7 +48,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	[tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+	[tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -162,6 +162,7 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
     if (cell == nil) {
 		cell= [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier] autorelease];
+		cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
 	}
 	
 	cell.showsReorderControl= NO;

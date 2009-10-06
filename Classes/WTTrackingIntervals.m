@@ -8,6 +8,7 @@
 
 #import "WTTrackingIntervals.h"
 #import "WTOverviewRootController.h"
+#import "WTTrackingDetails.h"
 
 #import "WTTableViewCell.h"
 #import "WTTableSectionHeader.h"
@@ -21,7 +22,7 @@
 
 @implementation WTTrackingIntervals
 
-@synthesize superController;
+@synthesize superController, tableView;
 
 - (id)init {
 	if (self= [super init]) {
@@ -30,21 +31,6 @@
 		tableModel= [WTSort sharedSortingModel];
 		
 		self.title= NSLocalizedString(@"History", @"Previous trackings");
-		
-		UISegmentedControl *segmentedControl= [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Days", @"Segment, Show items from the last few days"),
-																						 NSLocalizedString(@"Weeks", @"Show Items sorted by weeks"),
-																						 NSLocalizedString(@"Months", @"ShowItems sorted by Months"), nil]];
-		[segmentedControl addTarget:self action:@selector(segmentedControlSelectionDidChange:) forControlEvents:UIControlEventValueChanged];
-		segmentedControl.segmentedControlStyle= UISegmentedControlStyleBar;
-		segmentedControl.selectedSegmentIndex= 0;
-		self.navigationItem.titleView= segmentedControl;
-		[segmentedControl release];
-		
-		deleteButton= [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Clear", @"Delete some trackings")
-																			style:UIBarButtonItemStyleBordered
-																		   target:self action:@selector(clearIntervals)];
-		self.navigationItem.rightBarButtonItem= deleteButton;
-		[deleteButton release];
 	}
 	return self;
 }
@@ -52,12 +38,26 @@
 - (void)loadView {
 	CGRect screen= [UIScreen mainScreen].bounds;
 	
-	tableView= [[UITableView alloc] initWithFrame:screen style:UITableViewStylePlain];
-	tableView.delegate= self;
-	tableView.dataSource= self;
+	UISegmentedControl *segmentedControl= [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Days", @"Segment, Show items from the last few days"),
+																					 NSLocalizedString(@"Weeks", @"Show Items sorted by weeks"),
+																					 NSLocalizedString(@"Months", @"ShowItems sorted by Months"), nil]];
+	[segmentedControl addTarget:self action:@selector(segmentedControlSelectionDidChange:) forControlEvents:UIControlEventValueChanged];
+	segmentedControl.segmentedControlStyle= UISegmentedControlStyleBar;
+	segmentedControl.selectedSegmentIndex= 0;
+	self.navigationItem.titleView= segmentedControl;
+	[segmentedControl release];
 	
+	deleteButton= [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Clear", @"Delete some trackings")
+												   style:UIBarButtonItemStyleBordered
+												  target:self action:@selector(clearIntervals)];
+	self.navigationItem.rightBarButtonItem= deleteButton;
+	[deleteButton release];	
 	
-	self.view= tableView;
+	self.tableView= [[UITableView alloc] initWithFrame:screen style:UITableViewStylePlain];
+	self.tableView.delegate= self;
+	self.tableView.dataSource= self;
+	
+	self.view= self.tableView;
 }
 
 #pragma mark UI refresh
@@ -68,7 +68,6 @@
 	[tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:animated];
 	
 	deleteButton.enabled= ([model.trackingIntervals count] > 0);
-	[tableView reloadData];
 }
 
 #pragma mark navigationBar Buttons
@@ -151,14 +150,15 @@
 - (void)tableView:(UITableView *)tV didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSMutableDictionary *selectedInterval= [[[tableModel sectionArrayForSortingType:activeSortingType] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	
-	// The superController knows how to push the detailView
-	[superController pushDetailViewWithInterval:selectedInterval];
+	WTTrackingDetails *detailViewController= [[WTTrackingDetails alloc] initWithTrackingInterval:selectedInterval];
+	[self.navigationController pushViewController:detailViewController animated:YES];
+	[detailViewController release];
 }
 	 
 #pragma mark -
 
 - (void)dealloc {
-	[tableView release];
+	[self.tableView release];
 	[superController release];
     [super dealloc];
 }

@@ -29,7 +29,7 @@
 	
 	// NavigationController
 	
-	WTTrackingIntervals *tableController= [[WTTrackingIntervals alloc] init];
+	tableController= [[WTTrackingIntervals alloc] init];
 	tableController.superController= self;
 	
 	navController= [[UINavigationController alloc] initWithRootViewController:tableController];
@@ -41,7 +41,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	// Notify the currently visible view
-	[navController.visibleViewController viewWillAppear:animated];
+	[tableController.tableView reloadData];
 }
 
 #pragma mark push & pop

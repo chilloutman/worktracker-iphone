@@ -230,8 +230,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -284,14 +282,15 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>53</integer>
-									<integer>52</integer>
-									<integer>41</integer>
+									<integer>27</integer>
+									<integer>23</integer>
+									<integer>6</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 196}, {278, 914}}</string>
+							<string>{{0, 0}, {278, 914}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -321,12 +320,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>EF28D2F10FEC0D7300AF7431</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>clock.png</string>
+								<string>WTTrackingIntervals.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -334,23 +335,23 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>EF28D2F20FEC0D7300AF7431</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>clock.png</string>
+										<string>WTTrackingIntervals.m</string>
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>EFEE2291107B1970007FCC5D</string>
+										<string>EFEE2306107B1FB4007FCC5D</string>
 										<key>history</key>
 										<array>
-											<string>EFEE2285107B1970007FCC5D</string>
-											<string>EFEE2286107B1970007FCC5D</string>
-											<string>EFEE2288107B1970007FCC5D</string>
-											<string>EFEE228A107B1970007FCC5D</string>
-											<string>EFEE228B107B1970007FCC5D</string>
-											<string>EFEE228C107B1970007FCC5D</string>
 											<string>EFEE228D107B1970007FCC5D</string>
-											<string>EFEE228E107B1970007FCC5D</string>
 											<string>EFEE228F107B1970007FCC5D</string>
-											<string>EFEE2290107B1970007FCC5D</string>
+											<string>EFEE22C8107B1B16007FCC5D</string>
+											<string>EFEE22D2107B1CF2007FCC5D</string>
+											<string>EFEE22D3107B1CF2007FCC5D</string>
+											<string>EFEE22F7107B1F63007FCC5D</string>
+											<string>EFEE22FA107B1F63007FCC5D</string>
+											<string>EFEE2300107B1F8F007FCC5D</string>
+											<string>EFEE2301107B1F8F007FCC5D</string>
+											<string>EFEE2302107B1F8F007FCC5D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -1533,7 +1534,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {500, 315}}</string>
 								<key>RubberWindowFrame</key>
-								<string>204 602 500 356 0 0 1680 1028 </string>
+								<string>296 578 500 356 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCRefactoringModule</string>
@@ -1560,7 +1561,7 @@
 				<string>EF771AF80FF7E7B500071BA2</string>
 			</array>
 			<key>WindowString</key>
-			<string>204 602 500 356 0 0 1680 1028 </string>
+			<string>296 578 500 356 0 0 1680 1028 </string>
 			<key>WindowToolGUID</key>
 			<string>EF771AF90FF7E7B500071BA2</string>
 			<key>WindowToolIsVisible</key>

@@ -23,5 +23,6 @@
 }
 
 @property (nonatomic, retain) WTOverviewRootController *superController;
+@property (nonatomic, assign) UITableView *tableView;
 
 @end
