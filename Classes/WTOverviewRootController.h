@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WTHistoryViewController : UIViewController <UINavigationControllerDelegate>{
+@interface WTOverviewRootController : UIViewController <UINavigationControllerDelegate>{
 	UINavigationController *navController;
 }
 

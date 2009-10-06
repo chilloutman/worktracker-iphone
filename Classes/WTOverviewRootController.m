@@ -6,18 +6,18 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "WTHistoryViewController.h"
+#import "WTOverviewRootController.h"
 
 #import "WTTrackingIntervals.h"
 #import "WTTrackingDetails.h"
 
-@implementation WTHistoryViewController
+@implementation WTOverviewRootController
 
 #pragma mark Build
 
 - (id)init {
 	if (self= [super init]) {
-		self.tabBarItem= [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"History", @"Previous trackings") image:[UIImage imageNamed:@"backwards.png"] tag:2];
+		self.tabBarItem= [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Overview", @"Previous trackings") image:[UIImage imageNamed:@"eye.png"] tag:2];
 	}
 	return self;
 }

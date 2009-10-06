@@ -230,6 +230,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -274,19 +276,22 @@
 								<string>EF5CDBC9101DB9A4004EFC4D</string>
 								<string>EF5CDBCA101DB9AF004EFC4D</string>
 								<string>EFCFAC940FED2E0000BAB6BE</string>
+								<string>29B97317FDCFA39411CA2CEA</string>
+								<string>EF08F4AF1010635400A83A37</string>
+								<string>EFBBA2860FFBBA6400183DE7</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>32</integer>
-									<integer>31</integer>
-									<integer>1</integer>
+									<integer>53</integer>
+									<integer>52</integer>
+									<integer>41</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 2}, {278, 914}}</string>
+							<string>{{0, 196}, {278, 914}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -316,14 +321,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>EF28D2F10FEC0D7300AF7431</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>WTDataModel.m</string>
+								<string>clock.png</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -331,23 +334,23 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>EF28D2F20FEC0D7300AF7431</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>WTDataModel.m</string>
+										<string>clock.png</string>
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>EFEE224F107A2D9C007FCC5D</string>
+										<string>EFEE2291107B1970007FCC5D</string>
 										<key>history</key>
 										<array>
-											<string>EFEE21AE107A1D81007FCC5D</string>
-											<string>EFEE21C2107A1DFF007FCC5D</string>
-											<string>EFEE21FC107A208D007FCC5D</string>
-											<string>EFEE21FD107A208D007FCC5D</string>
-											<string>EFEE2216107A21DD007FCC5D</string>
-											<string>EFEE2217107A21DD007FCC5D</string>
-											<string>EFEE2218107A21DD007FCC5D</string>
-											<string>EFEE224A107A2C7E007FCC5D</string>
-											<string>EFEE224B107A2C7E007FCC5D</string>
-											<string>EFEE224C107A2C7E007FCC5D</string>
+											<string>EFEE2285107B1970007FCC5D</string>
+											<string>EFEE2286107B1970007FCC5D</string>
+											<string>EFEE2288107B1970007FCC5D</string>
+											<string>EFEE228A107B1970007FCC5D</string>
+											<string>EFEE228B107B1970007FCC5D</string>
+											<string>EFEE228C107B1970007FCC5D</string>
+											<string>EFEE228D107B1970007FCC5D</string>
+											<string>EFEE228E107B1970007FCC5D</string>
+											<string>EFEE228F107B1970007FCC5D</string>
+											<string>EFEE2290107B1970007FCC5D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -403,6 +406,8 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1316, 288}}</string>
+										<key>RubberWindowFrame</key>
+										<string>0 55 1616 973 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXProjectFindModule</string>
@@ -462,8 +467,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1316, 288}}</string>
-										<key>RubberWindowFrame</key>
-										<string>0 55 1616 973 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -683,7 +686,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>EFEE2247107A2B5A007FCC5D</string>
+		<string>EF771AF90FF7E7B500071BA2</string>
 		<string>EFEE1F081079D818007FCC5D</string>
 		<string>EFEE1F0A1079D818007FCC5D</string>
 		<string>/Users/Shared/lneiva/worktracker-svn/trunk/WorkTracker.xcodeproj</string>
@@ -1553,7 +1556,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>EF771AF90FF7E7B500071BA2</string>
-				<string>EF85E8B410760080002B683A</string>
+				<string>EFEE2292107B1970007FCC5D</string>
 				<string>EF771AF80FF7E7B500071BA2</string>
 			</array>
 			<key>WindowString</key>

@@ -9,19 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "WTConstants.h"
 
-@class WTDataModel, WTEngine, WTSort, WTHistoryViewController;
+@class WTDataModel, WTEngine, WTSort, WTOverviewRootController;
 
 @interface WTTrackingIntervals : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate> {
 	UITableView *tableView;
 	UIBarButtonItem *deleteButton;
 	WTSortingType activeSortingType;
-	WTHistoryViewController *superController;
+	WTOverviewRootController *superController;
 	
 	WTDataModel *model;
 	WTSort *tableModel;
 	WTEngine *engine;
 }
 
-@property (nonatomic, retain) WTHistoryViewController *superController;
+@property (nonatomic, retain) WTOverviewRootController *superController;
 
 @end

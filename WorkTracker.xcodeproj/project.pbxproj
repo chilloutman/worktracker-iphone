@@ -42,7 +42,8 @@
 		EFC216100FEC307500441E03 /* WTDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC2160F0FEC307500441E03 /* WTDataModel.m */; };
 		EFCD05DF100A3A87002AE917 /* WTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCD05DE100A3A87002AE917 /* WTConstants.m */; };
 		EFCFAE110FED5E0C00BAB6BE /* WTProjectPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCFAE100FED5E0C00BAB6BE /* WTProjectPicker.m */; };
-		EFF1A9ED0FFE9052009E63BD /* WTHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF1A9EC0FFE9052009E63BD /* WTHistoryViewController.m */; };
+		EFEE227E107B193A007FCC5D /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = EFEE227D107B193A007FCC5D /* eye.png */; };
+		EFF1A9ED0FFE9052009E63BD /* WTOverviewRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF1A9EC0FFE9052009E63BD /* WTOverviewRootController.m */; };
 		EFF1A9EF0FFE9161009E63BD /* barChart.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF1A9EE0FFE9161009E63BD /* barChart.png */; };
 /* End PBXBuildFile section */
 
@@ -105,8 +106,9 @@
 		EFCFAE0F0FED5E0C00BAB6BE /* WTProjectPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTProjectPicker.h; sourceTree = "<group>"; };
 		EFCFAE100FED5E0C00BAB6BE /* WTProjectPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTProjectPicker.m; sourceTree = "<group>"; };
 		EFCFAF880FED776B00BAB6BE /* WTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTConstants.h; sourceTree = "<group>"; };
-		EFF1A9EB0FFE9052009E63BD /* WTHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHistoryViewController.h; sourceTree = "<group>"; };
-		EFF1A9EC0FFE9052009E63BD /* WTHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHistoryViewController.m; sourceTree = "<group>"; };
+		EFEE227D107B193A007FCC5D /* eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = eye.png; path = Resources/eye.png; sourceTree = "<group>"; };
+		EFF1A9EB0FFE9052009E63BD /* WTOverviewRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTOverviewRootController.h; sourceTree = "<group>"; };
+		EFF1A9EC0FFE9052009E63BD /* WTOverviewRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTOverviewRootController.m; sourceTree = "<group>"; };
 		EFF1A9EE0FFE9161009E63BD /* barChart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = barChart.png; path = Resources/barChart.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -247,8 +249,8 @@
 		EF5CDBCA101DB9AF004EFC4D /* 3rd Tab */ = {
 			isa = PBXGroup;
 			children = (
-				EFF1A9EB0FFE9052009E63BD /* WTHistoryViewController.h */,
-				EFF1A9EC0FFE9052009E63BD /* WTHistoryViewController.m */,
+				EFF1A9EB0FFE9052009E63BD /* WTOverviewRootController.h */,
+				EFF1A9EC0FFE9052009E63BD /* WTOverviewRootController.m */,
 				EF85E61E1074E615002B683A /* WTTrackingIntervals.h */,
 				EF85E61F1074E615002B683A /* WTTrackingIntervals.m */,
 				EF85E5AC1074DC27002B683A /* WTTrackingDetails.h */,
@@ -271,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				EFBBA2820FFBBA5C00183DE7 /* clock.png */,
+				EFEE227D107B193A007FCC5D /* eye.png */,
 				EFBBA2830FFBBA5C00183DE7 /* cabinet.png */,
 				EF08F48E101059E400A83A37 /* backwards.png */,
 				EFF1A9EE0FFE9161009E63BD /* barChart.png */,
@@ -366,6 +369,7 @@
 				EF08F48F101059E400A83A37 /* backwards.png in Resources */,
 				EF08F4B11010635400A83A37 /* Localizable.strings in Resources */,
 				EF08F68F1010BAEE00A83A37 /* tableSectionHeader.png in Resources */,
+				EFEE227E107B193A007FCC5D /* eye.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +386,7 @@
 				EFC214C00FEC14B300441E03 /* WTProjectsRootController.m in Sources */,
 				EFC216100FEC307500441E03 /* WTDataModel.m in Sources */,
 				EFCFAE110FED5E0C00BAB6BE /* WTProjectPicker.m in Sources */,
-				EFF1A9ED0FFE9052009E63BD /* WTHistoryViewController.m in Sources */,
+				EFF1A9ED0FFE9052009E63BD /* WTOverviewRootController.m in Sources */,
 				EF9E540E1006410500BAE8B4 /* WTProjectAdd.m in Sources */,
 				EFCD05DF100A3A87002AE917 /* WTConstants.m in Sources */,
 				EF06A58A100B71C800C71656 /* WTMainBackgroundView.m in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import "WTTrackingIntervals.h"
-#import "WTHistoryViewController.h"
+#import "WTOverviewRootController.h"
 
 #import "WTTableViewCell.h"
 #import "WTTableSectionHeader.h"

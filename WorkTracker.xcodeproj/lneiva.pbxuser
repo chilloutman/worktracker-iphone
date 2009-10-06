@@ -574,6 +574,17 @@
 			EFEE224D107A2C7E007FCC5D /* PBXTextBookmark */ = EFEE224D107A2C7E007FCC5D /* PBXTextBookmark */;
 			EFEE224E107A2D52007FCC5D /* PBXTextBookmark */ = EFEE224E107A2D52007FCC5D /* PBXTextBookmark */;
 			EFEE224F107A2D9C007FCC5D /* PBXTextBookmark */ = EFEE224F107A2D9C007FCC5D /* PBXTextBookmark */;
+			EFEE2285107B1970007FCC5D /* PBXTextBookmark */ = EFEE2285107B1970007FCC5D /* PBXTextBookmark */;
+			EFEE2286107B1970007FCC5D /* PBXTextBookmark */ = EFEE2286107B1970007FCC5D /* PBXTextBookmark */;
+			EFEE2288107B1970007FCC5D /* PBXTextBookmark */ = EFEE2288107B1970007FCC5D /* PBXTextBookmark */;
+			EFEE228A107B1970007FCC5D /* PBXTextBookmark */ = EFEE228A107B1970007FCC5D /* PBXTextBookmark */;
+			EFEE228B107B1970007FCC5D /* PBXTextBookmark */ = EFEE228B107B1970007FCC5D /* PBXTextBookmark */;
+			EFEE228C107B1970007FCC5D /* PBXTextBookmark */ = EFEE228C107B1970007FCC5D /* PBXTextBookmark */;
+			EFEE228D107B1970007FCC5D /* PBXTextBookmark */ = EFEE228D107B1970007FCC5D /* PBXTextBookmark */;
+			EFEE228E107B1970007FCC5D /* PBXTextBookmark */ = EFEE228E107B1970007FCC5D /* PBXTextBookmark */;
+			EFEE228F107B1970007FCC5D /* PBXBookmark */ = EFEE228F107B1970007FCC5D /* PBXBookmark */;
+			EFEE2290107B1970007FCC5D /* PBXBookmark */ = EFEE2290107B1970007FCC5D /* PBXBookmark */;
+			EFEE2291107B1970007FCC5D /* PBXBookmark */ = EFEE2291107B1970007FCC5D /* PBXBookmark */;
 		};
 		sourceControlManager = EF28D2FD0FEC0D7300AF7431 /* Source Control */;
 		userBuildSettings = {
@@ -610,9 +621,9 @@
 	};
 	EF08F4B21010636100A83A37 /* en */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1269, 728}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1255, 663}}";
 			sepNavSelRange = "{731, 0}";
-			sepNavVisRange = "{55, 1177}";
+			sepNavVisRange = "{55, 1029}";
 		};
 	};
 	EF08F6901010BB3C00A83A37 /* WTTableSectionHeader.h */ = {
@@ -641,10 +652,10 @@
 	};
 	EF0E25F410763D8A00535021 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = EFF1A9EC0FFE9052009E63BD /* WTHistoryViewController.m */;
+		fRef = EFF1A9EC0FFE9052009E63BD /* WTOverviewRootController.m */;
 		name = "WTHistoryViewController.m: 54";
 		rLen = 0;
-		rLoc = 1771;
+		rLoc = 1768;
 		rType = 0;
 		vrLen = 1463;
 		vrLoc = 193;
@@ -664,7 +675,7 @@
 		fRef = EF85E61F1074E615002B683A /* WTTrackingIntervals.m */;
 		name = "WTTrackingIntervals.m: 53";
 		rLen = 0;
-		rLoc = 1777;
+		rLoc = 1778;
 		rType = 0;
 		vrLen = 1717;
 		vrLoc = 1047;
@@ -776,7 +787,7 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
+		breakpointsEnabled = 0;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -842,8 +853,8 @@
 	EF4ED5A8101EEEA20031C9B5 /* WTUtil.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1255, 2964}}";
-			sepNavSelRange = "{3485, 0}";
-			sepNavVisRange = "{2722, 1201}";
+			sepNavSelRange = "{2667, 10}";
+			sepNavVisRange = "{1774, 1453}";
 			sepNavWindowFrame = "{{-1497, 114}, {1076, 884}}";
 		};
 	};
@@ -928,9 +939,9 @@
 	};
 	EF85E8321075F3F0002B683A /* WTProjects.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1555, 2873}}";
-			sepNavSelRange = "{7207, 0}";
-			sepNavVisRange = "{6730, 863}";
+			sepNavIntBoundsRect = "{{0, 0}, {1300, 2925}}";
+			sepNavSelRange = "{3839, 17}";
+			sepNavVisRange = "{0, 1172}";
 		};
 	};
 	EF9E540C1006410500BAE8B4 /* WTProjectAdd.h */ = {
@@ -980,8 +991,8 @@
 	};
 	EFC2160E0FEC307500441E03 /* WTDataModel.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1255, 532}}";
-			sepNavSelRange = "{577, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {1255, 555}}";
+			sepNavSelRange = "{738, 0}";
 			sepNavVisRange = "{0, 1140}";
 			sepNavWindowFrame = "{{-1905, 3}, {997, 1042}}";
 		};
@@ -996,9 +1007,9 @@
 	};
 	EFC6D35D10144DB90069F02C /* de */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1269, 714}}";
-			sepNavSelRange = "{716, 0}";
-			sepNavVisRange = "{62, 1229}";
+			sepNavIntBoundsRect = "{{0, 0}, {1255, 1391}}";
+			sepNavSelRange = "{812, 0}";
+			sepNavVisRange = "{332, 992}";
 			sepNavWindowFrame = "{{15, 132}, {1360, 891}}";
 		};
 	};
@@ -1900,7 +1911,7 @@
 		fRef = EF85E61F1074E615002B683A /* WTTrackingIntervals.m */;
 		name = "WTTrackingIntervals.m: 132";
 		rLen = 0;
-		rLoc = 4599;
+		rLoc = 4600;
 		rType = 0;
 		vrLen = 1826;
 		vrLoc = 3974;
@@ -2137,7 +2148,7 @@
 		fRef = EF85E61F1074E615002B683A /* WTTrackingIntervals.m */;
 		name = "WTTrackingIntervals.m: 133";
 		rLen = 0;
-		rLoc = 4701;
+		rLoc = 4702;
 		rType = 0;
 		vrLen = 1773;
 		vrLoc = 3974;
@@ -2575,20 +2586,20 @@
 	};
 	EFEE1FD91079F2BD007FCC5D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = EFF1A9EB0FFE9052009E63BD /* WTHistoryViewController.h */;
+		fRef = EFF1A9EB0FFE9052009E63BD /* WTOverviewRootController.h */;
 		name = "WTHistoryViewController.h: 13";
 		rLen = 0;
-		rLoc = 310;
+		rLoc = 311;
 		rType = 0;
 		vrLen = 394;
 		vrLoc = 0;
 	};
 	EFEE1FDA1079F2BD007FCC5D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = EFF1A9EC0FFE9052009E63BD /* WTHistoryViewController.m */;
+		fRef = EFF1A9EC0FFE9052009E63BD /* WTOverviewRootController.m */;
 		name = "WTHistoryViewController.m: 54";
 		rLen = 0;
-		rLoc = 1771;
+		rLoc = 1768;
 		rType = 0;
 		vrLen = 1209;
 		vrLoc = 537;
@@ -2598,7 +2609,7 @@
 		fRef = EF85E61F1074E615002B683A /* WTTrackingIntervals.m */;
 		name = "WTTrackingIntervals.m: 71";
 		rLen = 0;
-		rLoc = 2396;
+		rLoc = 2397;
 		rType = 0;
 		vrLen = 1350;
 		vrLoc = 1693;
@@ -2608,7 +2619,7 @@
 		fRef = EF85E61F1074E615002B683A /* WTTrackingIntervals.m */;
 		name = "WTTrackingIntervals.m: 71";
 		rLen = 0;
-		rLoc = 2396;
+		rLoc = 2397;
 		rType = 0;
 		vrLen = 1350;
 		vrLoc = 1693;
@@ -2618,7 +2629,7 @@
 		fRef = EF85E61F1074E615002B683A /* WTTrackingIntervals.m */;
 		name = "WTTrackingIntervals.m: 71";
 		rLen = 0;
-		rLoc = 2396;
+		rLoc = 2397;
 		rType = 0;
 		vrLen = 1350;
 		vrLoc = 1693;
@@ -2628,47 +2639,47 @@
 		fRef = EF85E61E1074E615002B683A /* WTTrackingIntervals.h */;
 		name = "WTTrackingIntervals.h: 16";
 		rLen = 0;
-		rLoc = 440;
+		rLoc = 240;
 		rType = 0;
 		vrLen = 662;
 		vrLoc = 0;
 	};
 	EFEE1FE11079F334007FCC5D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = EFF1A9EB0FFE9052009E63BD /* WTHistoryViewController.h */;
+		fRef = EFF1A9EB0FFE9052009E63BD /* WTOverviewRootController.h */;
 		name = "WTHistoryViewController.h: 13";
 		rLen = 0;
-		rLoc = 310;
+		rLoc = 311;
 		rType = 0;
 		vrLen = 394;
 		vrLoc = 0;
 	};
 	EFEE1FE21079F334007FCC5D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = EFF1A9EC0FFE9052009E63BD /* WTHistoryViewController.m */;
+		fRef = EFF1A9EC0FFE9052009E63BD /* WTOverviewRootController.m */;
 		name = "WTHistoryViewController.m: 43";
 		rLen = 0;
-		rLoc = 1163;
+		rLoc = 1160;
 		rType = 0;
 		vrLen = 1200;
 		vrLoc = 517;
 	};
 	EFEE1FE31079F334007FCC5D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = EFF1A9EC0FFE9052009E63BD /* WTHistoryViewController.m */;
+		fRef = EFF1A9EC0FFE9052009E63BD /* WTOverviewRootController.m */;
 		name = "WTHistoryViewController.m: 43";
 		rLen = 0;
-		rLoc = 1090;
+		rLoc = 1087;
 		rType = 0;
 		vrLen = 1297;
 		vrLoc = 520;
 	};
 	EFEE1FE51079F343007FCC5D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = EFF1A9EC0FFE9052009E63BD /* WTHistoryViewController.m */;
+		fRef = EFF1A9EC0FFE9052009E63BD /* WTOverviewRootController.m */;
 		name = "WTHistoryViewController.m: 43";
 		rLen = 0;
-		rLoc = 1090;
+		rLoc = 1087;
 		rType = 0;
 		vrLen = 1297;
 		vrLoc = 520;
@@ -2685,7 +2696,7 @@
 		fRef = EF85E61F1074E615002B683A /* WTTrackingIntervals.m */;
 		name = "WTTrackingIntervals.m: 71";
 		rLen = 0;
-		rLoc = 2372;
+		rLoc = 2373;
 		rType = 0;
 		vrLen = 1347;
 		vrLoc = 1696;
@@ -2695,7 +2706,7 @@
 		fRef = EF85E61F1074E615002B683A /* WTTrackingIntervals.m */;
 		name = "WTTrackingIntervals.m: 71";
 		rLen = 0;
-		rLoc = 2372;
+		rLoc = 2373;
 		rType = 0;
 		vrLen = 1347;
 		vrLoc = 1696;
@@ -2705,7 +2716,7 @@
 		fRef = EF85E61F1074E615002B683A /* WTTrackingIntervals.m */;
 		name = "WTTrackingIntervals.m: 71";
 		rLen = 0;
-		rLoc = 2372;
+		rLoc = 2373;
 		rType = 0;
 		vrLen = 1381;
 		vrLoc = 1710;
@@ -2715,7 +2726,7 @@
 		fRef = EF85E61F1074E615002B683A /* WTTrackingIntervals.m */;
 		name = "WTTrackingIntervals.m: 71";
 		rLen = 0;
-		rLoc = 2372;
+		rLoc = 2373;
 		rType = 0;
 		vrLen = 1042;
 		vrLoc = 1975;
@@ -2815,7 +2826,7 @@
 		fRef = EF85E61F1074E615002B683A /* WTTrackingIntervals.m */;
 		name = "WTTrackingIntervals.m: 71";
 		rLen = 0;
-		rLoc = 2372;
+		rLoc = 2373;
 		rType = 0;
 		vrLen = 1381;
 		vrLoc = 1710;
@@ -4962,7 +4973,111 @@
 		vrLen = 1699;
 		vrLoc = 724;
 	};
-	EFF1A9EB0FFE9052009E63BD /* WTHistoryViewController.h */ = {
+	EFEE2285107B1970007FCC5D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EFC2160E0FEC307500441E03 /* WTDataModel.h */;
+		name = "WTDataModel.h: 22";
+		rLen = 0;
+		rLoc = 738;
+		rType = 0;
+		vrLen = 1140;
+		vrLoc = 0;
+	};
+	EFEE2286107B1970007FCC5D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EFEE2287107B1970007FCC5D /* localize */;
+		name = "localize: 11";
+		rLen = 0;
+		rLoc = 543;
+		rType = 0;
+		vrLen = 1036;
+		vrLoc = 0;
+	};
+	EFEE2287107B1970007FCC5D /* localize */ = {
+		isa = PBXFileReference;
+		name = localize;
+		path = /home/lneiva/Dropbox/ShellScripts/localize;
+		sourceTree = "<absolute>";
+	};
+	EFEE2288107B1970007FCC5D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EFEE2289107B1970007FCC5D /* localize */;
+		name = "localize: 11";
+		rLen = 0;
+		rLoc = 543;
+		rType = 0;
+		vrLen = 1035;
+		vrLoc = 0;
+	};
+	EFEE2289107B1970007FCC5D /* localize */ = {
+		isa = PBXFileReference;
+		name = localize;
+		path = /home/lneiva/bin/localize;
+		sourceTree = "<absolute>";
+	};
+	EFEE228A107B1970007FCC5D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EF4ED5A8101EEEA20031C9B5 /* WTUtil.m */;
+		name = "WTUtil.m: 72";
+		rLen = 10;
+		rLoc = 2667;
+		rType = 0;
+		vrLen = 1453;
+		vrLoc = 1774;
+	};
+	EFEE228B107B1970007FCC5D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EF85E8321075F3F0002B683A /* WTProjects.m */;
+		name = "WTProjects.m: 113";
+		rLen = 17;
+		rLoc = 3839;
+		rType = 0;
+		vrLen = 1667;
+		vrLoc = 3012;
+	};
+	EFEE228C107B1970007FCC5D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EF08F4B21010636100A83A37 /* en */;
+		name = "Localizable.strings: 29";
+		rLen = 0;
+		rLoc = 731;
+		rType = 0;
+		vrLen = 1029;
+		vrLoc = 55;
+	};
+	EFEE228D107B1970007FCC5D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EFC6D35D10144DB90069F02C /* de */;
+		name = "Localizable.strings: 32";
+		rLen = 0;
+		rLoc = 812;
+		rType = 0;
+		vrLen = 992;
+		vrLoc = 332;
+	};
+	EFEE228E107B1970007FCC5D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EFF1A9EC0FFE9052009E63BD /* WTOverviewRootController.m */;
+		name = "WTHistoryViewController.m: 20";
+		rLen = 0;
+		rLoc = 442;
+		rType = 0;
+		vrLen = 1017;
+		vrLoc = 0;
+	};
+	EFEE228F107B1970007FCC5D /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = EFEE227D107B193A007FCC5D /* eye.png */;
+	};
+	EFEE2290107B1970007FCC5D /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = EFBBA2820FFBBA5C00183DE7 /* clock.png */;
+	};
+	EFEE2291107B1970007FCC5D /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = EFBBA2820FFBBA5C00183DE7 /* clock.png */;
+	};
+	EFF1A9EB0FFE9052009E63BD /* WTOverviewRootController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1255, 532}}";
 			sepNavSelRange = "{310, 0}";
@@ -4970,11 +5085,11 @@
 			sepNavWindowFrame = "{{48, 99}, {1360, 891}}";
 		};
 	};
-	EFF1A9EC0FFE9052009E63BD /* WTHistoryViewController.m */ = {
+	EFF1A9EC0FFE9052009E63BD /* WTOverviewRootController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1255, 884}}";
-			sepNavSelRange = "{1090, 0}";
-			sepNavVisRange = "{520, 1297}";
+			sepNavIntBoundsRect = "{{0, 0}, {1255, 962}}";
+			sepNavSelRange = "{440, 0}";
+			sepNavVisRange = "{0, 1017}";
 			sepNavWindowFrame = "{{38, 111}, {1360, 891}}";
 		};
 	};

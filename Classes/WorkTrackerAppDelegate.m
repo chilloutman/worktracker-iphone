@@ -9,7 +9,7 @@
 #import "WorkTrackerAppDelegate.h"
 #import "WTMainViewController.h"
 #import "WTProjectsRootController.h"
-#import "WTHistoryViewController.h"
+#import "WTOverviewRootController.h"
 
 #import "WTDataModel.h"
 #import "WTEngine.h"
@@ -29,7 +29,7 @@
 	// Initialize viewControllers
 	WTMainViewController *mainController= [[[WTMainViewController alloc] init] autorelease]; // Tab 1
 	WTProjectsRootController *projectsController= [[[WTProjectsRootController alloc] init] autorelease]; // Tab 2
-	WTHistoryViewController *historyController= [[[WTHistoryViewController alloc] init] autorelease]; // Tab 3
+	WTOverviewRootController *historyController= [[[WTOverviewRootController alloc] init] autorelease]; // Tab 3
 	NSArray *viewControllers= [NSArray arrayWithObjects:mainController, projectsController, historyController, nil];
 	
 	
