@@ -91,11 +91,13 @@ static WTDataModel *sharedInstace= nil;
 				break;
 			}
 		}
-	} else if ([self.active boolValue]) {
+	}
+	
+	// Don't delete the one that's still being tracked
+	if ([self.active boolValue]) {
 		[toKeep addObject:[self.trackingIntervals objectAtIndex:0]];
 	}
 	
-	[self.trackingIntervals release];
 	self.trackingIntervals= toKeep;
 	
 	// Notify
