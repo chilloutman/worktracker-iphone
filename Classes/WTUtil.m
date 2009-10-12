@@ -167,13 +167,11 @@
 
 #pragma mark TrackingItervals
 
-+ (NSString *)totalTimeForSection:(NSMutableDictionary **)section size:(NSInteger)sectionSize withActive:(BOOL)active {
++ (NSString *)totalTimeForSection:(NSMutableArray *)section withActive:(BOOL)active {
 	NSTimeInterval total= 0;
 	
-	if (section == NULL) return nil;
-	
-	for (int i= 0; i < sectionSize; i++) {
-		total+= [[section[i] objectForKey:cTimeInterval] doubleValue];
+	for (NSMutableDictionary *trackingIterval in section) {
+		total+= [[trackingIterval objectForKey:cTimeInterval] doubleValue];
 	}
 	
 	if (!active && section == 0) {
