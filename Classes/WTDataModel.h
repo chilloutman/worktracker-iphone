@@ -28,6 +28,5 @@
 
 // Getters for specific data
 - (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval;
-- (NSArray *)trackingIntervalsForProject:(NSString *)project;
 
 @end

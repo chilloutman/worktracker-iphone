@@ -120,10 +120,6 @@ static WTDataModel *sharedInstace= nil;
 	}
 }
 
-- (NSArray *)trackingIntervalsForProject:(NSString *)project {
-	return nil;
-}
-
 #pragma mark -
 
 - (NSUInteger)retainCount {
