@@ -105,20 +105,20 @@ static WTSort *sharedSortingModel= nil;
 	NSAutoreleasePool *pool= [[NSAutoreleasePool alloc] init];
 	
 	// These are the arrays this method is going to fill / renew
-	// TODO: A Standard C array would be easier to read from (array[section][row]) but harder to create (malloc)
 	[daySections release];
 	[dayTitles release];
 	daySections= [[NSMutableArray alloc] init];
 	dayTitles= [[NSMutableArray alloc] init];
 	
 	NSCalendar *calendar= [WTUtil calendar];
+	
 	NSDate *date= [NSDate date];
 	NSDateComponents *dateComps;
-	
-	NSMutableArray *curArray= [NSMutableArray array]; // Every Section is represented by an array
 	NSDate *curDate; // Loops through the startDates
 	NSDateComponents *curDateComps; // Components of curDate
 	NSDate *lastDate= nil;
+	
+	NSMutableArray *curArray= [NSMutableArray array]; // Every Section is represented by an array
 	
 	for (NSMutableDictionary *trackingInterval in model.trackingIntervals) {
 		curDate= [trackingInterval objectForKey:cStartTime];
@@ -156,7 +156,8 @@ static WTSort *sharedSortingModel= nil;
 	
 	// Mark the Arrays as upToDate
 	daySectionsAreUpToDate= YES;
-	[pool drain];
+	
+	[pool release];
 }
 
 - (void)setupWeeks {
