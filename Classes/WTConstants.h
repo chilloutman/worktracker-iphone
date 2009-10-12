@@ -33,8 +33,6 @@ alpha:1.0]
 extern NSString * const cProjects;
 extern NSString * const cTrackingIntervals;
 extern NSString * const cStatus;
-extern NSString * const cStatusRunning;
-extern NSString * const cStatusStandby;
 
 // TrackingInterval : NSMutableDictionary keys
 #define cIntervalDictSize 4
