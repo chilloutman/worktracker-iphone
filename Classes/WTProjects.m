@@ -146,7 +146,7 @@
 		
 		// Notify others
 		[model didChangeCollection:cTrackingIntervals];
-		[[WTSort sharedSortingModel] invalidateSectionsForSortingType:WTSortingByAll];
+		[[WTSort sharedSortingModel] invalidateSectionsForSortingType:WTSortingAll];
 	}
 }
 
