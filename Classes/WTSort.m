@@ -29,7 +29,7 @@ static WTSort *sharedSortingModel= nil;
 	if (self= [super init]) {
 		model= [WTDataModel sharedDataModel];
 		engine= [WTEngine sharedEngine];
-		[self invalidateSectionsForSortingType:WTSortingByAll];
+		[self invalidateSectionsForSortingType:WTSortingAll];
 	}
 	return self;
 }
@@ -49,12 +49,11 @@ static WTSort *sharedSortingModel= nil;
 		case WTSortingByMonth:
 			monthSectionsAreUpToDate= NO;
 			break;
-		case WTSortingByAll:
+		case WTSortingAll:
 			daySectionsAreUpToDate= NO;
 			weekSectionsAreUpToDate= NO;
 			monthSectionsAreUpToDate= NO;
 			break;
-
 	}
 }
 
@@ -62,7 +61,7 @@ static WTSort *sharedSortingModel= nil;
 
 - (NSMutableArray *)trackingIntervalsForMostRecentDay {
 	if (!daySectionsAreUpToDate) [self setupDays];
-		
+	
 	if ([daySections count] > 0) return [daySections objectAtIndex:0];
 	
 	return nil;
@@ -163,7 +162,6 @@ static WTSort *sharedSortingModel= nil;
 - (void)setupWeeks {
 	NSAutoreleasePool *pool= [[NSAutoreleasePool alloc] init];
 	
-	// These are the arrays this method is going to fill / renew
 	[weekSections release];
 	[weekTitles release];
 	weekSections= [[NSMutableArray alloc] init];
@@ -173,9 +171,9 @@ static WTSort *sharedSortingModel= nil;
 	NSDate *date= [NSDate date];
 	NSDateComponents *dateComps;
 	
-	NSMutableArray *curArray= [NSMutableArray array]; // Every Section is represented by an array
-	NSDate *curDate; // Loops through the startDates
-	NSDateComponents *curDateComps; // Components of curDate
+	NSMutableArray *curArray= [NSMutableArray array];
+	NSDate *curDate;
+	NSDateComponents *curDateComps;
 	NSDate *lastDate= nil;
 	
 	for (NSMutableDictionary *trackingInterval in model.trackingIntervals) {
@@ -183,20 +181,14 @@ static WTSort *sharedSortingModel= nil;
 		curDateComps= [calendar components:NSYearCalendarUnit | NSWeekCalendarUnit fromDate:curDate];
 		dateComps= [calendar components: NSYearCalendarUnit | NSWeekCalendarUnit fromDate:date];
 		
-		// Check if curDate is on the same week the current reference (dateComps)
 		if ((curDateComps.year == dateComps.year) && (curDateComps.week == dateComps.week)) {
-			// Add to current array
 			[curArray addObject:trackingInterval];
 		} else {
 			if ([curArray count] > 0) {
-				// Add a title for the section
 				[weekTitles addObject:[WTUtil weekForDate:lastDate]];
-				// Add current array as a section
 				[weekSections addObject:curArray];
-				// Create a new current array
 				curArray= [NSMutableArray array];
 			}
-			// Set the date that maches
 			date= [trackingInterval objectForKey:cStartTime];
 			
 			[curArray addObject:trackingInterval];
@@ -204,15 +196,11 @@ static WTSort *sharedSortingModel= nil;
 		lastDate= curDate;
 	}
 	
-	// Finalize the last section
 	if ([curArray count] > 0) {
-		// Add a title for the section
 		[weekTitles addObject:[WTUtil weekForDate:lastDate]];
-		// Add current array as a section
 		[weekSections addObject:curArray];
 	}
 	
-	// Mark the Arrays as upToDate
 	weekSectionsAreUpToDate= YES;
 	[pool drain];
 }
@@ -220,7 +208,6 @@ static WTSort *sharedSortingModel= nil;
 - (void)setupMonths {
 	NSAutoreleasePool *pool= [[NSAutoreleasePool alloc] init];
 	
-	// These are the arrays this method is going to fill / renew
 	[monthSections release];
 	[monthTitles release];
 	monthSections= [[NSMutableArray alloc] init];
@@ -230,9 +217,9 @@ static WTSort *sharedSortingModel= nil;
 	NSDate *date= [NSDate date];
 	NSDateComponents *dateComps;
 	
-	NSMutableArray *curArray= [NSMutableArray array]; // Every Section is represented by an array
-	NSDate *curDate; // Loops through the startDates
-	NSDateComponents *curDateComps; // Components of curDate
+	NSMutableArray *curArray= [NSMutableArray array];
+	NSDate *curDate;
+	NSDateComponents *curDateComps;
 	NSDate *lastDate= nil;
 	
 	for (NSMutableDictionary *trackingInterval in model.trackingIntervals) {
@@ -240,20 +227,14 @@ static WTSort *sharedSortingModel= nil;
 		curDateComps= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit fromDate:curDate];
 		dateComps= [calendar components: NSYearCalendarUnit | NSMonthCalendarUnit fromDate:date];
 		
-		// Check if curDate is on the same month the current reference (dateComps)
 		if ((curDateComps.year == dateComps.year) && (curDateComps.month == dateComps.month)) {
-			// Add to current array
 			[curArray addObject:trackingInterval];
 		} else {
 			if ([curArray count] > 0) {
-				// Add a title for the section
 				[monthTitles addObject:[WTUtil monthForDate:lastDate]];
-				// Add current array as a section
 				[monthSections addObject:curArray];
-				// Create a new current array
 				curArray= [NSMutableArray array];
 			}
-			// Set the date that maches
 			date= [trackingInterval objectForKey:cStartTime];
 			
 			[curArray addObject:trackingInterval];
@@ -261,15 +242,11 @@ static WTSort *sharedSortingModel= nil;
 		lastDate= curDate;
 	}
 	
-	// Finalize the last section
 	if ([curArray count] > 0) {
-		// Add a title for the section
 		[monthTitles addObject:[WTUtil monthForDate:lastDate]];
-		// Add current array as a section
 		[monthSections addObject:curArray];
 	}
 	
-	// Mark the Arrays as upToDate
 	monthSectionsAreUpToDate= YES;
 	[pool drain];
 }
