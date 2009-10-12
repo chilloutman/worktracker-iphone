@@ -89,13 +89,13 @@
 	if (buttonIndex == 0) {
 		// Delete everything
 		[model deleteTrackingIntervals:YES];
+		[tableModel invalidateSectionsForSortingType:WTSortingAll];
 		
-		[tableModel invalidateSectionsForSortingType:WTSortingByAll];
 		[tableView reloadData];
 	} else if (buttonIndex == 1) {
 		[model deleteTrackingIntervals:NO];
+		[tableModel invalidateSectionsForSortingType:WTSortingAll];
 		
-		[tableModel invalidateSectionsForSortingType:WTSortingByAll];
 		[tableView reloadData];
 	}
 }
