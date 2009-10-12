@@ -115,20 +115,20 @@
 		double hours= interval / 3600;
 		timeString= [NSString stringWithFormat:@"%.3lf h", hours];
 	} else {
-		int minutes= (int)interval / 60;
+		int minutes= (int) interval / 60;
 		if (minutes > 59) {
+			int hours= (minutes - (minutes % 60)) / 60;
 			minutes= minutes % 60;
-			int hours= (int)interval / 3600;
 			if (hours > 23) {
-				int days= (int)interval / 86400;
-				timeString= [NSString stringWithFormat:@"%d d %d h %d m", days, hours, minutes];
-			} else {
-				timeString= [NSString stringWithFormat:@"%d h %d m", hours, minutes];
-			}
-			
-		} else {
-			timeString= [NSString stringWithFormat:@"%d m", minutes];
-		}
+				int days= (hours - (hours % 24)) / 24;
+				hours= hours % 24;
+				if (days > 6) {
+					int weeks= (days - (days % 7) / 7);
+					days= days % 7;
+					timeString= [NSString stringWithFormat:@"%d w %d d %d h %d m", weeks, days, hours, minutes];
+				} else timeString= [NSString stringWithFormat:@"%d d %d h %d m", days, hours, minutes];
+			} else timeString= [NSString stringWithFormat:@"%d h %d m", hours, minutes];
+		} else timeString= [NSString stringWithFormat:@"%d m", minutes];
 	}
 	
 	return timeString;
@@ -167,11 +167,13 @@
 
 #pragma mark TrackingItervals
 
-+ (NSString *)totalTimeForSection:(NSMutableArray *)section withActive:(BOOL)active {
++ (NSString *)totalTimeForSection:(NSMutableDictionary **)section size:(NSInteger)sectionSize withActive:(BOOL)active {
 	NSTimeInterval total= 0;
 	
-	for (NSMutableDictionary *trackingIterval in section) {
-		total+= [[trackingIterval objectForKey:cTimeInterval] doubleValue];
+	if (section == NULL) return nil;
+	
+	for (int i= 0; i < sectionSize; i++) {
+		total+= [[section[i] objectForKey:cTimeInterval] doubleValue];
 	}
 	
 	if (!active && section == 0) {
