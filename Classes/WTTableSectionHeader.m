@@ -29,7 +29,7 @@ static UILabel *label= nil;
 }
 
 - (id)initWithFrame:(CGRect)frame {
-	if (self = [super initWithFrame:frame]) {
+	if (self= [super initWithFrame:frame]) {
 		// Initialization code		
 	}
 	return self;
@@ -41,13 +41,13 @@ static UILabel *label= nil;
 // call -setNeedsDisplay when they change
 - (void)setFirstText:(NSString *)s {
 	[firstText release];
-	firstText = [s copy];
+	firstText= [s copy];
 	[self setNeedsDisplay];
 }
 
 - (void)setLastText:(NSString *)s {
 	[lastText release];
-	lastText = [s copy];
+	lastText= [s copy];
 	[self setNeedsDisplay]; 
 }
 

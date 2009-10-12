@@ -30,20 +30,20 @@ static UIFont *lastTextFont= nil;
 // call -setNeedsDisplay when they change
 - (void)setFirstText:(NSString *)s {
 	[firstText release];
-	firstText = [s copy];
+	firstText= [s copy];
 	[self setNeedsDisplay];
 }
 
 - (void)setLastText:(NSString *)s {
 	[lastText release];
-	lastText = [s copy];
+	lastText= [s copy];
 	[self setNeedsDisplay]; 
 }
 
 #pragma mark Draw
 
 - (void)drawContentView:(CGRect)r {
-	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextRef context= UIGraphicsGetCurrentContext();
 	
 	UIColor *backgroundColor= [UIColor whiteColor];
 	UIColor *textColor= [UIColor blackColor];
