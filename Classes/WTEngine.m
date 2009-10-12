@@ -51,7 +51,7 @@ static WTEngine *sharedEngine= nil;
 
 - (void)startTrackingProject:(NSString *)projectName {
 	model.active= [NSNumber numberWithBool:YES];
-	[[WTSort sharedSortingModel] invalidateSectionsForSortingType:WTSortingByAll]; // I'm sure there is a more efficient way than reordering everything
+	[[WTSort sharedSortingModel] invalidateSectionsForSortingType:WTSortingAll];
 	
 	// TrackingInterval
 	NSMutableDictionary *activeInterval= [[NSMutableDictionary alloc] init];
