@@ -42,6 +42,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	// Notify the currently visible view
 	[tableController.tableView reloadData];
+	[tableController viewWillAppear:animated];
 }
 
 #pragma mark push & pop
