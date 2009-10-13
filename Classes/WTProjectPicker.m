@@ -47,6 +47,7 @@
 	[cancelButton release];
 	[okButton release];
 	[flexSpace release];
+	[titleItem release];
 	
 	// ---
 	

@@ -21,16 +21,17 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	// UI
-	
-	//[application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-	
 	window= [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
 	// Initialize viewControllers
-	WTMainViewController *mainController= [[[WTMainViewController alloc] init] autorelease]; // Tab 1
-	WTProjectsRootController *projectsController= [[[WTProjectsRootController alloc] init] autorelease]; // Tab 2
-	WTOverviewRootController *historyController= [[[WTOverviewRootController alloc] init] autorelease]; // Tab 3
+	WTMainViewController *mainController= [[WTMainViewController alloc] init]; // Tab 1
+	WTProjectsRootController *projectsController= [[WTProjectsRootController alloc] init]; // Tab 2
+	WTOverviewRootController *historyController= [[WTOverviewRootController alloc] init]; // Tab 3
+	
 	NSArray *viewControllers= [NSArray arrayWithObjects:mainController, projectsController, historyController, nil];
+	[mainController release];
+	[projectsController release];
+	[historyController release];
 	
 	
 	// Setup tabBarcontroller

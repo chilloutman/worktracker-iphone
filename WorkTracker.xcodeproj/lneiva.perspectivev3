@@ -285,7 +285,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>20</integer>
+									<integer>22</integer>
 									<integer>14</integer>
 									<integer>6</integer>
 									<integer>1</integer>
@@ -330,7 +330,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>EF28D2F10FEC0D7300AF7431</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>WTProjectDetails.m</string>
+								<string>WTProjectAdd.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -338,23 +338,23 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>EF28D2F20FEC0D7300AF7431</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>WTProjectDetails.m</string>
+										<string>WTProjectAdd.m</string>
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>EF2979A510849C1C0048BC89</string>
+										<string>EF297A231084A7F80048BC89</string>
 										<key>history</key>
 										<array>
-											<string>EF29796F1084960C0048BC89</string>
-											<string>EF2979771084994C0048BC89</string>
-											<string>EF297986108499F20048BC89</string>
-											<string>EF297987108499F20048BC89</string>
-											<string>EF297988108499F20048BC89</string>
-											<string>EF29798E10849A2C0048BC89</string>
-											<string>EF29798F10849A2C0048BC89</string>
-											<string>EF29799710849B620048BC89</string>
-											<string>EF29799810849B620048BC89</string>
-											<string>EF29799910849B620048BC89</string>
+											<string>EF2979D01084A1DF0048BC89</string>
+											<string>EF2979D11084A1DF0048BC89</string>
+											<string>EF2979D21084A1DF0048BC89</string>
+											<string>EF2979D31084A1DF0048BC89</string>
+											<string>EF2979D41084A1DF0048BC89</string>
+											<string>EF2979D51084A1DF0048BC89</string>
+											<string>EF2979EC1084A4D40048BC89</string>
+											<string>EF297A0B1084A7250048BC89</string>
+											<string>EF297A141084A7430048BC89</string>
+											<string>EF297A151084A7430048BC89</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -690,7 +690,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>EF2979A610849C1C0048BC89</string>
+		<string>EF297A241084A7F80048BC89</string>
 		<string>EF771AF90FF7E7B500071BA2</string>
 		<string>EF2973D8108342A90048BC89</string>
 		<string>EF2973D9108342A90048BC89</string>

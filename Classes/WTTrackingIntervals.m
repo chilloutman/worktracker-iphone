@@ -140,7 +140,7 @@
 	NSMutableArray *headerTitles= [tableModel headerTitlesForSortingType:activeSortingType];
 	tableHeader.firstText= [headerTitles objectAtIndex:section];
 	NSMutableArray *sectionArray= [[tableModel sectionArrayForSortingType:activeSortingType] objectAtIndex:section];
-	tableHeader.lastText= [WTUtil totalTimeForSection:sectionArray withActive:NO];
+	tableHeader.lastText= [WTUtil formattedTotalTimeForIntervals:sectionArray withActive:NO];
 	
 	return tableHeader;
 }

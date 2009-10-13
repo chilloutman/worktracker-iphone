@@ -27,10 +27,11 @@
 
 - (void)loadView {
 	CGRect screen= [[UIScreen mainScreen] applicationFrame];
+	CGSize contentSize= CGSizeMake(screen.size.width, screen.size.height/2 - 28);
 	
-	self.view= [[UIView alloc] initWithFrame:screen];
+	self.view= [[UIView alloc] initWithFrame:CGRectMake(0.0, -250.0, contentSize.width, contentSize.height)];
 	
-	tableView= [[UITableView alloc] initWithFrame:CGRectMake(screen.origin.x, screen.origin.y + 23, screen.size.width, screen.size.height/2 - 28) style:UITableViewStyleGrouped];
+	tableView= [[UITableView alloc] initWithFrame:CGRectMake(screen.origin.x, screen.origin.y + 23, contentSize.width, contentSize.height) style:UITableViewStyleGrouped];
 	tableView.dataSource= self;
 	tableView.delegate= self;
 	
@@ -90,8 +91,6 @@
 	[self.view addSubview:tableView];
 }
 
-
-
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
@@ -100,6 +99,23 @@
 	//[nameField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.0];
 	[nameField becomeFirstResponder];
 	colorPicker.selectedSegmentIndex= 0;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[nameField resignFirstResponder];
+	[clientField resignFirstResponder];
+	colorPicker.selectedSegmentIndex= 0;
+}
+
+- (void)dismissView {
+	[self viewWillDisappear:YES];
+	[self.superController viewWillAppear:YES];
+	
+	[UIView beginAnimations:nil context:nil];
+	CGRect r= self.view.frame;
+	r.origin.y= -250;
+	self.view.frame= r;
+	[UIView commitAnimations];
 }
 
 #pragma mark Buttons & segmentedControl
@@ -111,12 +127,12 @@
 - (void)done {
 	[self.superController shouldAddNewProjectWithName:nameField.text color:projectColor client:clientField.text];
 	
-	[self.superController dismissModalViewControllerAnimated:YES];
+	[self dismissView];
 }
 
 - (void)cancel {
 	// Do nothing...
-	[self.superController dismissModalViewControllerAnimated:YES];
+	[self dismissView];
 }
 
 - (void)didSelectColor {

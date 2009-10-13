@@ -24,4 +24,6 @@
 
 @property (nonatomic, retain) WTProjects *superController;
 
+- (void)dismissView;
+
 @end

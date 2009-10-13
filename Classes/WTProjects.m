@@ -75,17 +75,29 @@
 		projectAddView= [[WTProjectAdd alloc] init];
 		projectAddView.superController= self;
 	}
-	[self presentModalViewController:projectAddView animated:YES];
+	
+	// The view is added offscreen...
+	[self.superController.view addSubview:projectAddView.view];
+	// And flies in
+	[UIView beginAnimations:nil context:nil];
+	CGRect r=projectAddView.view.frame;
+	r.origin.y= 0;
+	projectAddView.view.frame= r;
+	[projectAddView viewWillAppear:YES];
+	[UIView commitAnimations];
+	
+	//[self presentModalViewController:projectAddView animated:YES];
 }
 
 // User entered a name and pressed the done button 
 - (void)shouldAddNewProjectWithName:(NSString *)projectName color:(UIColor *)projectColor client:(NSString *)client {
-	//if ([model.projects containsObject:projectName]) return;
+	// Are there intervals with this project name
+	NSArray *intervals=[model.trackingIntervals filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(project == %@)", projectName]];
 	
 	NSMutableDictionary *project= [NSMutableDictionary dictionaryWithCapacity:cProjectDictSize];
 	if (client)[project setObject:client forKey:cProjectClient];
-	[project setObject:[NSNumber numberWithInt:0] forKey:cProjectNumber];
-	[project setObject:[NSNumber numberWithDouble:0.0] forKey:cProjectTime];
+	[project setObject:[NSNumber numberWithInt:[intervals count]] forKey:cProjectNumber];
+	[project setObject:[NSNumber numberWithDouble:[WTUtil totalTimeForInterval:intervals]] forKey:cProjectTime];
 	[project setObject:[NSKeyedArchiver archivedDataWithRootObject:projectColor] forKey:cProjectColor];
 	
 	// Add new project
@@ -169,23 +181,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tV cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	/*
-	static NSString *MyIdentifier= @"MyIdendifier";
-	
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
-    if (cell == nil) {
-		cell= [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:MyIdentifier] autorelease];
-		cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
-	}
-	
-	cell.showsReorderControl= NO;
-	NSString *projectName= [[model.projects allKeys] objectAtIndex:indexPath.row];
-	cell.textLabel.text= projectName;
-	NSMutableDictionary *project= [model.projects objectForKey:projectName];
-	cell.detailTextLabel.text= [project objectForKey:cProjectClient];
-	cell.contentView.backgroundColor= [NSKeyedUnarchiver unarchiveObjectWithData:[project objectForKey:cProjectColor]];
-	*/
-	
 	static NSString *cellID= @"ABCell";
 	
 	WTProjectCell *cell= (WTProjectCell *)[tableView dequeueReusableCellWithIdentifier:cellID];
@@ -215,20 +210,7 @@
 	}
 }
 
-// Reorder rows
-- (BOOL)tableView:(UITableView *)tV canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (void)tableView:(UITableView *)tV moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-	// Move the Object inside the Model
-//	NSMutableDictionary *sourceObject= [[model.projects objectAtIndex:sourceIndexPath.row] retain];
-//	[model.projects removeObjectAtIndex:sourceIndexPath.row];
-//	[model.projects insertObject:sourceObject atIndex:destinationIndexPath.row];
-//	[sourceObject release];
-//	
-//	[model didChangeCollection:cProjects];
-}
+// Reorder rows?
 	
 // Selection
 - (void)tableView:(UITableView *)tV didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

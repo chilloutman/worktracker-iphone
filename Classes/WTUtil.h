@@ -25,7 +25,8 @@
 
 + (UIImage *)imageWithColor:(UIColor *)color;
 
-+ (NSString *)totalTimeForSection:(NSMutableArray *)section withActive:(BOOL)active;
++ (NSTimeInterval)totalTimeForInterval:(NSArray *)intervals;
++ (NSString *)formattedTotalTimeForIntervals:(NSArray *)section withActive:(BOOL)active;
 + (NSString *)formattedProjectNameForTrackingInterval:(NSMutableDictionary *)pInterval running:(BOOL)running;
 + (NSString *)formattedStartTimeForTrackingInterval:(NSMutableDictionary *)pInterval;
 + (NSString *)formattedStopTimeForTrackingInterval:(NSMutableDictionary *)pInterval;

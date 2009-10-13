@@ -167,16 +167,21 @@
 
 #pragma mark TrackingItervals
 
-+ (NSString *)totalTimeForSection:(NSMutableArray *)section withActive:(BOOL)active {
++ (NSTimeInterval)totalTimeForInterval:(NSArray *)intervals {
 	NSTimeInterval total= 0;
 	
-	for (NSMutableDictionary *trackingIterval in section) {
+	//if (!active && section == 0) {
+		// TODO: don't count the Interval that is still running
+	
+	for (NSMutableDictionary *trackingIterval in intervals) {
 		total+= [[trackingIterval objectForKey:cTimeInterval] doubleValue];
 	}
 	
-	if (!active && section == 0) {
-		// TODO: don't count the Interval that is still running
-	}
+	return total;
+}
+
++ (NSString *)formattedTotalTimeForIntervals:(NSArray *)intervals withActive:(BOOL)active {
+	NSTimeInterval total= [self totalTimeForInterval:intervals];
 	
 	if (total > 0) {
 		return [NSString stringWithFormat:@"%.2f h", total / 3600];

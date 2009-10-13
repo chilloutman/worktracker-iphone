@@ -59,11 +59,11 @@
 							
 }
 
-- (void)viewWillAppear:(BOOL)a {
+- (void)viewDidAppear:(BOOL)a {
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:YES];
 }
 
-- (void)viewWillDisappear:(BOOL)a {
+- (void)viewDidDisappear:(BOOL)a {
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 

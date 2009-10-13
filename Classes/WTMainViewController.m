@@ -146,7 +146,7 @@
 	
 	// Table header
 	NSMutableArray *sectionArray= [tableModel trackingIntervalsForMostRecentDay];
-	tableHeader.lastText= [WTUtil totalTimeForSection:sectionArray withActive:YES];
+	tableHeader.lastText= [WTUtil formattedTotalTimeForIntervals:sectionArray withActive:YES];
 }
 
 - (void)updateUIElements {
@@ -273,7 +273,7 @@
 		tableHeader= [[WTTableSectionHeader alloc] initWithFrame:CGRectZero];
 		tableHeader.firstText= NSLocalizedString(@"Today", @"");
 		NSMutableArray *sectionArray= [tableModel trackingIntervalsForMostRecentDay];
-		tableHeader.lastText= [WTUtil totalTimeForSection:sectionArray withActive:YES];
+		tableHeader.lastText= [WTUtil formattedTotalTimeForIntervals:sectionArray withActive:YES];
 	}
 
 	if (section == 0) {
