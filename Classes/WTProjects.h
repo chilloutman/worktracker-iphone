@@ -22,14 +22,17 @@
 	WTProjectsRootController *superController;
 	
 	WTDataModel *model;
+	NSArray *projects;
 }
 
 @property (nonatomic, retain) WTProjectsRootController *superController;
+@property (nonatomic, retain) NSArray *projects;
 
 - (void)shouldAddNewProjectWithName:(NSString *)projectName color:(UIColor *)projectColor client:(NSString *)client;
 - (void)shouldDeleteProjectAtIndexPath:(NSIndexPath *)indexPath;
 
 // Private
+- (void)refreshProjects;
 - (void)editTableView;
 - (void)deleteProjectAtIndex:(NSUInteger)indexPath;
 
