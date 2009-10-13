@@ -142,7 +142,7 @@
 	WTIntervalCell *cell= (WTIntervalCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 	NSMutableDictionary *interval= nil;
 	if ([model.trackingIntervals count] > 0) interval= [model.trackingIntervals objectAtIndex:0];
-	cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForTrackingInterval:interval] decimal:YES];
+	cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForTrackingInterval:nil] decimal:YES];
 	
 	// Table header
 	NSMutableArray *sectionArray= [tableModel trackingIntervalsForMostRecentDay];
@@ -178,9 +178,6 @@
 		startButton.enabled= YES;
 		stopButton.enabled= NO;			
 	}
-	
-	// Update tableView
-	[tableView reloadData];
 }
 
 #pragma mark Handle buttons
@@ -197,14 +194,19 @@
 	// Now we wait until a project gets picked
 }
 - (void)userPickedProjectAtIndex:(NSUInteger)index {
+	// Dismiss the picker and move on
+	[self dismissModalViewControllerAnimated:YES];
+	
 	if (index >= 0) {
 		[self.engine startTrackingProject:[[model.projects allKeys] objectAtIndex:index]];
 		
 		[self updateUIElements];
 		[self.engine pingEvery:cTimeRefreshRate target:self selector:@selector(updateActiveElements:) identifier:cTimerMainView];
-		
-		// Dismiss the picker and move on
-		[self dismissModalViewControllerAnimated:YES];
+				
+		if ([tableView numberOfRowsInSection:1] > 0) {
+			[tableView deleteSections:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
+		}
+		[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
 	}
 }
 - (void)userCanceledProjectPicker {
@@ -216,6 +218,7 @@
 	[self.engine stopTracking];
 	[self.engine stopPinging:cTimerMainView];
 	[self updateUIElements];
+	[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
 }
 
 - (void)displayInfoPage {
@@ -241,7 +244,7 @@
 	if (section == 0) {
 		return numberOfRows;
 	} else {
-		return 4 - numberOfRows;
+		return MAX(0, 4 - numberOfRows);
 	}
 }
 
