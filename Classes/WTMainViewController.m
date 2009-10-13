@@ -11,7 +11,7 @@
 #import "WTInfo.h"
 
 #import "WTMainBackgroundView.h"
-#import "WTTableViewCell.h"
+#import "WTIntervalCell.h"
 #import "WTTableSectionHeader.h"
 
 #import "WTDataModel.h"
@@ -139,7 +139,7 @@
 
 - (void)updateActiveElements:(NSTimer *)theTimer {
 	// Active table cell
-	WTTableViewCell *cell= (WTTableViewCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+	WTIntervalCell *cell= (WTIntervalCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 	NSMutableDictionary *interval= nil;
 	if ([model.trackingIntervals count] > 0) interval= [model.trackingIntervals objectAtIndex:0];
 	cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForTrackingInterval:interval] decimal:YES];
@@ -248,9 +248,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tV cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	static NSString *cellID= @"ABCell";
 	
-	WTTableViewCell *cell= (WTTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellID];
+	WTIntervalCell *cell= (WTIntervalCell *)[tableView dequeueReusableCellWithIdentifier:cellID];
 	if(cell == nil) {
-		cell= [[[WTTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellID] autorelease];
+		cell= [[[WTIntervalCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellID] autorelease];
 	}
 	
 	if (indexPath.section == 0) {

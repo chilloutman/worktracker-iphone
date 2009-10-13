@@ -6,9 +6,9 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "WTTableViewCell.h"
+#import "WTIntervalCell.h"
 
-@implementation WTTableViewCell
+@implementation WTIntervalCell
 
 @synthesize firstText;
 @synthesize lastText;
@@ -17,7 +17,7 @@ static UIFont *firstTextFont= nil;
 static UIFont *lastTextFont= nil;
 
 + (void)initialize {
-	if(self == [WTTableViewCell class]) {
+	if(self == [WTIntervalCell class]) {
 		firstTextFont= [[UIFont boldSystemFontOfSize:20] retain];
 		lastTextFont= [[UIFont systemFontOfSize:18] retain];
 		// this is a good spot to load any graphics you might be drawing in -drawContentView:

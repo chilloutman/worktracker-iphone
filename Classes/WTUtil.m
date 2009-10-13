@@ -135,8 +135,8 @@
 }
 
 + (UIImage *)imageWithColor:(UIColor *)color {
-	// This method draws little UIImages because that what a segmented control is able to display
-	CGSize size= CGSizeMake(20, 20);
+	// This method draws little UIImages
+	CGSize size= CGSizeMake(25, 25);
 	
 	UIGraphicsBeginImageContext(size);
 	CGContextRef ctx= UIGraphicsGetCurrentContext();

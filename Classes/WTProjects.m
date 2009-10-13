@@ -11,9 +11,12 @@
 #import "WTProjectAdd.h"
 #import "WTProjectDetails.h"
 
+#import "WTProjectCell.h"
+
 #import "WTDataModel.h"
 #import "WTConstants.h"
 #import "WTSort.h"
+#import "WTUtil.h"
 
 @implementation WTProjects
 
@@ -70,10 +73,11 @@
 }
 
 // User entered a name and pressed the done button 
-- (void)shouldAddNewProjectWithName:(NSString *)projectName color:(UIColor *)projectColor {
+- (void)shouldAddNewProjectWithName:(NSString *)projectName color:(UIColor *)projectColor client:(NSString *)client {
 	//if ([model.projects containsObject:projectName]) return;
 	
 	NSMutableDictionary *project= [NSMutableDictionary dictionaryWithCapacity:cProjectDictSize];
+	if (client)[project setObject:client forKey:cProjectClient];
 	[project setObject:[NSNumber numberWithInt:0] forKey:cProjectNumber];
 	[project setObject:[NSNumber numberWithDouble:0.0] forKey:cProjectTime];
 	[project setObject:[NSKeyedArchiver archivedDataWithRootObject:projectColor] forKey:cProjectColor];
@@ -157,17 +161,37 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tV cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	/*
 	static NSString *MyIdentifier= @"MyIdendifier";
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
     if (cell == nil) {
-		cell= [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier] autorelease];
+		cell= [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:MyIdentifier] autorelease];
 		cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
 	}
 	
 	cell.showsReorderControl= NO;
-	cell.textLabel.text= [[model.projects allKeys] objectAtIndex:indexPath.row];
+	NSString *projectName= [[model.projects allKeys] objectAtIndex:indexPath.row];
+	cell.textLabel.text= projectName;
+	NSMutableDictionary *project= [model.projects objectForKey:projectName];
+	cell.detailTextLabel.text= [project objectForKey:cProjectClient];
+	cell.contentView.backgroundColor= [NSKeyedUnarchiver unarchiveObjectWithData:[project objectForKey:cProjectColor]];
+	*/
 	
+	static NSString *cellID= @"ABCell";
+	
+	WTProjectCell *cell= (WTProjectCell *)[tableView dequeueReusableCellWithIdentifier:cellID];
+	if(cell == nil) {
+		cell= [[[WTProjectCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellID] autorelease];
+	}
+	
+	NSString *projectName= [[model.projects allKeys] objectAtIndex:indexPath.row];
+	NSMutableDictionary *project= [model.projects objectForKey:projectName];
+	
+	cell.firstText= projectName;
+	cell.lastText= [project objectForKey:cProjectClient];
+	cell.color= [NSKeyedUnarchiver unarchiveObjectWithData:[project objectForKey:cProjectColor]];
+		 
 	return cell;
 }
 

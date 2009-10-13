@@ -42,10 +42,11 @@ extern NSString * const cStopTime;
 extern NSString * const cTimeInterval;
 
 // Project : NSMutableDictionary keys
-#define cProjectDictSize 3
+#define cProjectDictSize 4
 extern NSString * const cProjectNumber;
 extern NSString * const cProjectTime;
 extern NSString * const cProjectColor;
+extern NSString * const cProjectClient;
 
 // Engine Keys
 extern NSString * const cTimerMainView;

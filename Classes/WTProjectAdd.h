@@ -10,10 +10,11 @@
 
 @class WTProjects;
 
-@interface WTProjectAdd : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface WTProjectAdd : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate> {
 	UIBarButtonItem *doneButton;
 	UITableView * tableView;
 	UITextField *nameField;
+	UITextField *clientField;
 	UISegmentedControl *colorPicker;
 	NSArray *colors;
 	UIColor *projectColor;

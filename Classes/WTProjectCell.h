@@ -1,19 +1,27 @@
 //
-//  WTTableViewCell.h
+//  WTProjectCell.h
 //  WorkTracker
 //
-//  Created by Lucas Neiva on 15.07.09.
+//  Created by Lucas Neiva on 10/12/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
 #import "ABTableViewCell.h"
 
-@interface WTTableViewCell : ABTableViewCell {
+@class ABTableViewCell;
+
+@interface WTProjectCell : ABTableViewCell {
+	UIView *overlayView;
+	
+	UIColor *color;
 	NSString *firstText;
 	NSString *lastText;
 }
 
 @property (nonatomic, copy) NSString *firstText;
 @property (nonatomic, copy) NSString *lastText;
+@property (nonatomic, retain) UIColor *color;
+
+- (void)drawOverlayView:(CGRect)r;
 
 @end

@@ -10,7 +10,7 @@
 #import "WTOverviewRootController.h"
 #import "WTTrackingDetails.h"
 
-#import "WTTableViewCell.h"
+#import "WTIntervalCell.h"
 #import "WTTableSectionHeader.h"
 
 #import "WTSort.h"
@@ -121,9 +121,9 @@
 - (UITableViewCell *)tableView:(UITableView *)pTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	static NSString *cellID= @"ABCell";
 	
-	WTTableViewCell *cell= (WTTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellID];
+	WTIntervalCell *cell= (WTIntervalCell *)[tableView dequeueReusableCellWithIdentifier:cellID];
 	if(cell == nil) {
-		cell= [[[WTTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellID] autorelease];
+		cell= [[[WTIntervalCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellID] autorelease];
 	}
 	
 	NSMutableDictionary *trackingInterval= [[[tableModel sectionArrayForSortingType:activeSortingType] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];

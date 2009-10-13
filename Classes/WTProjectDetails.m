@@ -46,7 +46,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
-		case 0: return nil;
+		case 0: return NSLocalizedString(@"Project Details", @"Title for the project detail view");
 		case 1: return nil;
 		case 2: return NSLocalizedString(@"Tracking Intervals", @"");
 		default: return nil;
@@ -56,7 +56,7 @@
 - (NSInteger)tableView:(UITableView *)tV numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
 		case 0: return 2;
-		case 1: return 1;
+		case 1: return 2;
 		case 2: return [trackingIntervals count];
 		default: return 0;
 	}
@@ -71,8 +71,21 @@
 		cell.selectionStyle= UITableViewCellSelectionStyleNone;
 	}
 	
+	NSMutableDictionary *interval;
+	
 	switch (indexPath.section) {
 		case 0:
+			if (indexPath.row == 0) {
+				cell.textLabel.text= NSLocalizedString(@"Color", @"");
+				UIView *colorView= [[[UIView alloc] initWithFrame:CGRectMake(160, 6, 130, 31)] autorelease];
+				colorView.backgroundColor= [NSKeyedUnarchiver unarchiveObjectWithData:[project objectForKey:cProjectColor]];
+				[cell.contentView addSubview:colorView];				
+			} else {
+				cell.textLabel.text= NSLocalizedString(@"Client", @"");
+				cell.detailTextLabel.text= [project objectForKey:cProjectClient];
+			}
+			break;
+		case 1:
 			if (indexPath.row == 0) {
 				cell.textLabel.text= NSLocalizedString(@"Number of trackings", @"");
 				cell.detailTextLabel.text= [[project objectForKey:cProjectNumber] stringValue];
@@ -81,19 +94,11 @@
 				cell.detailTextLabel.text= [WTUtil formattedTimeInterval:[[project objectForKey:cProjectTime] doubleValue] decimal:NO];
 			}
 			break;
-		case 1:
-			cell.textLabel.text= NSLocalizedString(@"Color", @"");
-			
-			UIView *colorView= [[[UIView alloc] initWithFrame:CGRectMake(160, 6, 130, 31)] autorelease];
-			colorView.backgroundColor= [NSKeyedUnarchiver unarchiveObjectWithData:[project objectForKey:cProjectColor]];
-			[cell.contentView addSubview:colorView];
-			break;
-		case 2:{
-			NSMutableDictionary *interval= [trackingIntervals objectAtIndex:indexPath.row];
+		case 2:
+			interval= [trackingIntervals objectAtIndex:indexPath.row];
 			
 			cell.textLabel.text= [WTUtil shortDateForDate:[interval objectForKey:cStartTime]];
 			cell.detailTextLabel.text= [WTUtil formattedTimeInterval:[[interval objectForKey:cTimeInterval] doubleValue] decimal:NO];
-			}
 			break;
 	}
 	

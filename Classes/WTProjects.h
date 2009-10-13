@@ -26,7 +26,7 @@
 
 @property (nonatomic, retain) WTProjectsRootController *superController;
 
-- (void)shouldAddNewProjectWithName:(NSString *)projectName color:(UIColor *)projectColor;
+- (void)shouldAddNewProjectWithName:(NSString *)projectName color:(UIColor *)projectColor client:(NSString *)client;
 - (void)shouldDeleteProjectAtIndexPath:(NSIndexPath *)indexPath;
 
 // Private

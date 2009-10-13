@@ -21,6 +21,7 @@ NSString *cStopTime= @"stopTime";
 NSString *cProjectNumber= @"numberOfInervals";
 NSString *cProjectTime= @"totalTime";
 NSString *cProjectColor= @"projectColor";
+NSString *cProjectClient= @"projectClient";
 
 // Engine keys
 NSString *cTimerMainView= @"mainViewTimer";

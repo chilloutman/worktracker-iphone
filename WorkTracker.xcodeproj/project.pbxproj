@@ -18,8 +18,9 @@
 		EF08F68F1010BAEE00A83A37 /* tableSectionHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = EF08F68E1010BAEE00A83A37 /* tableSectionHeader.png */; };
 		EF08F6921010BB3C00A83A37 /* WTTableSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EF08F6911010BB3C00A83A37 /* WTTableSectionHeader.m */; };
 		EF20E065100DE6A600C86B75 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF20E063100DE6A600C86B75 /* ABTableViewCell.m */; };
-		EF20E068100DE78F00C86B75 /* WTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF20E067100DE78F00C86B75 /* WTTableViewCell.m */; };
+		EF20E068100DE78F00C86B75 /* WTIntervalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF20E067100DE78F00C86B75 /* WTIntervalCell.m */; };
 		EF28D3060FEC0E5900AF7431 /* WTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF28D3050FEC0E5900AF7431 /* WTMainViewController.m */; };
+		EF297660108388D70048BC89 /* WTProjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF29765F108388D70048BC89 /* WTProjectCell.m */; };
 		EF4ED5A9101EEEA20031C9B5 /* WTUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4ED5A8101EEEA20031C9B5 /* WTUtil.m */; };
 		EF5CDBC1101DA876004EFC4D /* WTSort.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5CDBC0101DA876004EFC4D /* WTSort.m */; };
 		EF5DEB04100E041300E0F836 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5DEB03100E041300E0F836 /* icon.png */; };
@@ -66,10 +67,12 @@
 		EF08F6911010BB3C00A83A37 /* WTTableSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTableSectionHeader.m; sourceTree = "<group>"; };
 		EF20E063100DE6A600C86B75 /* ABTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTableViewCell.m; sourceTree = "<group>"; };
 		EF20E064100DE6A600C86B75 /* ABTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTableViewCell.h; sourceTree = "<group>"; };
-		EF20E066100DE78F00C86B75 /* WTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTableViewCell.h; sourceTree = "<group>"; };
-		EF20E067100DE78F00C86B75 /* WTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTableViewCell.m; sourceTree = "<group>"; };
+		EF20E066100DE78F00C86B75 /* WTIntervalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTIntervalCell.h; sourceTree = "<group>"; };
+		EF20E067100DE78F00C86B75 /* WTIntervalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTIntervalCell.m; sourceTree = "<group>"; };
 		EF28D3040FEC0E5900AF7431 /* WTMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMainViewController.h; sourceTree = "<group>"; };
 		EF28D3050FEC0E5900AF7431 /* WTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMainViewController.m; sourceTree = "<group>"; };
+		EF29765E108388D70048BC89 /* WTProjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTProjectCell.h; sourceTree = "<group>"; };
+		EF29765F108388D70048BC89 /* WTProjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTProjectCell.m; sourceTree = "<group>"; };
 		EF4ED5A7101EEEA20031C9B5 /* WTUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTUtil.h; sourceTree = "<group>"; };
 		EF4ED5A8101EEEA20031C9B5 /* WTUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTUtil.m; sourceTree = "<group>"; };
 		EF5CDBBF101DA876004EFC4D /* WTSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSort.h; sourceTree = "<group>"; };
@@ -210,8 +213,10 @@
 			children = (
 				EF20E064100DE6A600C86B75 /* ABTableViewCell.h */,
 				EF20E063100DE6A600C86B75 /* ABTableViewCell.m */,
-				EF20E066100DE78F00C86B75 /* WTTableViewCell.h */,
-				EF20E067100DE78F00C86B75 /* WTTableViewCell.m */,
+				EF20E066100DE78F00C86B75 /* WTIntervalCell.h */,
+				EF20E067100DE78F00C86B75 /* WTIntervalCell.m */,
+				EF29765E108388D70048BC89 /* WTProjectCell.h */,
+				EF29765F108388D70048BC89 /* WTProjectCell.m */,
 				EF08F6901010BB3C00A83A37 /* WTTableSectionHeader.h */,
 				EF08F6911010BB3C00A83A37 /* WTTableSectionHeader.m */,
 			);
@@ -391,7 +396,7 @@
 				EFCD05DF100A3A87002AE917 /* WTConstants.m in Sources */,
 				EF06A58A100B71C800C71656 /* WTMainBackgroundView.m in Sources */,
 				EF20E065100DE6A600C86B75 /* ABTableViewCell.m in Sources */,
-				EF20E068100DE78F00C86B75 /* WTTableViewCell.m in Sources */,
+				EF20E068100DE78F00C86B75 /* WTIntervalCell.m in Sources */,
 				EFACDA0E100E208100B2043E /* WTEngine.m in Sources */,
 				EF08F6921010BB3C00A83A37 /* WTTableSectionHeader.m in Sources */,
 				EF5CDBC1101DA876004EFC4D /* WTSort.m in Sources */,
@@ -401,6 +406,7 @@
 				EF85E6201074E615002B683A /* WTTrackingIntervals.m in Sources */,
 				EF85E8221075E899002B683A /* WTProjectDetails.m in Sources */,
 				EF85E8331075F3F0002B683A /* WTProjects.m in Sources */,
+				EF297660108388D70048BC89 /* WTProjectCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
