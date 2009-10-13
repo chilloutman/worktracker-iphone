@@ -17,12 +17,13 @@
 
 @synthesize trackingIntervals;
 
-- (id)initWithProject:(NSMutableDictionary *)pProject name:(NSString *)projectName trackingIntervals:(NSArray *)pTrackingIntervals {
+- (id)initWithProject:(NSMutableDictionary *)pProject name:(NSString *)pProjectName trackingIntervals:(NSArray *)pTrackingIntervals {
 	if (self= [super init]) {
 		project= pProject;
 		self.trackingIntervals= ([pTrackingIntervals count] > 0) ? pTrackingIntervals : nil;
 		
-		self.title= projectName;
+		self.title= NSLocalizedString(@"Details", @"Title for detail view");
+		projectName= [pProjectName copy];
 	}
 	return self;
 }
@@ -46,7 +47,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
-		case 0: return NSLocalizedString(@"Project Details", @"Title for the project detail view");
+		case 0: return nil;
 		case 1: return nil;
 		case 2: return NSLocalizedString(@"Tracking Intervals", @"");
 		default: return nil;
@@ -55,7 +56,7 @@
 
 - (NSInteger)tableView:(UITableView *)tV numberOfRowsInSection:(NSInteger)section {
 	switch (section) {
-		case 0: return 2;
+		case 0: return 3;
 		case 1: return 2;
 		case 2: return [trackingIntervals count];
 		default: return 0;
@@ -76,14 +77,18 @@
 	switch (indexPath.section) {
 		case 0:
 			if (indexPath.row == 0) {
+				cell.textLabel.text= NSLocalizedString(@"Project Name", @"");
+				cell.detailTextLabel.text= projectName;
+			} else if (indexPath.row == 1) {
+				cell.textLabel.text= NSLocalizedString(@"Client", @"");
+				cell.detailTextLabel.text= [project objectForKey:cProjectClient];
+			} else {
 				cell.textLabel.text= NSLocalizedString(@"Color", @"");
 				UIView *colorView= [[[UIView alloc] initWithFrame:CGRectMake(160, 6, 130, 31)] autorelease];
 				colorView.backgroundColor= [NSKeyedUnarchiver unarchiveObjectWithData:[project objectForKey:cProjectColor]];
-				[cell.contentView addSubview:colorView];				
-			} else {
-				cell.textLabel.text= NSLocalizedString(@"Client", @"");
-				cell.detailTextLabel.text= [project objectForKey:cProjectClient];
+				[cell.contentView addSubview:colorView];
 			}
+
 			break;
 		case 1:
 			if (indexPath.row == 0) {
@@ -118,6 +123,7 @@
 }
 
 - (void)dealloc {
+	[projectName release];
     [super dealloc];
 }
 

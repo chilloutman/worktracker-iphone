@@ -15,6 +15,7 @@
 	NSArray *trackingIntervals;
 	
 	NSMutableDictionary *project;
+	NSString *projectName;
 }
 
 @property (nonatomic, retain) NSArray *trackingIntervals;

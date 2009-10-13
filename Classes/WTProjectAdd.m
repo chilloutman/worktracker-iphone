@@ -56,6 +56,7 @@
 	
 	// This is where the user types a name for the new project
 	nameField= [[UITextField alloc] initWithFrame:cellContentFrame];
+	nameField.placeholder= NSLocalizedString(@"Project Name", @"Placeholder for project name text field");
 	nameField.adjustsFontSizeToFitWidth= YES;
 	nameField.font= [UIFont systemFontOfSize:20];
 	nameField.contentVerticalAlignment= UIControlContentVerticalAlignmentCenter;
@@ -67,6 +68,7 @@
 	
 	// Client
 	clientField= [[UITextField alloc] initWithFrame:cellContentFrame];
+	clientField.placeholder= NSLocalizedString(@"Client", @"Placeholder for client text field");
 	clientField.adjustsFontSizeToFitWidth= YES;
 	clientField.font= [UIFont systemFontOfSize:20];
 	clientField.contentVerticalAlignment= UIControlContentVerticalAlignmentCenter;
@@ -128,7 +130,7 @@
 		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 		[nameField becomeFirstResponder];
 	} else {
-		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+		[tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 		[clientField becomeFirstResponder];
 	}
 
@@ -144,21 +146,27 @@
 #pragma mark UITableView delegate & dataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)pTableView {
-	return 3;
+	return 2;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
-		case 0: return NSLocalizedString(@"Project Name", @"Title for the textField where the project name is supposed to be entered");
+		case 0: return nil;//return NSLocalizedString(@"Project Name", @"Title for the textField where the project name is supposed to be entered");
 		case 1: return NSLocalizedString(@"Color", @"Title for the place where the user can select a color for the project");
-		case 2: return NSLocalizedString(@"Client", @"Title for the client textField");
 	} 
 	
 	return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 1;
+	switch (section) {
+		case 0:
+			return 2;
+		case 1:
+			return 1;
+	}
+	
+	return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)pTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -174,16 +182,14 @@
 	
 	switch (indexPath.section) {
 		case 0:
-			[cell.contentView addSubview:nameField];
+			if (indexPath.row == 0) [cell.contentView addSubview:nameField];
+			else [cell.contentView addSubview:clientField];
 			break;
 		case 1:
 			c= cell.contentView.frame;
 			c.size.width-= 20;
 			colorPicker.frame= c;
 			[cell.contentView addSubview:colorPicker];
-			break;
-		case 2:
-			[cell.contentView addSubview:clientField];
 			break;
 	}
 	

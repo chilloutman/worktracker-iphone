@@ -21,6 +21,7 @@
 
 - (id)init {
 	if (self= [super init]) {
+		self.title= NSLocalizedString(@"Start Tracking", @"Title for projectPicker");
 	}
 	return self;
 }
@@ -32,12 +33,14 @@
 
 	// Toolbar
 	
+	UIBarButtonItem *titleItem= [[UIBarButtonItem alloc] initWithTitle:self.title style:UIBarStyleDefault target:nil action:nil];
 	UIBarButtonItem *cancelButton= [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(userCanceled)];
 	UIBarButtonItem *okButton= [[UIBarButtonItem alloc] initWithTitle:@"Start" style:UIBarButtonItemStyleDone target:self action:@selector(projectWasSelected)];
 	UIBarButtonItem *flexSpace= [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 	
 	UIToolbar *toolbar= [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, screen.size.width, 45)];
-	[toolbar setItems:[NSArray arrayWithObjects:cancelButton, flexSpace, okButton, nil]];
+	
+	[toolbar setItems:[NSArray arrayWithObjects:cancelButton, flexSpace, titleItem, flexSpace, okButton, nil]];
 	[self.view addSubview:toolbar];
 	
 	[toolbar release];

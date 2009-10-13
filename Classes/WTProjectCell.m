@@ -57,6 +57,11 @@ static UIFont *lastTextFont= nil;
 
 #pragma mark Draw
 
+- (void)setNeedsDisplay {
+	[super setNeedsDisplay];
+	[overlayView setNeedsDisplay];
+}
+
 -(void)layoutSubviews {
 	[super layoutSubviews];
 	CGRect f= self.bounds;

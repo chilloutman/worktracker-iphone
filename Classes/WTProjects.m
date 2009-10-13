@@ -21,6 +21,7 @@
 @implementation WTProjects
 
 @synthesize superController;
+@synthesize projects;
 
 #pragma mark Build
 
@@ -52,6 +53,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:animated];
+	[self refreshProjects];
+}
+
+- (void)refreshProjects {
+	self.projects= [[model.projects allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -86,7 +92,8 @@
 	[model.projects setObject:project forKey:projectName]; // The project name is used as key
 	// Notify the model so it can save the data
 	[model didChangeCollection:cProjects];
-	
+	// Refresh projects array
+	[self refreshProjects];
 	[tableView reloadData];
 }
 
@@ -102,14 +109,14 @@
 }
 
 - (void)shouldDeleteProjectAtIndexPath:(NSIndexPath *)indexPath {
-	NSString *projectToDelete= [[model.projects allKeys] objectAtIndex:indexPath.row];
+	NSString *projectToDelete= [projects objectAtIndex:indexPath.row];
 	
 	// Are there tracking intervals that are bound to this project?
 	intervalsToRemove= [[model.trackingIntervals filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(project == %@)", projectToDelete]] retain];
 	indexToDelete= indexPath.row;
 	
 	if ([intervalsToRemove count] > 0) {
-		// Ask if the intervals should be deleted too
+		// Ask if the intervals should also be deleted
 		UIAlertView *alert= [[UIAlertView alloc] initWithTitle:nil
 													   message:[NSString stringWithFormat:NSLocalizedString(@"Also delete all tracking intervals related to %@?", @""), projectToDelete]
 													  delegate:self 
@@ -124,10 +131,11 @@
 }
 
 - (void)deleteProjectAtIndex:(NSUInteger)index {
-	NSString *projectToDelete= [[model.projects allKeys] objectAtIndex:index];
+	NSString *projectToDelete= [projects objectAtIndex:index];
 	[model.projects removeObjectForKey:projectToDelete];
 	
 	[model didChangeCollection:cProjects];
+	[self refreshProjects];
 	[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
@@ -157,7 +165,7 @@
 #pragma mark UITableView build
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [model.projects count];
+	return [projects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tV cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -185,7 +193,7 @@
 		cell= [[[WTProjectCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellID] autorelease];
 	}
 	
-	NSString *projectName= [[model.projects allKeys] objectAtIndex:indexPath.row];
+	NSString *projectName= [projects objectAtIndex:indexPath.row];
 	NSMutableDictionary *project= [model.projects objectForKey:projectName];
 	
 	cell.firstText= projectName;
@@ -209,7 +217,7 @@
 
 // Reorder rows
 - (BOOL)tableView:(UITableView *)tV canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
+	return NO;
 }
 
 - (void)tableView:(UITableView *)tV moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
@@ -224,7 +232,7 @@
 	
 // Selection
 - (void)tableView:(UITableView *)tV didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSString *projectName= [[model.projects allKeys] objectAtIndex:indexPath.row];
+	NSString *projectName= [projects objectAtIndex:indexPath.row];
 	NSMutableDictionary *project= [model.projects objectForKey:projectName];
 	NSArray *trackingIntervals= [model.trackingIntervals filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"project == %@", projectName]];
 	
@@ -240,7 +248,7 @@
 	[tableView release];
 	[doneButton release];
 	[editButton release];
-	[model release];
+	[projects release];
 	
     [super dealloc];
 }
