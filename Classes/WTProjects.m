@@ -106,7 +106,7 @@
 	[model didChangeCollection:cProjects];
 	// Refresh projects array
 	[self refreshProjects];
-	[tableView reloadData];
+	[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:[projects indexOfObject:project] inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 // User tabbed the edit Button

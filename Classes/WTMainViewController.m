@@ -127,6 +127,7 @@
 	}
 	
     [self updateUIElements];
+	[tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -201,12 +202,15 @@
 		[self.engine startTrackingProject:[[model.projects allKeys] objectAtIndex:index]];
 		
 		[self updateUIElements];
-		[self.engine pingEvery:cTimeRefreshRate target:self selector:@selector(updateActiveElements:) identifier:cTimerMainView];
 				
-		if ([tableView numberOfRowsInSection:1] > 0) {
-			[tableView deleteSections:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
-		}
+		[tableView beginUpdates];
 		[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+		if ([tableView numberOfRowsInSection:1] > 0) {
+			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
+		}
+		[tableView endUpdates];
+		
+		[self.engine pingEvery:cTimeRefreshRate target:self selector:@selector(updateActiveElements:) identifier:cTimerMainView];
 	}
 }
 - (void)userCanceledProjectPicker {

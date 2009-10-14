@@ -90,7 +90,7 @@
 		// Delete everything
 		[model deleteTrackingIntervals:YES];
 		[tableModel invalidateSectionsForSortingType:WTSortingAll];
-		
+			
 		[tableView reloadData];
 	} else if (buttonIndex == 1) {
 		[model deleteTrackingIntervals:NO];
