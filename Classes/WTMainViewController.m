@@ -141,8 +141,6 @@
 - (void)updateActiveElements:(NSTimer *)theTimer {
 	// Active table cell
 	WTIntervalCell *cell= (WTIntervalCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-	NSMutableDictionary *interval= nil;
-	if ([model.trackingIntervals count] > 0) interval= [model.trackingIntervals objectAtIndex:0];
 	cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForTrackingInterval:nil] decimal:YES];
 	
 	// Table header
