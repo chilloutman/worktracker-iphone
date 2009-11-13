@@ -8,6 +8,7 @@
 
 #import "WTProjectPicker.h"
 #import	"WTMainViewController.h"
+#import "WTCommentView.h"
 #import "WTDataModel.h"
 
 #import "WTConstants.h"
@@ -31,50 +32,58 @@
 	self.view= [[[UIView alloc] initWithFrame:screen] autorelease];
 	self.view.backgroundColor= [UIColor groupTableViewBackgroundColor];
 
-	// Toolbar
-	
-	UIBarButtonItem *titleItem= [[UIBarButtonItem alloc] initWithTitle:self.title style:UIBarStyleDefault target:nil action:nil];
+	// Navigation Bar
 	UIBarButtonItem *cancelButton= [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(userCanceled)];
 	UIBarButtonItem *okButton= [[UIBarButtonItem alloc] initWithTitle:@"Start" style:UIBarButtonItemStyleDone target:self action:@selector(projectWasSelected)];
-	UIBarButtonItem *flexSpace= [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 	
-	UIToolbar *toolbar= [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, screen.size.width, 45)];
-	
-	[toolbar setItems:[NSArray arrayWithObjects:cancelButton, flexSpace, titleItem, flexSpace, okButton, nil]];
-	[self.view addSubview:toolbar];
-	
-	[toolbar release];
-	[cancelButton release];
+	self.navigationItem.rightBarButtonItem= okButton;
 	[okButton release];
-	[flexSpace release];
-	[titleItem release];
+	self.navigationItem.leftBarButtonItem= cancelButton;
+	[cancelButton release];
 	
-	// ---
-	
-	// TODO: remove this and itroduce more features to fill up the view
-	UILabel *titleLabel= [[UILabel alloc] initWithFrame:CGRectMake(15, 60, screen.size.width-30, 60)];
-	titleLabel.text= NSLocalizedString(@"Pick the project you would like to track", @"Ask user to select a project");
-	titleLabel.textAlignment= UITextAlignmentCenter;
-	titleLabel.numberOfLines= 2;
-	titleLabel.backgroundColor= [UIColor clearColor];
-	titleLabel.font= [UIFont fontWithName:titleLabel.font.fontName size:18];
-	[self.view addSubview:titleLabel];
-	[titleLabel release];
-	
+	// Label
+	UILabel *projectLabel= [[UILabel alloc] initWithFrame:CGRectMake(15.0, 10.0, screen.size.width-30.0, 40.0)];
+	projectLabel.font= [UIFont boldSystemFontOfSize:18];
+	projectLabel.textColor= [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+	projectLabel.backgroundColor= [UIColor clearColor];
+	projectLabel.text= NSLocalizedString(@"Pick a project", @"Ask user to select a project");
+	[self.view addSubview:projectLabel];
+	[projectLabel release];
+	 
 	// Project selection
-	self.picker= [[UIPickerView alloc] initWithFrame:CGRectMake(0, screen.size.height/2+14, screen.size.width, screen.size.height/2)];
+	self.picker= [[UIPickerView alloc] initWithFrame:CGRectMake(0.0, 60.0, screen.size.width, 0.0)];
 	picker.delegate= self;
 	picker.dataSource= self;
 	picker.showsSelectionIndicator= YES;
 	[self.view addSubview:self.picker];
+	
+	// TableView
+	
+	tableView= [[UITableView alloc] initWithFrame:CGRectMake(0.0, projectLabel.frame.size.height + picker.frame.size.height + 20.0, screen.size.width, 200.0) style:UITableViewStyleGrouped];
+	tableView.contentInset= UIEdgeInsetsMake(35.0, 0.0, 0.0, 0.0);
+	tableView.dataSource= self;
+	tableView.delegate= self;
+	[self.view addSubview:tableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[picker reloadComponent:0];
+	[tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 	[super viewWillAppear:animated];
 }
 
-#pragma mark Serve the UIPickerView
+#pragma mark Buttons
+
+- (void)projectWasSelected {
+	// Nofify the mainView that a proj. was selectet
+	[superController userPickedProjectAtIndex:[picker selectedRowInComponent:0]];
+}
+
+- (void)userCanceled {
+	[superController userCanceledProjectPicker];
+}
+
+#pragma mark UIPickerView
 
 // With the picker the user can select wich project should be tracked 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -89,15 +98,43 @@
 	return [[[WTDataModel sharedDataModel].projects allKeys] objectAtIndex:row];
 }
 
-#pragma mark Buttons
+#pragma mark UITableView
 
-- (void)projectWasSelected {
-	// Nofify the mainView that a proj. was selectet
-	[superController userPickedProjectAtIndex:[picker selectedRowInComponent:0]];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)pTableView {
+	return 1;
 }
 
-- (void)userCanceled {
-	[superController userCanceledProjectPicker];
+- (NSInteger)tableView:(UITableView *)tV numberOfRowsInSection:(NSInteger)section {
+	switch (section) {
+		case 0:	return 1;
+		default: return 0;
+	}
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tV cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	static NSString *cellID= @"cellID";
+	
+	UITableViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellID];
+	if(cell == nil) {
+		cell= [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellID] autorelease];
+		cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
+	}
+	
+	switch (indexPath.section) {
+		case 0:
+			cell.textLabel.text= NSLocalizedString(@"Add Comment", @"");
+			break;
+	}
+	
+	return cell;
+}
+
+- (void)tableView:(UITableView *)tV didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (!commentView) {
+		commentView= [[WTCommentView alloc] init];
+	}
+	
+	[self.navigationController pushViewController:commentView animated:YES];
 }
 
 #pragma mark -
@@ -105,8 +142,8 @@
 - (void)dealloc {
 	[self.picker release];
 	[self.superController release];
+	[tableView release];
 	[super dealloc];
 }
-
 
 @end

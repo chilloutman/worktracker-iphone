@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class WTMainViewController;
+@class WTMainViewController, WTCommentView;
 
-@interface WTProjectPicker : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource> {
+@interface WTProjectPicker : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource> {
+	UITableView *tableView;
 	UIPickerView *picker;
+	
 	WTMainViewController *superController;
+	WTCommentView *commentView;
 }
 
 @property (nonatomic, assign) UIPickerView *picker;

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class WTDataModel, WTSort, WTEngine, WTProjectPicker, WTInfo, WTTableSectionHeader;
+@class WTDataModel, WTSort, WTEngine, WTStartTrackingRootController, WTInfo, WTTableSectionHeader;
 
 @interface WTMainViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
 	UILabel *statusLabel;
@@ -24,7 +24,7 @@
 	WTSort *tableModel;
 	WTEngine *engine;
 	
-	WTProjectPicker *projectPicker;
+	WTStartTrackingRootController *startTrackingController;
 	WTInfo *infoPage;
 }
 

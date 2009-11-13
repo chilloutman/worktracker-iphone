@@ -7,7 +7,7 @@
 //
 
 #import "WTMainViewController.h"
-#import "WTProjectPicker.h"
+#import "WTStartTrackingRootController.h"
 #import "WTInfo.h"
 
 #import "WTMainBackgroundView.h"
@@ -182,13 +182,13 @@
 #pragma mark Handle buttons
 
 - (void)start {
-	if (!projectPicker) {
-		projectPicker= [[WTProjectPicker alloc] init];
-		projectPicker.superController= self;
+	if (!startTrackingController) {
+		startTrackingController= [[WTStartTrackingRootController alloc] init];
+		startTrackingController.superController= self;
 	}
 	
 	// projectPicker lets the user select a proj. whitch is then send to the model
-	[self presentModalViewController:projectPicker animated:YES];
+	[self presentModalViewController:startTrackingController animated:YES];
 	
 	// Now we wait until a project gets picked
 }
@@ -297,7 +297,7 @@
 	[stopTimeLabel release];
 	[infoButton release];
 	[infoPage release];
-	[projectPicker release];
+	[startTrackingController release];
 	[self.model release];
 	[self.engine release];
 	
