@@ -29,9 +29,9 @@
 	CGRect screen= [[UIScreen mainScreen] applicationFrame];
 	CGSize contentSize= CGSizeMake(screen.size.width, screen.size.height/2 - 28);
 	
-	self.view= [[UIView alloc] initWithFrame:CGRectMake(0.0, -250.0, contentSize.width, contentSize.height)];
+	self.view= [[UIView alloc] initWithFrame:CGRectMake(0.0, -250.0, contentSize.width, contentSize.height+screen.origin.y+23)];
 	
-	tableView= [[UITableView alloc] initWithFrame:CGRectMake(screen.origin.x, screen.origin.y + 23, contentSize.width, contentSize.height) style:UITableViewStyleGrouped];
+	tableView= [[UITableView alloc] initWithFrame:CGRectMake(0.0, screen.origin.y + 23, contentSize.width, contentSize.height) style:UITableViewStyleGrouped];
 	tableView.dataSource= self;
 	tableView.delegate= self;
 	
@@ -86,6 +86,7 @@
 	}
 	
 	colorPicker= [[UISegmentedControl alloc] initWithItems:colorImages];
+	colorPicker.frame= CGRectMake(0.0, 0.0, 300, 44);
 	[colorPicker addTarget:self action:@selector(didSelectColor) forControlEvents:UIControlEventValueChanged];
 	
 	[self.view addSubview:tableView];
@@ -193,18 +194,13 @@
 		cell= [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellID] autorelease];
 		cell.selectionStyle= UITableViewCellSelectionStyleNone;
 	}
-	
-	CGRect c;
-	
+		
 	switch (indexPath.section) {
 		case 0:
 			if (indexPath.row == 0) [cell.contentView addSubview:nameField];
 			else [cell.contentView addSubview:clientField];
 			break;
 		case 1:
-			c= cell.contentView.frame;
-			c.size.width-= 20;
-			colorPicker.frame= c;
 			[cell.contentView addSubview:colorPicker];
 			break;
 	}

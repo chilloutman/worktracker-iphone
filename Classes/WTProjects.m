@@ -49,6 +49,16 @@
 	tableView.dataSource= self;
 	
 	self.view= tableView;
+	
+	// Prepare modal projectAdd view
+	
+	if (!projectAddView) {
+		projectAddView= [[WTProjectAdd alloc] init];
+		projectAddView.superController= self;
+	}
+	
+	// The view is added offscreen
+	[self.superController.view addSubview:projectAddView.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -70,19 +80,13 @@
 #pragma mark Buttons / Manage content
 
 // Add button was pressed
--(void)addNewProject {
-	if (!projectAddView) {
-		projectAddView= [[WTProjectAdd alloc] init];
-		projectAddView.superController= self;
-	}
-	
-	// The view is added offscreen...
-	[self.superController.view addSubview:projectAddView.view];
+-(void)addNewProject {	
 	// And flies in
-	[UIView beginAnimations:nil context:nil];
+	[UIView beginAnimations:nil context:UIGraphicsGetCurrentContext()];
 	CGRect r=projectAddView.view.frame;
 	r.origin.y= 0;
 	projectAddView.view.frame= r;
+	projectAddView.view.bounds= r;
 	[projectAddView viewWillAppear:YES];
 	[UIView commitAnimations];
 	
