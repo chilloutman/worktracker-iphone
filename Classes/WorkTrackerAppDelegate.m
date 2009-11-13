@@ -29,10 +29,7 @@
 	WTOverviewRootController *historyController= [[WTOverviewRootController alloc] init]; // Tab 3
 	
 	NSArray *viewControllers= [NSArray arrayWithObjects:mainController, projectsController, historyController, nil];
-	[mainController release];
-	[projectsController release];
-	[historyController release];
-	
+	[viewControllers makeObjectsPerformSelector:@selector(release)];	
 	
 	// Setup tabBarcontroller
 	self.tabBarController= [[UITabBarController alloc] init];
