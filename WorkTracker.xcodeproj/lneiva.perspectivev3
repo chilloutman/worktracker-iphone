@@ -287,16 +287,15 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>16</integer>
-									<integer>10</integer>
-									<integer>7</integer>
+									<integer>34</integer>
+									<integer>28</integer>
 									<integer>6</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {298, 914}}</string>
+							<string>{{0, 32}, {298, 914}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -333,7 +332,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>EF28D2F10FEC0D7300AF7431</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>WTCommentView.m</string>
+								<string>WTTrackingDetails.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -341,23 +340,23 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>EF28D2F20FEC0D7300AF7431</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>WTCommentView.m</string>
+										<string>WTTrackingDetails.m</string>
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>EFE727C110B3FD29009DB160</string>
+										<string>EFE728B810B4357F009DB160</string>
 										<key>history</key>
 										<array>
-											<string>EFFA242E10ADB25B00AB5F21</string>
-											<string>EF3E359510B3E3ED000806C6</string>
-											<string>EFE7276D10B3E83F009DB160</string>
-											<string>EFE7276E10B3E83F009DB160</string>
-											<string>EFE7277010B3E83F009DB160</string>
 											<string>EFE7278F10B3E8DE009DB160</string>
 											<string>EFE727B210B3FD14009DB160</string>
-											<string>EFE727B310B3FD14009DB160</string>
-											<string>EFE727B410B3FD14009DB160</string>
-											<string>EFE727C010B3FD29009DB160</string>
+											<string>EFE7281810B42930009DB160</string>
+											<string>EFE7281910B42930009DB160</string>
+											<string>EFE7281A10B42930009DB160</string>
+											<string>EFE7281B10B42930009DB160</string>
+											<string>EFE7281C10B42930009DB160</string>
+											<string>EFE7281D10B42930009DB160</string>
+											<string>EFE7285A10B43000009DB160</string>
+											<string>EFE7287210B43227009DB160</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -371,18 +370,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1305, 659}}</string>
+								<string>{{0, 0}, {1305, 786}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 55 1625 973 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>659pt</string>
+							<string>786pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>268pt</string>
+							<string>141pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -396,7 +395,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1305, 241}}</string>
+										<string>{{10, 27}, {1305, 114}}</string>
 										<key>RubberWindowFrame</key>
 										<string>0 55 1625 973 0 0 1680 1028 </string>
 									</dict>
@@ -414,7 +413,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1325, 223}}</string>
+										<string>{{10, 27}, {1305, 214}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXProjectFindModule</string>
@@ -428,7 +427,7 @@
 										<dict>
 											<key>PBXCVSModuleTreeModuleColumnWidthsKey</key>
 											<array>
-												<real>925</real>
+												<real>889</real>
 												<real>56</real>
 												<real>63</real>
 												<real>60</real>
@@ -453,7 +452,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1325, 223}}</string>
+										<string>{{10, 27}, {1305, 214}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXCVSModule</string>
@@ -473,7 +472,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1305, 235}}</string>
+										<string>{{10, 27}, {1305, 214}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -693,6 +692,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>EFE728B910B4357F009DB160</string>
+		<string>EFE7282210B42930009DB160</string>
+		<string>EFE7282310B42930009DB160</string>
 		<string>/Users/Shared/lneiva/worktracker-svn/trunk/WorkTracker.xcodeproj</string>
 	</array>
 	<key>WindowString</key>

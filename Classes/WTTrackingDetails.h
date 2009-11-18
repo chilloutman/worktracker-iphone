@@ -12,6 +12,9 @@
 @interface WTTrackingDetails : UIViewController <UITableViewDelegate, UITableViewDataSource> {
 	NSMutableDictionary *trackingInterval;
 	UITableView *tableView;
+	
+	BOOL displayingComment;
+	UITextView *commentLabel;
 }
 
 - (id)initWithTrackingInterval:(NSMutableDictionary *)pTrackingInterval;

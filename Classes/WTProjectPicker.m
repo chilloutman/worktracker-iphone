@@ -69,6 +69,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[picker reloadComponent:0];
+	[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 	[tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 	[super viewWillAppear:animated];
 }
@@ -121,13 +122,15 @@
 	
 	UITableViewCell *cell= [tableView dequeueReusableCellWithIdentifier:cellID];
 	if(cell == nil) {
-		cell= [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellID] autorelease];
+		cell= [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID] autorelease];
 		cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
 	}
 	
 	switch (indexPath.section) {
 		case 0:
-			cell.textLabel.text= NSLocalizedString(@"Add Comment", @"");
+			cell.textLabel.text= NSLocalizedString(@"Comment", @"");
+			NSString *comment= [commentView.commentField.text copy];
+			cell.detailTextLabel.text= [[comment substringToIndex:10] stringByAppendingString:@"..."];
 			break;
 	}
 	
