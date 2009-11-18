@@ -23,7 +23,7 @@
 		EF297660108388D70048BC89 /* WTProjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF29765F108388D70048BC89 /* WTProjectCell.m */; };
 		EF4ED5A9101EEEA20031C9B5 /* WTUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4ED5A8101EEEA20031C9B5 /* WTUtil.m */; };
 		EF5CDBC1101DA876004EFC4D /* WTSort.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5CDBC0101DA876004EFC4D /* WTSort.m */; };
-		EF5DEB04100E041300E0F836 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5DEB03100E041300E0F836 /* icon.png */; };
+		EF5DEB04100E041300E0F836 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5DEB03100E041300E0F836 /* Icon.png */; };
 		EF5DEB06100E043400E0F836 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = EF5DEB05100E043400E0F836 /* shadow.png */; };
 		EF6651FB100F22DF00F8D9CD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EF6651FA100F22DF00F8D9CD /* Default.png */; };
 		EF695F84100D1005006F680F /* blackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EF695F83100D1005006F680F /* blackButton.png */; };
@@ -46,6 +46,8 @@
 		EFEE227E107B193A007FCC5D /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = EFEE227D107B193A007FCC5D /* eye.png */; };
 		EFF1A9ED0FFE9052009E63BD /* WTOverviewRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF1A9EC0FFE9052009E63BD /* WTOverviewRootController.m */; };
 		EFF1A9EF0FFE9161009E63BD /* barChart.png in Resources */ = {isa = PBXBuildFile; fileRef = EFF1A9EE0FFE9161009E63BD /* barChart.png */; };
+		EFFA22E510AD95D200AB5F21 /* WTStartTrackingRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFA22E410AD95D200AB5F21 /* WTStartTrackingRootController.m */; };
+		EFFA22F210AD97EA00AB5F21 /* WTCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFA22F110AD97EA00AB5F21 /* WTCommentView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,7 +79,7 @@
 		EF4ED5A8101EEEA20031C9B5 /* WTUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTUtil.m; sourceTree = "<group>"; };
 		EF5CDBBF101DA876004EFC4D /* WTSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTSort.h; sourceTree = "<group>"; };
 		EF5CDBC0101DA876004EFC4D /* WTSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTSort.m; sourceTree = "<group>"; };
-		EF5DEB03100E041300E0F836 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Resources/icon.png; sourceTree = "<group>"; };
+		EF5DEB03100E041300E0F836 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
 		EF5DEB05100E043400E0F836 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadow.png; path = Resources/shadow.png; sourceTree = "<group>"; };
 		EF6651FA100F22DF00F8D9CD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
 		EF695F83100D1005006F680F /* blackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blackButton.png; path = Resources/blackButton.png; sourceTree = "<group>"; };
@@ -113,6 +115,10 @@
 		EFF1A9EB0FFE9052009E63BD /* WTOverviewRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTOverviewRootController.h; sourceTree = "<group>"; };
 		EFF1A9EC0FFE9052009E63BD /* WTOverviewRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTOverviewRootController.m; sourceTree = "<group>"; };
 		EFF1A9EE0FFE9161009E63BD /* barChart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = barChart.png; path = Resources/barChart.png; sourceTree = "<group>"; };
+		EFFA22E310AD95D200AB5F21 /* WTStartTrackingRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTStartTrackingRootController.h; sourceTree = "<group>"; };
+		EFFA22E410AD95D200AB5F21 /* WTStartTrackingRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTStartTrackingRootController.m; sourceTree = "<group>"; };
+		EFFA22F010AD97EA00AB5F21 /* WTCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCommentView.h; sourceTree = "<group>"; };
+		EFFA22F110AD97EA00AB5F21 /* WTCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTCommentView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,7 +183,7 @@
 			children = (
 				EF08F4AF1010635400A83A37 /* Localizable.strings */,
 				8D1107310486CEB800E47090 /* WorkTracker-Info.plist */,
-				EF5DEB03100E041300E0F836 /* icon.png */,
+				EF5DEB03100E041300E0F836 /* Icon.png */,
 				EF6651FA100F22DF00F8D9CD /* Default.png */,
 				EFBC391D100CB73400DC7621 /* background-small.png */,
 				EF5DEB05100E043400E0F836 /* shadow.png */,
@@ -228,8 +234,7 @@
 			children = (
 				EF28D3040FEC0E5900AF7431 /* WTMainViewController.h */,
 				EF28D3050FEC0E5900AF7431 /* WTMainViewController.m */,
-				EFCFAE0F0FED5E0C00BAB6BE /* WTProjectPicker.h */,
-				EFCFAE100FED5E0C00BAB6BE /* WTProjectPicker.m */,
+				EFFA22E210AD957500AB5F21 /* Start Tracking */,
 				EF85E3C910738E77002B683A /* WTInfo.h */,
 				EF85E3CA10738E77002B683A /* WTInfo.m */,
 			);
@@ -311,6 +316,19 @@
 			name = "Foundation Classes";
 			sourceTree = "<group>";
 		};
+		EFFA22E210AD957500AB5F21 /* Start Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				EFFA22E310AD95D200AB5F21 /* WTStartTrackingRootController.h */,
+				EFFA22E410AD95D200AB5F21 /* WTStartTrackingRootController.m */,
+				EFCFAE0F0FED5E0C00BAB6BE /* WTProjectPicker.h */,
+				EFCFAE100FED5E0C00BAB6BE /* WTProjectPicker.m */,
+				EFFA22F010AD97EA00AB5F21 /* WTCommentView.h */,
+				EFFA22F110AD97EA00AB5F21 /* WTCommentView.m */,
+			);
+			name = "Start Tracking";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -368,7 +386,7 @@
 				EFBC38CE100CAE5100DC7621 /* greenButton.png in Resources */,
 				EFBC391E100CB73400DC7621 /* background-small.png in Resources */,
 				EF695F84100D1005006F680F /* blackButton.png in Resources */,
-				EF5DEB04100E041300E0F836 /* icon.png in Resources */,
+				EF5DEB04100E041300E0F836 /* Icon.png in Resources */,
 				EF5DEB06100E043400E0F836 /* shadow.png in Resources */,
 				EF6651FB100F22DF00F8D9CD /* Default.png in Resources */,
 				EF08F48F101059E400A83A37 /* backwards.png in Resources */,
@@ -407,6 +425,8 @@
 				EF85E8221075E899002B683A /* WTProjectDetails.m in Sources */,
 				EF85E8331075F3F0002B683A /* WTProjects.m in Sources */,
 				EF297660108388D70048BC89 /* WTProjectCell.m in Sources */,
+				EFFA22E510AD95D200AB5F21 /* WTStartTrackingRootController.m in Sources */,
+				EFFA22F210AD97EA00AB5F21 /* WTCommentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
