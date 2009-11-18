@@ -31,7 +31,7 @@
 @property (nonatomic, assign) WTDataModel *model;
 @property (nonatomic, assign) WTEngine *engine;
 
-- (void)userPickedProjectAtIndex:(NSUInteger)index;
+- (void)userPickedProjectAtIndex:(NSUInteger)index comment:(NSString *)comment;
 - (void)userCanceledProjectPicker;
 
 #pragma mark Private

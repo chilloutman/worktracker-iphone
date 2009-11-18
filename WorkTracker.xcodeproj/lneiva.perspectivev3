@@ -287,7 +287,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>15</integer>
+									<integer>16</integer>
 									<integer>10</integer>
 									<integer>7</integer>
 									<integer>6</integer>
@@ -296,7 +296,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 12}, {298, 914}}</string>
+							<string>{{0, 0}, {298, 914}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -333,7 +333,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>EF28D2F10FEC0D7300AF7431</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>WTEngine.m</string>
+								<string>WTCommentView.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -341,23 +341,23 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>EF28D2F20FEC0D7300AF7431</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>WTEngine.m</string>
+										<string>WTCommentView.m</string>
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>EFE7279010B3E8DE009DB160</string>
+										<string>EFE727C110B3FD29009DB160</string>
 										<key>history</key>
 										<array>
 											<string>EFFA242E10ADB25B00AB5F21</string>
-											<string>EF3E359310B3E3ED000806C6</string>
-											<string>EF3E359410B3E3ED000806C6</string>
 											<string>EF3E359510B3E3ED000806C6</string>
 											<string>EFE7276D10B3E83F009DB160</string>
 											<string>EFE7276E10B3E83F009DB160</string>
 											<string>EFE7277010B3E83F009DB160</string>
-											<string>EFE7277110B3E83F009DB160</string>
 											<string>EFE7278F10B3E8DE009DB160</string>
-											<string>EFE7278C10B3E8D9009DB160</string>
+											<string>EFE727B210B3FD14009DB160</string>
+											<string>EFE727B310B3FD14009DB160</string>
+											<string>EFE727B410B3FD14009DB160</string>
+											<string>EFE727C010B3FD29009DB160</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -371,18 +371,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1305, 665}}</string>
+								<string>{{0, 0}, {1305, 659}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 55 1625 973 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>665pt</string>
+							<string>659pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>262pt</string>
+							<string>268pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -396,7 +396,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1305, 235}}</string>
+										<string>{{10, 27}, {1305, 241}}</string>
+										<key>RubberWindowFrame</key>
+										<string>0 55 1625 973 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -472,8 +474,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1305, 235}}</string>
-										<key>RubberWindowFrame</key>
-										<string>0 55 1625 973 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -501,11 +501,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>EFE7277710B3E891009DB160</string>
+				<string>EFE727C210B3FD29009DB160</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>EFE7277810B3E891009DB160</string>
+				<string>EFE727C310B3FD29009DB160</string>
 				<string>EF28D2F10FEC0D7300AF7431</string>
-				<string>EFE7277910B3E891009DB160</string>
+				<string>EFE727C410B3FD29009DB160</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -654,14 +654,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>EFE7277A10B3E891009DB160</string>
+				<string>EFE727C510B3FD29009DB160</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>EFE7277B10B3E891009DB160</string>
-				<string>EFE7277C10B3E891009DB160</string>
-				<string>EFE7277D10B3E891009DB160</string>
-				<string>EFE7277E10B3E891009DB160</string>
-				<string>EF28D2F10FEC0D7300AF7431</string>
+				<string>EFE727C610B3FD29009DB160</string>
+				<string>EFE727C710B3FD29009DB160</string>
+				<string>EFE727C810B3FD29009DB160</string>
+				<string>EFE727C910B3FD29009DB160</string>
+				<string>EFE727CA10B3FD29009DB160</string>
 			</array>
 			<key>ToolbarConfigUserDefaultsMinorVersion</key>
 			<string>2</string>
@@ -693,10 +693,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>EFE7279110B3E8DE009DB160</string>
-		<string>EFE7278110B3E891009DB160</string>
-		<string>EFE7278210B3E891009DB160</string>
-		<string>EF771AF90FF7E7B500071BA2</string>
 		<string>/Users/Shared/lneiva/worktracker-svn/trunk/WorkTracker.xcodeproj</string>
 	</array>
 	<key>WindowString</key>

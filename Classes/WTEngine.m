@@ -49,7 +49,7 @@ static WTEngine *sharedEngine= nil;
 
 #pragma mark Start & stop tracking
 
-- (void)startTrackingProject:(NSString *)projectName {
+- (void)startTrackingProject:(NSString *)projectName withComment:(NSString *)comment {
 	model.active= [NSNumber numberWithBool:YES];
 	[[WTSort sharedSortingModel] invalidateSectionsForSortingType:WTSortingAll];
 	
@@ -57,6 +57,7 @@ static WTEngine *sharedEngine= nil;
 	NSMutableDictionary *activeInterval= [[NSMutableDictionary alloc] init];
 	[activeInterval setObject:[NSDate date] forKey:cStartTime];
 	[activeInterval setObject:projectName forKey:cProject];
+	if (comment)[activeInterval setObject:comment forKey:cComment];
 	[model.trackingIntervals insertObject:activeInterval atIndex:0];
 	[activeInterval release];
 	

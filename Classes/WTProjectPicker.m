@@ -17,6 +17,7 @@
 
 @synthesize picker;
 @synthesize superController;
+@synthesize commentView;
 
 #pragma mark Build
 
@@ -75,11 +76,15 @@
 #pragma mark Buttons
 
 - (void)projectWasSelected {
+	NSString *comment= [commentView.commentField.text retain];
+	self.commentView= nil;
 	// Nofify the mainView that a proj. was selectet
-	[superController userPickedProjectAtIndex:[picker selectedRowInComponent:0]];
+	[superController userPickedProjectAtIndex:[picker selectedRowInComponent:0] comment:(NSString *)comment];
+	[comment release];
 }
 
 - (void)userCanceled {
+	self.commentView= nil;
 	[superController userCanceledProjectPicker];
 }
 
@@ -130,7 +135,7 @@
 }
 
 - (void)tableView:(UITableView *)tV didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (!commentView) {
+	if (!self.commentView) {
 		commentView= [[WTCommentView alloc] init];
 	}
 	
@@ -140,6 +145,7 @@
 #pragma mark -
 
 - (void)dealloc {
+	[self.commentView release];
 	[self.picker release];
 	[self.superController release];
 	[tableView release];

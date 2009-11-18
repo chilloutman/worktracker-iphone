@@ -35,11 +35,12 @@ extern NSString * const cTrackingIntervals;
 extern NSString * const cStatus;
 
 // TrackingInterval : NSMutableDictionary keys
-#define cIntervalDictSize 4
+#define cIntervalDictSize 5
 extern NSString * const cProject;
 extern NSString * const cStartTime;
 extern NSString * const cStopTime;
 extern NSString * const cTimeInterval;
+extern NSString * const cComment;
 
 // Project : NSMutableDictionary keys
 #define cProjectDictSize 4

@@ -10,8 +10,10 @@
 
 @implementation WTCommentView
 
+@synthesize commentField;
+
 - (void)loadView {
-	self.title= NSLocalizedString(@"Edit Comment");
+	self.title= NSLocalizedString(@"Edit Comment", @"");
 	
 	CGRect screen= [UIScreen mainScreen].bounds;
 	self.view= [[[UIView alloc] initWithFrame:screen] autorelease];
@@ -26,15 +28,15 @@
 	[textField release];
 	
 	// Actual textView
-	commentView= [[UITextView alloc] initWithFrame:textRect];
-	commentView.font= [UIFont systemFontOfSize:16];
-	commentView.backgroundColor= [UIColor clearColor];
-	[self.view addSubview:commentView];
-	[commentView release];
+	commentField= [[UITextView alloc] initWithFrame:textRect];
+	commentField.font= [UIFont systemFontOfSize:16];
+	commentField.backgroundColor= [UIColor clearColor];
+	[self.view addSubview:commentField];
+	[commentField release];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	[commentView becomeFirstResponder];
+	[commentField becomeFirstResponder];
 }
 
 #pragma mark -

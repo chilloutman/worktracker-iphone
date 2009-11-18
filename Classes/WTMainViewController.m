@@ -192,12 +192,12 @@
 	
 	// Now we wait until a project gets picked
 }
-- (void)userPickedProjectAtIndex:(NSUInteger)index {
+- (void)userPickedProjectAtIndex:(NSUInteger)index comment:(NSString *)comment{
 	// Dismiss the picker and move on
 	[self dismissModalViewControllerAnimated:YES];
 	
 	if (index >= 0) {
-		[self.engine startTrackingProject:[[model.projects allKeys] objectAtIndex:index]];
+		[self.engine startTrackingProject:[[model.projects allKeys] objectAtIndex:index] withComment:comment];
 		
 		[self updateUIElements];
 				
@@ -235,7 +235,7 @@
 #pragma mark UITableView delegate / dataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tV {
-	// One is for the fake cells
+	// One is for some fake cells
 	return 2;
 }
 

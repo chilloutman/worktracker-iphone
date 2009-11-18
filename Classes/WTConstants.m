@@ -16,6 +16,7 @@ NSString *cProject= @"project";
 NSString *cTimeInterval= @"timeInterval";
 NSString *cStartTime= @"startTime";
 NSString *cStopTime= @"stopTime";
+NSString *cComment= @"comment";
 
 // Projects : NSMutableDictionary keys
 NSString *cProjectNumber= @"numberOfInervals";

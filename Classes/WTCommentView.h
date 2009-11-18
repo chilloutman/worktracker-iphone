@@ -10,9 +10,9 @@
 
 
 @interface WTCommentView : UIViewController {
-	UITextView *commentView;
+	UITextView *commentField;
 }
 
-@property (nonatomic, assign) UITextView *commentView;
+@property (nonatomic, assign) UITextView *commentField;
 
 @end

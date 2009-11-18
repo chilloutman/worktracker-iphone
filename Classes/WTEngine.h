@@ -22,7 +22,7 @@
 - (BOOL)running;
 - (NSString *)formattedStatus;
 
-- (void)startTrackingProject:(NSString *)projectName;
+- (void)startTrackingProject:(NSString *)projectName withComment:(NSString *)comment;
 - (void)stopTracking;
 
 - (void)pingEvery:(NSTimeInterval)interval target:(id)aTarget selector:(SEL)aSelector identifier:(NSString *)key;

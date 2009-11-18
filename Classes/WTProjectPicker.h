@@ -18,6 +18,7 @@
 	WTCommentView *commentView;
 }
 
+@property (nonatomic, retain) WTCommentView *commentView;
 @property (nonatomic, assign) UIPickerView *picker;
 @property (nonatomic, retain) WTMainViewController *superController;
 
