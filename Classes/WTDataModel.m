@@ -104,7 +104,7 @@ static WTDataModel *sharedInstace= nil;
 	[self didChangeCollection:cTrackingIntervals];
 }
 
-#pragma mark Getter
+#pragma mark Custom getter
 
 - (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval {	
 	if (pInterval == nil) return 0;

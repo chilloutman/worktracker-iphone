@@ -32,10 +32,7 @@
 		return NSLocalizedString(@"Yesterday", @"");
 	}
 	
-	NSDateFormatter *formatter= [self dateFormatter];
-	[formatter setDateStyle:NSDateFormatterMediumStyle];
-	
-	return [formatter stringFromDate:pDate];
+	return [self shortDateForDate:pDate];
 }
 
 + (NSString *)weekForDate:(NSDate *)pDate {
@@ -167,7 +164,7 @@
 
 #pragma mark TrackingItervals
 
-+ (NSTimeInterval)totalTimeForInterval:(NSArray *)intervals {
++ (NSTimeInterval)totalTimeForIntervals:(NSArray *)intervals {
 	NSTimeInterval total= 0;
 	
 	//if (!active && section == 0) {
@@ -181,7 +178,7 @@
 }
 
 + (NSString *)formattedTotalTimeForIntervals:(NSArray *)intervals withActive:(BOOL)active {
-	NSTimeInterval total= [self totalTimeForInterval:intervals];
+	NSTimeInterval total= [self totalTimeForIntervals:intervals];
 	
 	if (total > 0) {
 		return [NSString stringWithFormat:@"%.2f h", total / 3600];
@@ -190,7 +187,7 @@
 	}
 }
 
-+ (NSString *)formattedStartTimeForTrackingInterval: (NSMutableDictionary *)pInterval {		
++ (NSString *)formattedStartTimeForTrackingInterval:(NSMutableDictionary *)pInterval {		
 	if (pInterval == nil) return nil;
 	if (![[WTEngine sharedEngine] running]) {
 		return @"-";
@@ -206,7 +203,7 @@
 	return [formatter stringFromDate:startDate];
 }
 
-+ (NSString *)formattedStopTimeForTrackingInterval: (NSMutableDictionary *)pInterval {
++ (NSString *)formattedStopTimeForTrackingInterval:(NSMutableDictionary *)pInterval {
 	if (pInterval == nil) return nil;
 	
 	NSDate *stopTime= [pInterval objectForKey:cStopTime];

@@ -122,7 +122,7 @@
 	[super viewWillAppear:animated];
 	
 	if ([self.engine running]) {
-		// Update the first cells time which is counting
+		// Setup timer to refresh counting UI Elements
 		[self.engine pingEvery:cTimeRefreshRate target:self selector:@selector(updateActiveElements:) identifier:cTimerMainView];
 	}
 	
@@ -141,7 +141,8 @@
 - (void)updateActiveElements:(NSTimer *)theTimer {
 	// Active table cell
 	WTIntervalCell *cell= (WTIntervalCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-	cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForTrackingInterval:nil] decimal:YES];
+	NSMutableDictionary *activeInterval= [[WTDataModel sharedDataModel].trackingIntervals objectAtIndex:0];
+	cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForTrackingInterval:activeInterval] decimal:YES];
 	
 	// Table header
 	NSMutableArray *sectionArray= [tableModel trackingIntervalsForMostRecentDay];
@@ -219,8 +220,10 @@
 - (void)stop {
 	[self.engine stopTracking];
 	[self.engine stopPinging:cTimerMainView];
-	[self updateUIElements];
+	
 	[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
+	[self updateUIElements];
+	[self updateActiveElements:nil];
 }
 
 - (void)displayInfoPage {
@@ -275,7 +278,10 @@
 	// Keep a reference for updating
 	if (!tableHeader) {
 		tableHeader= [[WTTableSectionHeader alloc] initWithFrame:CGRectZero];
-		tableHeader.firstText= NSLocalizedString(@"Today", @"");
+		
+		NSDate *mostRecentDate= [[model.trackingIntervals objectAtIndex:0] objectForKey:cStartTime];
+		tableHeader.firstText= [WTUtil dayForDate:mostRecentDate];
+		
 		NSMutableArray *sectionArray= [tableModel trackingIntervalsForMostRecentDay];
 		tableHeader.lastText= [WTUtil formattedTotalTimeForIntervals:sectionArray withActive:YES];
 	}

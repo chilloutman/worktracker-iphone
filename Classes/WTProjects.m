@@ -101,7 +101,7 @@
 	NSMutableDictionary *project= [NSMutableDictionary dictionaryWithCapacity:cProjectDictSize];
 	if (client)[project setObject:client forKey:cProjectClient];
 	[project setObject:[NSNumber numberWithInt:[intervals count]] forKey:cProjectNumber];
-	[project setObject:[NSNumber numberWithDouble:[WTUtil totalTimeForInterval:intervals]] forKey:cProjectTime];
+	[project setObject:[NSNumber numberWithDouble:[WTUtil totalTimeForIntervals:intervals]] forKey:cProjectTime];
 	[project setObject:[NSKeyedArchiver archivedDataWithRootObject:projectColor] forKey:cProjectColor];
 	
 	// Add new project
