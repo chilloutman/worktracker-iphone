@@ -25,6 +25,11 @@
 	[self.view addSubview:doneButton];
 		
 	// TODO: UIImageView with the application logo :-D
+	UIImageView *iconView= [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Icon.png"]];
+	iconView.frame= CGRectMake(0.0, 0.0, r.size.width-180, r.size.width-180);
+	iconView.center= CGPointMake(r.size.width/2, r.size.height/2-(iconView.frame.size.height-30.0));
+	[self.view addSubview:iconView];
+	[iconView release];
 	
 	UILabel *wtLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, r.size.width-30, 60)];
 	wtLabel.center= CGPointMake(r.size.width/2, r.size.height/2);
@@ -37,7 +42,7 @@
 	[wtLabel release];
 	
 	UILabel *versionLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, r.size.width-30, 20)];;
-	versionLabel.center= CGPointMake(r.size.width/2, r.size.height/2+15);
+	versionLabel.center= CGPointMake(r.size.width/2, r.size.height/2+16);
 	versionLabel.textAlignment= UITextAlignmentCenter;
 	versionLabel.text= @"Version: alpha";
 	versionLabel.font= [UIFont systemFontOfSize:13];
@@ -46,17 +51,25 @@
 	[self.view addSubview:versionLabel];
 	[versionLabel release];
 	
-	UILabel *glyphishLabel= [[UILabel alloc] initWithFrame:CGRectMake(0, 0, r.size.width-30, 60)];
-	glyphishLabel.center= CGPointMake(r.size.width/2, 280);
-	glyphishLabel.textAlignment= UITextAlignmentCenter;
-	glyphishLabel.text= @"The icons used in this app where created by glyphish.com and kindly published under the Creatives Commons licence";
-	glyphishLabel.font= [UIFont systemFontOfSize:14];
-	glyphishLabel.numberOfLines= 3;
-	glyphishLabel.textColor= [UIColor whiteColor];
-	glyphishLabel.backgroundColor= [UIColor clearColor];
-	[self.view addSubview:glyphishLabel];
-	[glyphishLabel release];
-							
+	UITextView *glyphishLabel= [self infoTextViewWithText:@"The icons used in this app where created by glyphish.com and kindly published under the Creatives Commons licence"];
+	glyphishLabel.center= CGPointMake(r.size.width/2, 280.0);
+	[self.view addSubview:glyphishLabel];						
+}
+
+- (UITextView *)infoTextViewWithText:(NSString *)text {
+	CGSize size= [text sizeWithFont:[UIFont systemFontOfSize:14]];
+	NSInteger numberOfLines= roundf(size.width / 290 + 0.5);
+	
+	UITextView *textView= [[UITextView alloc] initWithFrame:CGRectMake(0.0, 0.0, 290.0, (numberOfLines+1) * size.height)];
+	textView.text= text;
+	textView.textAlignment= UITextAlignmentCenter;
+	textView.textColor= [UIColor whiteColor];
+	textView.font= [UIFont systemFontOfSize:14];
+	textView.backgroundColor= [UIColor clearColor];
+	textView.scrollEnabled= NO;
+	textView.editable= NO;
+	
+	return [textView autorelease];
 }
 
 - (void)viewDidAppear:(BOOL)a {
@@ -66,6 +79,8 @@
 - (void)viewDidDisappear:(BOOL)a {
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
+
+#pragma mark Button
 
 - (void)dismiss {
 	[superController dismissModalViewControllerAnimated:YES];

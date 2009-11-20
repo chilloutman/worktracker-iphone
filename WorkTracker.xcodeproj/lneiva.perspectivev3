@@ -281,13 +281,11 @@
 								<string>EF6651DF100F222600F8D9CD</string>
 								<string>EFBBA2860FFBBA6400183DE7</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
-								<string>1C77FABC04509CD000000102</string>
-								<string>1C3E0DCA080725EA00A55177</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>9</integer>
+									<integer>18</integer>
 									<integer>7</integer>
 									<integer>6</integer>
 									<integer>1</integer>
@@ -295,7 +293,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 24}, {298, 914}}</string>
+							<string>{{0, 2}, {298, 914}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -332,7 +330,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>EF28D2F10FEC0D7300AF7431</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>WTMainViewController.m</string>
+								<string>WTInfo.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -340,23 +338,23 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>EF28D2F20FEC0D7300AF7431</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>WTMainViewController.m</string>
+										<string>WTInfo.m</string>
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>EFE72ABF10B5491A009DB160</string>
+										<string>EFE72D0810B67F0C009DB160</string>
 										<key>history</key>
 										<array>
-											<string>EFE72A6310B53F05009DB160</string>
-											<string>EFE72A6410B53F05009DB160</string>
-											<string>EFE72A6510B53F05009DB160</string>
-											<string>EFE72A9610B546BF009DB160</string>
-											<string>EFE72AB910B5491A009DB160</string>
 											<string>EFE72ABA10B5491A009DB160</string>
 											<string>EFE72ABB10B5491A009DB160</string>
 											<string>EFE72ABC10B5491A009DB160</string>
 											<string>EFE72ABD10B5491A009DB160</string>
-											<string>EFE72ABE10B5491A009DB160</string>
+											<string>EFE72AD710B54E20009DB160</string>
+											<string>EFE72AD810B54E20009DB160</string>
+											<string>EFE72AD910B54E20009DB160</string>
+											<string>EFE72CD310B5A3D6009DB160</string>
+											<string>EFE72CD410B5A3D6009DB160</string>
+											<string>EFE72CF910B5A5EF009DB160</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -692,7 +690,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>EFE72AC010B5491A009DB160</string>
+		<string>EFE72ADC10B54E20009DB160</string>
+		<string>EFE72ADD10B54E20009DB160</string>
+		<string>EFE72ADE10B54E20009DB160</string>
 		<string>EF771AF90FF7E7B500071BA2</string>
 		<string>EFE72A7210B53F05009DB160</string>
 		<string>EFE72A7410B53F05009DB160</string>

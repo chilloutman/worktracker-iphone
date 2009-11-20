@@ -15,4 +15,6 @@
 
 @property (nonatomic, retain) UIViewController *superController;
 
+- (UITextView *)infoTextViewWithText:(NSString *)text;
+
 @end
