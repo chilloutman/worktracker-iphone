@@ -90,6 +90,7 @@
 			case 1:
 				cell.textLabel.text= NSLocalizedString(@"Stop Time", @"");
 				cell.detailTextLabel.text= [WTUtil timeForDate:[trackingInterval objectForKey:cStopTime]];
+				break;
 			case 2:
 				cell.textLabel.text= NSLocalizedString(@"Tracked Time", @"");
 				cell.detailTextLabel.text= [WTUtil formattedTimeInterval:[[trackingInterval objectForKey:cTimeInterval] doubleValue] decimal:NO];
