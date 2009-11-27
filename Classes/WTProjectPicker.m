@@ -131,6 +131,7 @@
 			cell.textLabel.text= NSLocalizedString(@"Comment", @"");
 			NSString *comment= [commentView.commentField.text copy];
 			if ([comment length] > 12) cell.detailTextLabel.text= [[comment substringToIndex:11] stringByAppendingString:@"..."];
+			[comment release];
 			break;
 	}
 	

@@ -10,6 +10,7 @@
 
 #import "WTConstants.h"
 #import "WTEngine.h"
+#import "WTDataModel.h"
 
 @implementation WTUtil
 
@@ -171,7 +172,8 @@
 		// TODO: don't count the Interval that is still running
 	
 	for (NSMutableDictionary *trackingIterval in intervals) {
-		total+= [[trackingIterval objectForKey:cTimeInterval] doubleValue];
+//		total+= [[trackingIterval objectForKey:cTimeInterval] doubleValue];
+		total+= [[WTDataModel sharedDataModel] timeIntervalForTrackingInterval:trackingIterval];
 	}
 	
 	return total;

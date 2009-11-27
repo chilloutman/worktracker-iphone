@@ -32,6 +32,10 @@
 	[self.view addSubview:navController.view];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[tableController viewWillAppear:animated];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
 	// tableController cares about this
 	[tableController viewWillDisappear:animated];

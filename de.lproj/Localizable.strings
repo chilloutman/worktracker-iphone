@@ -13,7 +13,10 @@
 /* Title for delete confirmation */
 "Clear trackings" = "Erfasste Intervale löschen";
 
-/* No comment provided by engineer. */
+/* Placeholder for client text field */
+"Client" = "Kunde";
+
+/* Title for the place where the user can select a color for the project */
 "Color" = "Farbe";
 
 /* Segment, Show items from the last few days */
@@ -27,6 +30,15 @@
 
 /* No comment provided by engineer. */
 "Delete old ones" = "Nur Ältere löschen";
+
+/* Title for detail view */
+"Details" = "Details";
+
+/* No comment provided by engineer. */
+"Comment" = "Kommentar";
+
+/* No comment provided by engineer. */
+"Edit Comment" = "Kommentar editieren";
 
 /* Previous trackings */
 "Overview" = "Übersicht";
@@ -49,14 +61,11 @@
 /* No comment provided by engineer. */
 "Number of trackings" = "Anzahl erfasster Intervale";
 
-/* Ask user to select a project */
-"Pick the project you would like to track" = "Wähle ein Projekt um mit dem Erfassen zu beginnen";
-
 /* Title for the place where the user can select a color for the project */
 "Project Color" = "Projektfarbe";
 
 /* Title for the textField where the project name is supposed to be entered */
-"Project Name" = "Projectname";
+"Project Name" = "Projektname";
 
 /* No comment provided by engineer. */
 "Projects" = "Projekte";
@@ -66,6 +75,9 @@
 
 /* No comment provided by engineer. */
 "Start Time" = "Startzeit";
+
+/* Title for projectPicker */
+"Start Tracking" = "Erfassen starten";
 
 /* No comment provided by engineer. */
 "Stop Time" = "Stopzeit";
@@ -96,6 +108,9 @@
 
 /* No comment provided by engineer. */
 "Tracking Intervals" = "Erfasste Intervale";
+
+/* No comment provided by engineer. */
+"Pick a project" = "Wähle ein Projekt aus";
 
 /* No comment provided by engineer. */
 "Week" = "Woche";

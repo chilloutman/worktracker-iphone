@@ -278,7 +278,9 @@
 	// Keep a reference for updating
 	if (!tableHeader) {
 		tableHeader= [[WTTableSectionHeader alloc] initWithFrame:CGRectZero];
-		
+	}
+	
+	if ([model.trackingIntervals count] > 0) {
 		NSDate *mostRecentDate= [[model.trackingIntervals objectAtIndex:0] objectForKey:cStartTime];
 		tableHeader.firstText= [WTUtil dayForDate:mostRecentDate];
 		

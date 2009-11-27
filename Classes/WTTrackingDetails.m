@@ -102,6 +102,7 @@
 		titleLabel.font= [UIFont boldSystemFontOfSize:16.0];
 		
 		[cell.contentView addSubview:titleLabel];
+		[titleLabel release];
 		[cell.contentView addSubview:commentLabel];
 	}
 
