@@ -26,13 +26,16 @@
 - (void)loadView {
 	CGRect screen= [[UIScreen mainScreen] applicationFrame];
 	screen.size.height+= 20;
-	self.view= [[[UIView alloc] initWithFrame:screen] autorelease];
+	self.view= [[UIView alloc] initWithFrame:screen];
+	[self.view release];
 	
-	tableController= [[[WTProjects alloc] init] autorelease];
+	tableController= [[WTProjects alloc] init];
 	tableController.superController= self;
 	
 	navController= [[UINavigationController alloc] initWithRootViewController:tableController];
+	[tableController release];
 	navController.delegate= self;
+	
 	[self.view addSubview:navController.view];
 }
 
