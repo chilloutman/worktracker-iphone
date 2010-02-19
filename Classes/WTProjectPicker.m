@@ -30,7 +30,8 @@
 
 - (void)loadView {
 	CGRect screen= [[UIScreen mainScreen] applicationFrame];
-	self.view= [[[UIView alloc] initWithFrame:screen] autorelease];
+	self.view= [[UIView alloc] initWithFrame:screen];
+	[self.view release];
 	self.view.backgroundColor= [UIColor groupTableViewBackgroundColor];
 
 	// Navigation Bar

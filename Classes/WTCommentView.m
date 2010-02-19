@@ -16,7 +16,8 @@
 	self.title= NSLocalizedString(@"Edit Comment", @"");
 	
 	CGRect screen= [UIScreen mainScreen].bounds;
-	self.view= [[[UIView alloc] initWithFrame:screen] autorelease];
+	self.view= [[UIView alloc] initWithFrame:screen];
+	[self.view release];
 	self.view.backgroundColor= [UIColor groupTableViewBackgroundColor];
 	
 	CGRect textRect= CGRectMake(10.0, 15.0, 300.0, 170.0);

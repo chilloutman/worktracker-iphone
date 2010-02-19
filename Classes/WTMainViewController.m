@@ -263,7 +263,7 @@
 	if (indexPath.section == 0) {
 		NSMutableDictionary *interval= [[tableModel activitiesForMostRecentDay] objectAtIndex:indexPath.row];
 		BOOL running= NO;
-		if (indexPath.row == 0) running= [engine running]; // Display the green bubble to indicate that the project is being tracked
+		if (indexPath.row == 0 && [engine running]) running= YES; // Display the green bubble to indicate that the project is being tracked
 		cell.firstText= [WTUtil formattedProjectNameForActivity:interval running:running];
 		cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForActivity:interval] decimal:YES];
 	} else {

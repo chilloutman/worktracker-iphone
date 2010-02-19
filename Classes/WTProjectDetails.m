@@ -84,9 +84,10 @@
 				cell.detailTextLabel.text= [project objectForKey:cProjectClient];
 			} else {
 				cell.textLabel.text= NSLocalizedString(@"Color", @"");
-				UIView *colorView= [[[UIView alloc] initWithFrame:CGRectMake(160, 6, 130, 31)] autorelease];
+				UIView *colorView= [[UIView alloc] initWithFrame:CGRectMake(160, 6, 130, 31)];
 				colorView.backgroundColor= [NSKeyedUnarchiver unarchiveObjectWithData:[project objectForKey:cProjectColor]];
 				[cell.contentView addSubview:colorView];
+				[colorView release];
 			}
 
 			break;
