@@ -35,7 +35,10 @@
 	self.view.backgroundColor= [UIColor groupTableViewBackgroundColor];
 
 	// Navigation Bar
-	UIBarButtonItem *cancelButton= [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(userCanceled)];
+	UIBarButtonItem *cancelButton= [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"")
+																	style:UIBarButtonItemStyleBordered
+																   target:self
+																   action:@selector(userCanceled)];
 	UIBarButtonItem *okButton= [[UIBarButtonItem alloc] initWithTitle:@"Start" style:UIBarButtonItemStyleDone target:self action:@selector(projectWasSelected)];
 	
 	self.navigationItem.rightBarButtonItem= okButton;
@@ -61,7 +64,8 @@
 	
 	// TableView
 	
-	tableView= [[UITableView alloc] initWithFrame:CGRectMake(0.0, projectLabel.frame.size.height + picker.frame.size.height + 20.0, screen.size.width, 200.0) style:UITableViewStyleGrouped];
+	tableView= [[UITableView alloc] initWithFrame:CGRectMake(0.0, projectLabel.frame.size.height + picker.frame.size.height + 20.0, screen.size.width, 200.0)
+											style:UITableViewStyleGrouped];
 	tableView.contentInset= UIEdgeInsetsMake(35.0, 0.0, 0.0, 0.0);
 	tableView.dataSource= self;
 	tableView.delegate= self;
