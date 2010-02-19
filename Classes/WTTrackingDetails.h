@@ -10,13 +10,13 @@
 
 
 @interface WTTrackingDetails : UIViewController <UITableViewDelegate, UITableViewDataSource> {
-	NSMutableDictionary *trackingInterval;
+	NSMutableDictionary *activities;
 	UITableView *tableView;
 	
 	BOOL displayingComment;
 	UITextView *commentLabel;
 }
 
-- (id)initWithTrackingInterval:(NSMutableDictionary *)pTrackingInterval;
+- (id)initWithActivity:(NSMutableDictionary *)pActivity;
 
 @end

@@ -31,10 +31,10 @@ alpha:1.0]
 
 // WTDataModel keys
 extern NSString * const cProjects;
-extern NSString * const cTrackingIntervals;
+extern NSString * const cActivities;
 extern NSString * const cStatus;
 
-// TrackingInterval : NSMutableDictionary keys
+// Activity : NSMutableDictionary keys
 #define cIntervalDictSize 5
 extern NSString * const cProject;
 extern NSString * const cStartTime;

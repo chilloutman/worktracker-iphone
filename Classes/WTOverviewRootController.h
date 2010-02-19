@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class WTTrackingIntervals;
+@class WTActivities;
 
 @interface WTOverviewRootController : UIViewController <UINavigationControllerDelegate>{
 	UINavigationController *navController;
-	WTTrackingIntervals *tableController;
+	WTActivities *tableController;
 }
 
-- (void)pushDetailViewWithInterval:(NSMutableDictionary *)trackingInterval;
+- (void)pushDetailViewWithInterval:(NSMutableDictionary *)activities;
 
 @end

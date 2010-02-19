@@ -8,10 +8,10 @@
 
 // WTDataModel keys
 NSString *cProjects= @"projects";
-NSString *cTrackingIntervals= @"trackingIntervals";
+NSString *cActivities= @"activities";
 NSString *cStatus= @"active";
 
-// TrackingInterval : NSMutableDictionary keys 
+// Activities : NSMutableDictionary keys 
 NSString *cProject= @"project";
 NSString *cTimeInterval= @"timeInterval";
 NSString *cStartTime= @"startTime";

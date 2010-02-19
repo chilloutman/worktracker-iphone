@@ -13,11 +13,11 @@
 
 @implementation WTTrackingDetails
 
-- (id)initWithTrackingInterval:(NSMutableDictionary *)pTrackingInterval {
+- (id)initWithActivity:(NSMutableDictionary *)pActivity {
 	if (self= [super init]) {
-		trackingInterval= pTrackingInterval;
-		self.title= [trackingInterval objectForKey:cProject];
-		displayingComment= ([trackingInterval objectForKey:cComment] != nil);
+		activities= pActivity;
+		self.title= [activities objectForKey:cProject];
+		displayingComment= ([activities objectForKey:cComment] != nil);
 	}
 	return self;
 }
@@ -30,7 +30,7 @@
 	tableView.allowsSelection= NO;
 	
 	if (displayingComment) {
-		NSString *comment= [[trackingInterval objectForKey:cComment] copy];
+		NSString *comment= [[activities objectForKey:cComment] copy];
 		CGSize labelSize= [comment sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:CGSizeMake(280.0, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
 		commentLabel= [[UITextView alloc] initWithFrame:CGRectMake(2.0, 34.0, 292.0, labelSize.height + 10.0)];
 		commentLabel.editable= NO;
@@ -53,7 +53,7 @@
 
 - (NSString *)tableView:(UITableView *)tV titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
-		case 0: return [WTUtil dateForDate:[trackingInterval objectForKey:cStartTime]];
+		case 0: return [WTUtil dateForDate:[activities objectForKey:cStartTime]];
 		case 1: return nil;
 		default: return nil;
 	} 
@@ -85,15 +85,15 @@
 		switch (indexPath.row) {
 			case 0:
 				cell.textLabel.text= NSLocalizedString(@"Start Time", @"");
-				cell.detailTextLabel.text= [WTUtil timeForDate:[trackingInterval objectForKey:cStartTime]];
+				cell.detailTextLabel.text= [WTUtil timeForDate:[activities objectForKey:cStartTime]];
 				break;
 			case 1:
 				cell.textLabel.text= NSLocalizedString(@"Stop Time", @"");
-				cell.detailTextLabel.text= [WTUtil timeForDate:[trackingInterval objectForKey:cStopTime]];
+				cell.detailTextLabel.text= [WTUtil timeForDate:[activities objectForKey:cStopTime]];
 				break;
 			case 2:
 				cell.textLabel.text= NSLocalizedString(@"Tracked Time", @"");
-				cell.detailTextLabel.text= [WTUtil formattedTimeInterval:[[trackingInterval objectForKey:cTimeInterval] doubleValue] decimal:NO];
+				cell.detailTextLabel.text= [WTUtil formattedTimeInterval:[[activities objectForKey:cTimeInterval] doubleValue] decimal:NO];
 				break;
 		}
 	} else {

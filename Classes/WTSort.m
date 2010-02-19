@@ -59,7 +59,7 @@ static WTSort *sharedSortingModel= nil;
 
 #pragma mark Getters for tableView building
 
-- (NSMutableArray *)trackingIntervalsForMostRecentDay {
+- (NSMutableArray *)activitiesForMostRecentDay {
 	if (!daySectionsAreUpToDate) [self setupDays];
 	
 	if ([daySections count] > 0) return [daySections objectAtIndex:0];
@@ -120,15 +120,15 @@ static WTSort *sharedSortingModel= nil;
 	
 	NSMutableArray *curArray= [NSMutableArray array]; // Every Section is represented by an array
 	
-	for (NSMutableDictionary *trackingInterval in model.trackingIntervals) {
-		curDate= [trackingInterval objectForKey:cStartTime];
+	for (NSMutableDictionary *activity in model.activities) {
+		curDate= [activity objectForKey:cStartTime];
 		curDateComps= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:curDate];
 		dateComps= [calendar components: NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
 		
 		// Check if curDate is on the same day the current reference (dateComponents)
 		if ((curDateComps.year == dateComps.year) && (curDateComps.month == dateComps.month) && (curDateComps.day == dateComps.day)) {
 			// Add to current array
-			[curArray addObject:trackingInterval];
+			[curArray addObject:activity];
 		} else {
 			if ([curArray count] > 0) {
 				// Add a title for the section
@@ -139,9 +139,9 @@ static WTSort *sharedSortingModel= nil;
 				curArray= [NSMutableArray array];
 			}
 			// Set the date that maches
-			date= [trackingInterval objectForKey:cStartTime];
+			date= [activity objectForKey:cStartTime];
 			
-			[curArray addObject:trackingInterval];
+			[curArray addObject:activity];
 		}
 		lastDate= curDate;
 	}
@@ -177,22 +177,22 @@ static WTSort *sharedSortingModel= nil;
 	NSDateComponents *curDateComps;
 	NSDate *lastDate= nil;
 	
-	for (NSMutableDictionary *trackingInterval in model.trackingIntervals) {
-		curDate= [trackingInterval objectForKey:cStartTime];
+	for (NSMutableDictionary *activity in model.activities) {
+		curDate= [activity objectForKey:cStartTime];
 		curDateComps= [calendar components:NSYearCalendarUnit | NSWeekCalendarUnit fromDate:curDate];
 		dateComps= [calendar components: NSYearCalendarUnit | NSWeekCalendarUnit fromDate:date];
 		
 		if ((curDateComps.year == dateComps.year) && (curDateComps.week == dateComps.week)) {
-			[curArray addObject:trackingInterval];
+			[curArray addObject:activity];
 		} else {
 			if ([curArray count] > 0) {
 				[weekTitles addObject:[WTUtil weekForDate:lastDate]];
 				[weekSections addObject:curArray];
 				curArray= [NSMutableArray array];
 			}
-			date= [trackingInterval objectForKey:cStartTime];
+			date= [activity objectForKey:cStartTime];
 			
-			[curArray addObject:trackingInterval];
+			[curArray addObject:activity];
 		}
 		lastDate= curDate;
 	}
@@ -223,22 +223,22 @@ static WTSort *sharedSortingModel= nil;
 	NSDateComponents *curDateComps;
 	NSDate *lastDate= nil;
 	
-	for (NSMutableDictionary *trackingInterval in model.trackingIntervals) {
-		curDate= [trackingInterval objectForKey:cStartTime];
+	for (NSMutableDictionary *activity in model.activities) {
+		curDate= [activity objectForKey:cStartTime];
 		curDateComps= [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit fromDate:curDate];
 		dateComps= [calendar components: NSYearCalendarUnit | NSMonthCalendarUnit fromDate:date];
 		
 		if ((curDateComps.year == dateComps.year) && (curDateComps.month == dateComps.month)) {
-			[curArray addObject:trackingInterval];
+			[curArray addObject:activity];
 		} else {
 			if ([curArray count] > 0) {
 				[monthTitles addObject:[WTUtil monthForDate:lastDate]];
 				[monthSections addObject:curArray];
 				curArray= [NSMutableArray array];
 			}
-			date= [trackingInterval objectForKey:cStartTime];
+			date= [activity objectForKey:cStartTime];
 			
-			[curArray addObject:trackingInterval];
+			[curArray addObject:activity];
 		}
 		lastDate= curDate;
 	}

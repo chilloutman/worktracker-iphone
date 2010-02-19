@@ -29,7 +29,7 @@
 		EF695F84100D1005006F680F /* blackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EF695F83100D1005006F680F /* blackButton.png */; };
 		EF85E3CB10738E77002B683A /* WTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EF85E3CA10738E77002B683A /* WTInfo.m */; };
 		EF85E5AE1074DC27002B683A /* WTTrackingDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = EF85E5AD1074DC27002B683A /* WTTrackingDetails.m */; };
-		EF85E6201074E615002B683A /* WTTrackingIntervals.m in Sources */ = {isa = PBXBuildFile; fileRef = EF85E61F1074E615002B683A /* WTTrackingIntervals.m */; };
+		EF85E6201074E615002B683A /* WTActivities.m in Sources */ = {isa = PBXBuildFile; fileRef = EF85E61F1074E615002B683A /* WTActivities.m */; };
 		EF85E8221075E899002B683A /* WTProjectDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = EF85E8211075E899002B683A /* WTProjectDetails.m */; };
 		EF85E8331075F3F0002B683A /* WTProjects.m in Sources */ = {isa = PBXBuildFile; fileRef = EF85E8321075F3F0002B683A /* WTProjects.m */; };
 		EF9E540E1006410500BAE8B4 /* WTProjectAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = EF9E540D1006410500BAE8B4 /* WTProjectAdd.m */; };
@@ -87,8 +87,8 @@
 		EF85E3CA10738E77002B683A /* WTInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTInfo.m; sourceTree = "<group>"; };
 		EF85E5AC1074DC27002B683A /* WTTrackingDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTrackingDetails.h; sourceTree = "<group>"; };
 		EF85E5AD1074DC27002B683A /* WTTrackingDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTrackingDetails.m; sourceTree = "<group>"; };
-		EF85E61E1074E615002B683A /* WTTrackingIntervals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTTrackingIntervals.h; sourceTree = "<group>"; };
-		EF85E61F1074E615002B683A /* WTTrackingIntervals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTTrackingIntervals.m; sourceTree = "<group>"; };
+		EF85E61E1074E615002B683A /* WTActivities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTActivities.h; sourceTree = "<group>"; };
+		EF85E61F1074E615002B683A /* WTActivities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTActivities.m; sourceTree = "<group>"; };
 		EF85E8201075E899002B683A /* WTProjectDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTProjectDetails.h; sourceTree = "<group>"; };
 		EF85E8211075E899002B683A /* WTProjectDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTProjectDetails.m; sourceTree = "<group>"; };
 		EF85E8311075F3F0002B683A /* WTProjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTProjects.h; sourceTree = "<group>"; };
@@ -261,8 +261,8 @@
 			children = (
 				EFF1A9EB0FFE9052009E63BD /* WTOverviewRootController.h */,
 				EFF1A9EC0FFE9052009E63BD /* WTOverviewRootController.m */,
-				EF85E61E1074E615002B683A /* WTTrackingIntervals.h */,
-				EF85E61F1074E615002B683A /* WTTrackingIntervals.m */,
+				EF85E61E1074E615002B683A /* WTActivities.h */,
+				EF85E61F1074E615002B683A /* WTActivities.m */,
 				EF85E5AC1074DC27002B683A /* WTTrackingDetails.h */,
 				EF85E5AD1074DC27002B683A /* WTTrackingDetails.m */,
 			);
@@ -421,7 +421,7 @@
 				EF4ED5A9101EEEA20031C9B5 /* WTUtil.m in Sources */,
 				EF85E3CB10738E77002B683A /* WTInfo.m in Sources */,
 				EF85E5AE1074DC27002B683A /* WTTrackingDetails.m in Sources */,
-				EF85E6201074E615002B683A /* WTTrackingIntervals.m in Sources */,
+				EF85E6201074E615002B683A /* WTActivities.m in Sources */,
 				EF85E8221075E899002B683A /* WTProjectDetails.m in Sources */,
 				EF85E8331075F3F0002B683A /* WTProjects.m in Sources */,
 				EF297660108388D70048BC89 /* WTProjectCell.m in Sources */,

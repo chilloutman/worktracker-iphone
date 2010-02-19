@@ -1,12 +1,12 @@
 //
-//  WTTrackingIntervals.m
+//  WTActivities.m
 //  WorkTracker
 //
 //  Created by Lucas Neiva on 01.10.09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "WTTrackingIntervals.h"
+#import "WTActivities.h"
 #import "WTOverviewRootController.h"
 #import "WTTrackingDetails.h"
 
@@ -20,7 +20,7 @@
 #import "WTConstants.h"
 #import "WTUtil.h"
 
-@implementation WTTrackingIntervals
+@implementation WTActivities
 
 @synthesize superController, tableView;
 
@@ -67,7 +67,7 @@
 	// TODO: can't update cells because of a "tableView fail" when refreshing. Currently not displaying active/running stuff at all. Excuse: Because of 'History'...
 	[tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:animated];
 	
-	deleteButton.enabled= ([model.trackingIntervals count] > 0);
+	deleteButton.enabled= ([model.activities count] > 0);
 }
 
 #pragma mark navigationBar Buttons
@@ -88,12 +88,12 @@
 	
 	if (buttonIndex == 0) {
 		// Delete everything
-		[model deleteTrackingIntervals:YES];
+		[model deleteAllActivities:YES];
 		[tableModel invalidateSectionsForSortingType:WTSortingAll];
 			
 		[tableView reloadData];
 	} else if (buttonIndex == 1) {
-		[model deleteTrackingIntervals:NO];
+		[model deleteAllActivities:NO];
 		[tableModel invalidateSectionsForSortingType:WTSortingAll];
 		
 		[tableView reloadData];
@@ -126,10 +126,10 @@
 		cell= [[[WTIntervalCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellID] autorelease];
 	}
 	
-	NSMutableDictionary *trackingInterval= [[[tableModel sectionArrayForSortingType:activeSortingType] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	NSMutableDictionary *activities= [[[tableModel sectionArrayForSortingType:activeSortingType] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	
-	cell.firstText= [WTUtil formattedProjectNameForTrackingInterval:trackingInterval running:NO];
-	cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForTrackingInterval:trackingInterval] decimal:YES];
+	cell.firstText= [WTUtil formattedProjectNameForActivity:activities running:NO];
+	cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForActivity:activities] decimal:YES];
 	
 	return cell;
 }
@@ -150,7 +150,7 @@
 - (void)tableView:(UITableView *)tV didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSMutableDictionary *selectedInterval= [[[tableModel sectionArrayForSortingType:activeSortingType] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	
-	WTTrackingDetails *detailViewController= [[WTTrackingDetails alloc] initWithTrackingInterval:selectedInterval];
+	WTTrackingDetails *detailViewController= [[WTTrackingDetails alloc] initWithActivity:selectedInterval];
 	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }

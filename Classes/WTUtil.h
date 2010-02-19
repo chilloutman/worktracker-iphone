@@ -27,15 +27,15 @@
 
 + (NSTimeInterval)totalTimeForIntervals:(NSArray *)intervals;
 + (NSString *)formattedTotalTimeForIntervals:(NSArray *)section withActive:(BOOL)active;
-+ (NSString *)formattedProjectNameForTrackingInterval:(NSMutableDictionary *)pInterval running:(BOOL)running;
-+ (NSString *)formattedStartTimeForTrackingInterval:(NSMutableDictionary *)pInterval;
-+ (NSString *)formattedStopTimeForTrackingInterval:(NSMutableDictionary *)pInterval;
++ (NSString *)formattedProjectNameForActivity:(NSMutableDictionary *)pInterval running:(BOOL)running;
++ (NSString *)formattedStartTimeForActivity:(NSMutableDictionary *)pInterval;
++ (NSString *)formattedStopTimeForActivity:(NSMutableDictionary *)pInterval;
 
 // Caches - Leaks
 
 + (NSDateFormatter *)dateFormatter;
 + (NSDateFormatter *)timeFormatter;
 + (NSCalendar *)calendar;
-//+ (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval;
+//+ (NSTimeInterval)timeIntervalForActivity:(NSMutableDictionary *)pActivity;
 
 @end

@@ -37,8 +37,8 @@ static WTEngine *sharedEngine= nil;
 }
 
 - (NSString *)formattedStatus {
-	if ([self running] && [model.trackingIntervals count] > 0) {
-		return [NSString stringWithFormat:NSLocalizedString(@"Tracking '%@'", @"Status, Currently tracking 'a project'"), [[model.trackingIntervals objectAtIndex:0] objectForKey:cProject]];
+	if ([self running] && [model.activities count] > 0) {
+		return [NSString stringWithFormat:NSLocalizedString(@"Tracking '%@'", @"Status, Currently tracking 'a project'"), [[model.activities objectAtIndex:0] objectForKey:cProject]];
 	} else if ([model.projects count] == 0) {
 		return NSLocalizedString(@"There are no projects...", @"Status, Inform the user that the are no projects");
 	} else {
@@ -53,13 +53,13 @@ static WTEngine *sharedEngine= nil;
 	model.active= [NSNumber numberWithBool:YES];
 	[[WTSort sharedSortingModel] invalidateSectionsForSortingType:WTSortingAll];
 	
-	// TrackingInterval
-	NSMutableDictionary *activeInterval= [[NSMutableDictionary alloc] init];
-	[activeInterval setObject:[NSDate date] forKey:cStartTime];
-	[activeInterval setObject:projectName forKey:cProject];
-	if (comment)[activeInterval setObject:comment forKey:cComment];
-	[model.trackingIntervals insertObject:activeInterval atIndex:0];
-	[activeInterval release];
+	// Activity
+	NSMutableDictionary *activity= [[NSMutableDictionary alloc] init];
+	[activity setObject:[NSDate date] forKey:cStartTime];
+	[activity setObject:projectName forKey:cProject];
+	if (comment)[activity setObject:comment forKey:cComment];
+	[model.activities insertObject:activity atIndex:0];
+	[activity release];
 	
 	// Project
 	NSMutableDictionary *project= [model.projects objectForKey:projectName];
@@ -67,24 +67,24 @@ static WTEngine *sharedEngine= nil;
 	[project setObject:[NSNumber numberWithInt:numberOfIntervals] forKey:cProjectNumber];
 	
 	// Notify models about the changes
-	[model didChangeCollection:cTrackingIntervals];
+	[model didChangeCollection:cActivities];
 	[model didChangeCollection:cProjects];
 }
 
 - (void)stopTracking {
 	model.active= [NSNumber numberWithBool:NO];
 	
-	NSMutableDictionary *trackingInterval= [model.trackingIntervals objectAtIndex:0];
-	[trackingInterval setObject:[NSDate date] forKey:cStopTime];
-	NSDate *startTime= [trackingInterval objectForKey:cStartTime];
+	NSMutableDictionary *activity= [model.activities objectAtIndex:0];
+	[activity setObject:[NSDate date] forKey:cStopTime];
+	NSDate *startTime= [activity objectForKey:cStartTime];
 	NSTimeInterval timeInterval= -[startTime timeIntervalSinceNow];
-	[trackingInterval setObject:[NSNumber numberWithDouble:timeInterval] forKey:cTimeInterval];
+	[activity setObject:[NSNumber numberWithDouble:timeInterval] forKey:cTimeInterval];
 	
-	NSMutableDictionary *project= [model.projects objectForKey:[trackingInterval objectForKey:cProject]];
+	NSMutableDictionary *project= [model.projects objectForKey:[activity objectForKey:cProject]];
 	NSTimeInterval totalTimeInterval= [[project objectForKey:cProjectTime] doubleValue] + timeInterval;
 	[project setObject:[NSNumber numberWithDouble:totalTimeInterval] forKey:cProjectTime];
 	
-	[model didChangeCollection:cTrackingIntervals];
+	[model didChangeCollection:cActivities];
 	[model didChangeCollection:cProjects];
 }
 

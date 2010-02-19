@@ -1,5 +1,5 @@
 //
-//  WTTrackingIntervals.h
+//  WTActivities.h
 //  WorkTracker
 //
 //  Created by Lucas Neiva on 01.10.09.
@@ -11,7 +11,7 @@
 
 @class WTDataModel, WTEngine, WTSort, WTOverviewRootController;
 
-@interface WTTrackingIntervals : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate> {
+@interface WTActivities : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate> {
 	UITableView *tableView;
 	UIBarButtonItem *deleteButton;
 	WTSortingType activeSortingType;

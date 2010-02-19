@@ -15,12 +15,12 @@
 
 @implementation WTProjectDetails
 
-@synthesize trackingIntervals;
+@synthesize activities;
 
-- (id)initWithProject:(NSMutableDictionary *)pProject name:(NSString *)pProjectName trackingIntervals:(NSArray *)pTrackingIntervals {
+- (id)initWithProject:(NSMutableDictionary *)pProject name:(NSString *)pProjectName activities:(NSArray *)pActivities {
 	if (self= [super init]) {
 		project= pProject;
-		self.trackingIntervals= ([pTrackingIntervals count] > 0) ? pTrackingIntervals : nil;
+		self.activities= ([pActivities count] > 0) ? pActivities : nil;
 		
 		self.title= NSLocalizedString(@"Details", @"Title for detail view");
 		projectName= [pProjectName copy];
@@ -41,7 +41,7 @@
 #pragma mark UITableView delegate & dataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)pTableView {
-	if (trackingIntervals) return 3;
+	if (activities) return 3;
 	else return 2;
 }
 
@@ -58,7 +58,7 @@
 	switch (section) {
 		case 0: return 3;
 		case 1: return 2;
-		case 2: return [trackingIntervals count];
+		case 2: return [activities count];
 		default: return 0;
 	}
 }
@@ -92,7 +92,7 @@
 			break;
 		case 1:
 			if (indexPath.row == 0) {
-				cell.textLabel.text= NSLocalizedString(@"Number of trackings", @"");
+				cell.textLabel.text= NSLocalizedString(@"Number of activities", @"");
 				cell.detailTextLabel.text= [[project objectForKey:cProjectNumber] stringValue];
 			} else {
 				cell.textLabel.text= NSLocalizedString(@"Total Time", @"");
@@ -100,7 +100,7 @@
 			}
 			break;
 		case 2:
-			interval= [trackingIntervals objectAtIndex:indexPath.row];
+			interval= [activities objectAtIndex:indexPath.row];
 			
 			cell.textLabel.text= [WTUtil shortDateForDate:[interval objectForKey:cStartTime]];
 			cell.detailTextLabel.text= [WTUtil formattedTimeInterval:[[interval objectForKey:cTimeInterval] doubleValue] decimal:NO];

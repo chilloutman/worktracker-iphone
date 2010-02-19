@@ -98,7 +98,7 @@
 	stopTimeLabel.backgroundColor= [UIColor clearColor];
 	[self.view addSubview:stopTimeLabel];
 	
-	// TableView with todays trackingIntervals
+	// TableView with todays activities
 	
 	tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, screen.size.height / 2 + 2, screen.size.width, (screen.size.height / 2) - 48) style:UITableViewStylePlain];
 	tableView.dataSource= self;
@@ -141,11 +141,11 @@
 - (void)updateActiveElements:(NSTimer *)theTimer {
 	// Active table cell
 	WTIntervalCell *cell= (WTIntervalCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-	NSMutableDictionary *activeInterval= [[WTDataModel sharedDataModel].trackingIntervals objectAtIndex:0];
-	cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForTrackingInterval:activeInterval] decimal:YES];
+	NSMutableDictionary *activity= [[WTDataModel sharedDataModel].activities objectAtIndex:0];
+	cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForActivity:activity] decimal:YES];
 	
 	// Table header
-	NSMutableArray *sectionArray= [tableModel trackingIntervalsForMostRecentDay];
+	NSMutableArray *sectionArray= [tableModel activitiesForMostRecentDay];
 	tableHeader.lastText= [WTUtil formattedTotalTimeForIntervals:sectionArray withActive:YES];
 }
 
@@ -161,9 +161,9 @@
 	// Update Labels
 	statusLabel.text= [engine formattedStatus];
 	NSMutableDictionary *interval= nil;
-	if ([model.trackingIntervals count] > 0) interval= [model.trackingIntervals objectAtIndex:0];
-	startTimeLabel.text= [WTUtil formattedStartTimeForTrackingInterval:interval];
-	stopTimeLabel.text= [WTUtil formattedStopTimeForTrackingInterval:interval];
+	if ([model.activities count] > 0) interval= [model.activities objectAtIndex:0];
+	startTimeLabel.text= [WTUtil formattedStartTimeForActivity:interval];
+	stopTimeLabel.text= [WTUtil formattedStopTimeForActivity:interval];
 	
 	// Update Buttons
 	if ([self.engine running]) {
@@ -243,7 +243,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tV numberOfRowsInSection:(NSInteger)section {
-	NSInteger numberOfRows= [[tableModel trackingIntervalsForMostRecentDay] count];
+	NSInteger numberOfRows= [[tableModel activitiesForMostRecentDay] count];
 	
 	if (section == 0) {
 		return numberOfRows;
@@ -261,11 +261,11 @@
 	}
 	
 	if (indexPath.section == 0) {
-		NSMutableDictionary *interval= [[tableModel trackingIntervalsForMostRecentDay] objectAtIndex:indexPath.row];
+		NSMutableDictionary *interval= [[tableModel activitiesForMostRecentDay] objectAtIndex:indexPath.row];
 		BOOL running= NO;
 		if (indexPath.row == 0) running= [engine running]; // Display the green bubble to indicate that the project is being tracked
-		cell.firstText= [WTUtil formattedProjectNameForTrackingInterval:interval running:running];
-		cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForTrackingInterval:interval] decimal:YES];
+		cell.firstText= [WTUtil formattedProjectNameForActivity:interval running:running];
+		cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForActivity:interval] decimal:YES];
 	} else {
 		cell.firstText= @"";
 		cell.lastText= @"";
@@ -280,11 +280,11 @@
 		tableHeader= [[WTTableSectionHeader alloc] initWithFrame:CGRectZero];
 	}
 	
-	if ([model.trackingIntervals count] > 0) {
-		NSDate *mostRecentDate= [[model.trackingIntervals objectAtIndex:0] objectForKey:cStartTime];
+	if ([model.activities count] > 0) {
+		NSDate *mostRecentDate= [[model.activities objectAtIndex:0] objectForKey:cStartTime];
 		tableHeader.firstText= [WTUtil dayForDate:mostRecentDate];
 		
-		NSMutableArray *sectionArray= [tableModel trackingIntervalsForMostRecentDay];
+		NSMutableArray *sectionArray= [tableModel activitiesForMostRecentDay];
 		tableHeader.lastText= [WTUtil formattedTotalTimeForIntervals:sectionArray withActive:YES];
 	}
 

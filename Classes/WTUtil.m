@@ -152,7 +152,7 @@
 
 #pragma mark Status & project name
 
-+ (NSString *)formattedProjectNameForTrackingInterval:(NSMutableDictionary *)pInterval running:(BOOL)running {
++ (NSString *)formattedProjectNameForActivity:(NSMutableDictionary *)pInterval running:(BOOL)running {
 	if (pInterval == nil) return nil;
 	
 	if (running) {
@@ -173,7 +173,7 @@
 	
 	for (NSMutableDictionary *trackingIterval in intervals) {
 //		total+= [[trackingIterval objectForKey:cTimeInterval] doubleValue];
-		total+= [[WTDataModel sharedDataModel] timeIntervalForTrackingInterval:trackingIterval];
+		total+= [[WTDataModel sharedDataModel] timeIntervalForActivity:trackingIterval];
 	}
 	
 	return total;
@@ -189,7 +189,7 @@
 	}
 }
 
-+ (NSString *)formattedStartTimeForTrackingInterval:(NSMutableDictionary *)pInterval {		
++ (NSString *)formattedStartTimeForActivity:(NSMutableDictionary *)pInterval {		
 	if (pInterval == nil) return nil;
 	if (![[WTEngine sharedEngine] running]) {
 		return @"-";
@@ -205,7 +205,7 @@
 	return [formatter stringFromDate:startDate];
 }
 
-+ (NSString *)formattedStopTimeForTrackingInterval:(NSMutableDictionary *)pInterval {
++ (NSString *)formattedStopTimeForActivity:(NSMutableDictionary *)pInterval {
 	if (pInterval == nil) return nil;
 	
 	NSDate *stopTime= [pInterval objectForKey:cStopTime];
@@ -243,7 +243,7 @@
 	return calendar;
 }
 
-//+ (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval {	
+//+ (NSTimeInterval)timeIntervalForActivity:(NSMutableDictionary *)pActivity {
 //	if (pInterval == nil) return 0;
 //	
 //	NSNumber *timeInterval= [pInterval objectForKey:cTimeInterval];

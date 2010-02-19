@@ -12,14 +12,14 @@
 
 @interface WTProjectDetails : UIViewController <UITableViewDelegate, UITableViewDataSource>{
 	UITableView *tableView;
-	NSArray *trackingIntervals;
+	NSArray *activities;
 	
 	NSMutableDictionary *project;
 	NSString *projectName;
 }
 
-@property (nonatomic, retain) NSArray *trackingIntervals;
+@property (nonatomic, retain) NSArray *activities;
 
-- (id)initWithProject:(NSMutableDictionary *)pProject name:(NSString *)projectName trackingIntervals:(NSArray *)pTrackingIntervals;
+- (id)initWithProject:(NSMutableDictionary *)pProject name:(NSString *)projectName activities:(NSArray *)activities;
 
 @end

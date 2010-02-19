@@ -96,7 +96,7 @@
 // User entered a name and pressed the done button 
 - (void)shouldAddNewProjectWithName:(NSString *)projectName color:(UIColor *)projectColor client:(NSString *)client {
 	// Are there intervals with this project name
-	NSArray *intervals=[model.trackingIntervals filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(project == %@)", projectName]];
+	NSArray *intervals=[model.activities filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(project == %@)", projectName]];
 	
 	NSMutableDictionary *project= [NSMutableDictionary dictionaryWithCapacity:cProjectDictSize];
 	if (client)[project setObject:client forKey:cProjectClient];
@@ -128,7 +128,7 @@
 	NSString *projectToDelete= [projects objectAtIndex:indexPath.row];
 	
 	// Are there tracking intervals that are bound to this project?
-	intervalsToRemove= [[model.trackingIntervals filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(project == %@)", projectToDelete]] retain];
+	intervalsToRemove= [[model.activities filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(project == %@)", projectToDelete]] retain];
 	indexToDelete= indexPath.row;
 	
 	if ([intervalsToRemove count] > 0) {
@@ -169,11 +169,11 @@
 	
 	if (buttonIndex == 2) {
 		// Also remove all related tracking intervals
-		[model.trackingIntervals removeObjectsInArray:intervalsToRemove];
+		[model.activities removeObjectsInArray:intervalsToRemove];
 		[intervalsToRemove release];
 		
 		// Notify others
-		[model didChangeCollection:cTrackingIntervals];
+		[model didChangeCollection:cActivities];
 		[[WTSort sharedSortingModel] invalidateSectionsForSortingType:WTSortingAll];
 	}
 }
@@ -220,10 +220,10 @@
 - (void)tableView:(UITableView *)tV didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSString *projectName= [projects objectAtIndex:indexPath.row];
 	NSMutableDictionary *project= [model.projects objectForKey:projectName];
-	NSArray *trackingIntervals= [model.trackingIntervals filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"project == %@", projectName]];
+	NSArray *activities= [model.activities filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"project == %@", projectName]];
 	
 	// Display detail view
-	WTProjectDetails *detailViewController= [[WTProjectDetails alloc] initWithProject:project name:projectName trackingIntervals:trackingIntervals];
+	WTProjectDetails *detailViewController= [[WTProjectDetails alloc] initWithProject:project name:projectName activities:activities];
 	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }

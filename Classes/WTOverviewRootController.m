@@ -8,7 +8,7 @@
 
 #import "WTOverviewRootController.h"
 
-#import "WTTrackingIntervals.h"
+#import "WTActivities.h"
 #import "WTTrackingDetails.h"
 
 @implementation WTOverviewRootController
@@ -29,7 +29,7 @@
 	
 	// NavigationController
 	
-	tableController= [[WTTrackingIntervals alloc] init];
+	tableController= [[WTActivities alloc] init];
 	tableController.superController= self;
 	
 	navController= [[UINavigationController alloc] initWithRootViewController:tableController];
@@ -47,8 +47,8 @@
 
 #pragma mark push & pop
 
-- (void)pushDetailViewWithInterval:(NSMutableDictionary *)trackingInterval {
-	WTTrackingDetails *detailViewController= [[WTTrackingDetails alloc] initWithTrackingInterval:trackingInterval];
+- (void)pushDetailViewWithInterval:(NSMutableDictionary *)activities {
+	WTTrackingDetails *detailViewController= [[WTTrackingDetails alloc] initWithActivity:activities];
 	[navController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }

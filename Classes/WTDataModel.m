@@ -26,7 +26,7 @@ static WTDataModel *sharedInstace= nil;
 
 @synthesize active;
 @synthesize projects;
-@synthesize trackingIntervals;
+@synthesize activities;
 
 - (id)init {
 	if (self= [super init]) {
@@ -46,9 +46,9 @@ static WTDataModel *sharedInstace= nil;
 		self.projects= [NSMutableDictionary dictionaryWithContentsOfFile:finalPath];
 		if (!self.projects) self.projects= [NSMutableDictionary dictionary];
 		
-		finalPath= [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", cTrackingIntervals]];
-		self.trackingIntervals= [NSMutableArray arrayWithContentsOfFile:finalPath];
-		if (!self.trackingIntervals) self.trackingIntervals= [NSMutableArray array];
+		finalPath= [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", cActivities]];
+		self.activities= [NSMutableArray arrayWithContentsOfFile:finalPath];
+		if (!self.activities) self.activities= [NSMutableArray array];
 	}
 	
 	return self;
@@ -77,16 +77,16 @@ static WTDataModel *sharedInstace= nil;
 
 #pragma mark Delete data
 
-- (void)deleteTrackingIntervals:(BOOL)all {
+- (void)deleteAllActivities:(BOOL)all {
 	NSMutableArray *toKeep= [NSMutableArray array];
 	
 	if (!all) {
 		// Just what's older than a week
 		NSDate * date= [NSDate dateWithTimeIntervalSinceNow:-604800];
 		
-		for (NSMutableDictionary *trackingInterval in self.trackingIntervals) {
-			if ([date compare:[trackingInterval objectForKey:cStartTime]] == NSOrderedAscending) {
-				[toKeep addObject:trackingInterval];
+		for (NSMutableDictionary *activity in self.activities) {
+			if ([date compare:[activity objectForKey:cStartTime]] == NSOrderedAscending) {
+				[toKeep addObject:activity];
 			} else {
 				break;
 			}
@@ -95,18 +95,18 @@ static WTDataModel *sharedInstace= nil;
 	
 	// Don't delete the one that's still being tracked
 	if ([self.active boolValue]) {
-		[toKeep addObject:[self.trackingIntervals objectAtIndex:0]];
+		[toKeep addObject:[self.activities objectAtIndex:0]];
 	}
 	
-	self.trackingIntervals= toKeep;
+	self.activities= toKeep;
 	
 	// Notify
-	[self didChangeCollection:cTrackingIntervals];
+	[self didChangeCollection:cActivities];
 }
 
 #pragma mark Custom getter
 
-- (NSTimeInterval)timeIntervalForTrackingInterval:(NSMutableDictionary *)pInterval {	
+- (NSTimeInterval)timeIntervalForActivity:(NSMutableDictionary *)pInterval {	
 	if (pInterval == nil) return 0;
 	
 	NSNumber *timeInterval= [pInterval objectForKey:cTimeInterval];
