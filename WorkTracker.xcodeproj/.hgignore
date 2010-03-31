@@ -1,2 +1,4 @@
+syntax: glob
+
 *.pbxuser
 *.perspectivev3
