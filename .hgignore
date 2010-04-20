@@ -1,4 +1,4 @@
 syntax: glob
-
 *.pbxuser
 *.perspectivev3
+.DS_Store
