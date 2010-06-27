@@ -57,7 +57,7 @@
 	startButton= [UIButton buttonWithType:UIButtonTypeCustom];
 	startButton.frame= cButtonFrame;
 	startButton.center= CGPointMake(80, 100);
-	[startButton setTitle:@"Start" forState: UIControlStateNormal];
+	[startButton setTitle:@"Start..." forState: UIControlStateNormal];
 	
 	startButton.titleLabel.font= [UIFont boldSystemFontOfSize:18];
 	[startButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
