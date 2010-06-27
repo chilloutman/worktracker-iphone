@@ -3,7 +3,7 @@
 //  WorkTracker
 //
 //  Created by Lucas Neiva on 02.10.09.
-//  ***
+//  Copyright 2010 Lucas Neiva. All rights reserved.
 //
 
 #import "WTProjects.h"

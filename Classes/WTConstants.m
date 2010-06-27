@@ -3,7 +3,7 @@
 //  WorkTracker
 //
 //  Created by Lucas Neiva on 7/12/09.
-//  ***
+//  Copyright 2010 Lucas Neiva. All rights reserved.
 //
 
 // WTDataModel keys

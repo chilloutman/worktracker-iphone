@@ -38,16 +38,17 @@
 	WTOverviewRootController *historyController= [[WTOverviewRootController alloc] init]; // Tab 3
 	
 	NSArray *viewControllers= [NSArray arrayWithObjects:mainController, projectsController, historyController, nil];
-	[viewControllers makeObjectsPerformSelector:@selector(release)];	
+	[viewControllers makeObjectsPerformSelector:@selector(release)];
 	
 	self.tabBarController= [[UITabBarController alloc] init];
 	[self.tabBarController setViewControllers:viewControllers animated:YES];
+	[viewControllers release];
 }
 
 - (void)dealloc {
 	[window release];
-    [tabBarController release];
-    [super dealloc];
+	[tabBarController release];
+	[super dealloc];
 }
 
 
