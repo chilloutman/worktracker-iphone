@@ -3,7 +3,7 @@
 //  WorkTracker
 //
 //  Created by Lucas Neiva on 27.07.09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  ***
 //
 
 #import "WTSort.h"

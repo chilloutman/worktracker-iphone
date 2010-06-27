@@ -3,7 +3,7 @@
 //  WorkTracker
 //
 //  Created by Lucas Neiva on 6/19/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  ***
 //
 
 #import <Foundation/Foundation.h>
