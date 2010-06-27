@@ -43,12 +43,5 @@
 - (NSMutableArray *)headerTitlesForSortingType:(WTSortingType)sortingType;
 - (NSMutableArray *)activitiesForMostRecentDay;
 
-#pragma mark Private
-
-// Methods which create the section and title arrays
-- (void)setupDays;
-- (void)setupWeeks;
-- (void)setupMonths;
-
 @end
 

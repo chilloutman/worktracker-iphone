@@ -34,8 +34,4 @@
 - (void)userPickedProjectAtIndex:(NSUInteger)index comment:(NSString *)comment;
 - (void)userCanceledProjectPicker;
 
-#pragma mark Private
-
-- (void)updateUIElements;
-
 @end

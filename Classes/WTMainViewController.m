@@ -21,6 +21,12 @@
 
 #import "WTConstants.h"
 
+@interface WTMainViewController()
+- (void)updateUIElements;
+- (void)updateLabels;
+- (void)updateButtons;
+@end
+
 @implementation WTMainViewController
 
 @synthesize model;
@@ -121,7 +127,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	if ([self.engine running]) {
+	if ([self.engine isRunning]) {
 		// Setup timer to refresh counting UI Elements
 		[self.engine pingEvery:cTimeRefreshRate target:self selector:@selector(updateActiveElements:) identifier:cTimerMainView];
 	}
@@ -133,7 +139,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 	
-	if ([self.engine running]) {
+	if ([self.engine isRunning]) {
 		[self.engine stopPinging:cTimerMainView];
 	}
 }
@@ -150,7 +156,7 @@
 }
 
 - (void)updateUIElements {
-	// Make Default.png
+	// Uncomment below to create Default.png
 	//	statusLabel.text= @"Loading";
 	//	startTimeLabel= @"";
 	//	stopTimeLabel= @"";
@@ -158,15 +164,20 @@
 	//	startButton.enabled= NO;
 	//	stopButton.enabled= NO;
 	
-	// Update Labels
+	[self updateLabels];	
+	[self updateButtons];
+}
+
+- (void)updateLabels {
 	statusLabel.text= [engine formattedStatus];
 	NSMutableDictionary *interval= nil;
 	if ([model.activities count] > 0) interval= [model.activities objectAtIndex:0];
 	startTimeLabel.text= [WTUtil formattedStartTimeForActivity:interval];
-	stopTimeLabel.text= [WTUtil formattedStopTimeForActivity:interval];
-	
-	// Update Buttons
-	if ([self.engine running]) {
+	stopTimeLabel.text= [WTUtil formattedStopTimeForActivity:interval];	
+}
+
+- (void)updateButtons {
+	if ([self.engine isRunning]) {
 		startButton.enabled= NO;
 		stopButton.enabled= YES;
 	} else if ([self.model.projects count] == 0) {
@@ -188,13 +199,13 @@
 		startTrackingController.superController= self;
 	}
 	
-	// projectPicker lets the user select a proj. whitch is then send to the model
+	// projectPicker lets the user select a proj. which is then send to the model
 	[self presentModalViewController:startTrackingController animated:YES];
 	
 	// Now we wait until a project gets picked
 }
+
 - (void)userPickedProjectAtIndex:(NSUInteger)index comment:(NSString *)comment{
-	// Dismiss the picker and move on
 	[self dismissModalViewControllerAnimated:YES];
 	
 	if (index >= 0) {
@@ -212,6 +223,7 @@
 		[self.engine pingEvery:cTimeRefreshRate target:self selector:@selector(updateActiveElements:) identifier:cTimerMainView];
 	}
 }
+
 - (void)userCanceledProjectPicker {
 	// Dismiss the picker and do nothing
 	[self dismissModalViewControllerAnimated:YES];
@@ -263,7 +275,7 @@
 	if (indexPath.section == 0) {
 		NSMutableDictionary *interval= [[tableModel activitiesForMostRecentDay] objectAtIndex:indexPath.row];
 		BOOL running= NO;
-		if (indexPath.row == 0 && [engine running]) running= YES; // Display the green bubble to indicate that the project is being tracked
+		if (indexPath.row == 0 && [engine isRunning]) running= YES; // Display the green bubble to indicate that the project is being tracked
 		cell.firstText= [WTUtil formattedProjectNameForActivity:interval running:running];
 		cell.lastText= [WTUtil formattedTimeInterval:[model timeIntervalForActivity:interval] decimal:YES];
 	} else {

@@ -19,7 +19,7 @@
 
 + (WTEngine *)sharedEngine;
 
-- (BOOL)running;
+- (BOOL)isRunning;
 - (NSString *)formattedStatus;
 
 - (void)startTrackingProject:(NSString *)projectName withComment:(NSString *)comment;

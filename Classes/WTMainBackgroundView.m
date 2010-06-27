@@ -31,9 +31,6 @@
 	
 	UIImage *shadow= [UIImage imageNamed:@"shadow.png"];
 	[shadow drawInRect:CGRectMake(0, screen.size.height / 2 + 2, screen.size.width, 60)];
-	
-	//CGImageRef shadow= [[UIImage imageNamed:@"shadow.png"] CGImage]; // trick: This inverts the image
-	//CGContextDrawImage(ctx, CGRectMake(0, screen.size.height / 2 + 2, screen.size.width, screen.size.height / 2 - 50), shadow);
 }
 
 - (void)dealloc {

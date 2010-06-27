@@ -133,7 +133,6 @@
 }
 
 + (UIImage *)imageWithColor:(UIColor *)color {
-	// This method draws little UIImages
 	CGSize size= CGSizeMake(25, 25);
 	
 	UIGraphicsBeginImageContext(size);
@@ -191,7 +190,7 @@
 
 + (NSString *)formattedStartTimeForActivity:(NSMutableDictionary *)pInterval {		
 	if (pInterval == nil) return nil;
-	if (![[WTEngine sharedEngine] running]) {
+	if (![[WTEngine sharedEngine] isRunning]) {
 		return @"-";
 	}
 	
@@ -220,7 +219,7 @@
 #pragma mark Caches
 
 + (NSDateFormatter *)dateFormatter {
-	static NSDateFormatter *formatter= nil; // Just leaking a little bit here... :-)
+	static NSDateFormatter *formatter= nil;
 	if (!formatter){
 		formatter= [[NSDateFormatter alloc] init];
 	}
@@ -242,21 +241,5 @@
 	}
 	return calendar;
 }
-
-//+ (NSTimeInterval)timeIntervalForActivity:(NSMutableDictionary *)pActivity {
-//	if (pInterval == nil) return 0;
-//	
-//	NSNumber *timeInterval= [pInterval objectForKey:cTimeInterval];
-//	NSDate *startTime= [pInterval objectForKey:cStartTime];
-//	
-//	if (timeInterval) {
-//		// timeInterval is already set
-//		return [timeInterval doubleValue]; // NSTimeInterval == double
-//	} else if (startTime) {
-//		return [[NSDate date] timeIntervalSinceDate:startTime];
-//	}else {
-//		return 0.0;
-//	}
-//}
 
 @end

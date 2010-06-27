@@ -32,12 +32,12 @@ static WTEngine *sharedEngine= nil;
 	return self;
 }
 
-- (BOOL)running {
+- (BOOL)isRunning {
 	return [model.active boolValue];
 }
 
 - (NSString *)formattedStatus {
-	if ([self running] && [model.activities count] > 0) {
+	if ([self isRunning] && [model.activities count] > 0) {
 		return [NSString stringWithFormat:NSLocalizedString(@"Tracking '%@'", @"Status, Currently tracking 'a project'"), [[model.activities objectAtIndex:0] objectForKey:cProject]];
 	} else if ([model.projects count] == 0) {
 		return NSLocalizedString(@"There are no projects...", @"Status, Inform the user that the are no projects");

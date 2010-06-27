@@ -31,7 +31,7 @@
 + (NSString *)formattedStartTimeForActivity:(NSMutableDictionary *)pInterval;
 + (NSString *)formattedStopTimeForActivity:(NSMutableDictionary *)pInterval;
 
-// Caches - Leaks
+// Caches
 
 + (NSDateFormatter *)dateFormatter;
 + (NSDateFormatter *)timeFormatter;

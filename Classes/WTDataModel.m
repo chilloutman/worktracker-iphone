@@ -13,6 +13,12 @@
 
 static WTDataModel *sharedInstace= nil;
 
+@interface WTDataModel()
+- (void)loadSavedData;
+- (NSString *)documentPathForFilename:(NSString *)file;
+- (void)loadStatusFromUserDefaults;
+@end
+
 @implementation WTDataModel
 
 + (WTDataModel *)sharedDataModel {
@@ -30,48 +36,53 @@ static WTDataModel *sharedInstace= nil;
 
 - (id)init {
 	if (self= [super init]) {
-		// Load saved data
-		NSUserDefaults *userDefaults= [NSUserDefaults standardUserDefaults];
-		
-		self.active= [userDefaults objectForKey:cStatus];
-		if (!self.active) {
-			self.active= [NSNumber numberWithBool:NO];
-		}
+		[self loadSavedData];
 		[self addObserver:self forKeyPath:cStatus options:0 context:NULL];
-		
-		NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-		NSString *finalPath;
-		
-		finalPath= [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", cProjects]];
-		self.projects= [NSMutableDictionary dictionaryWithContentsOfFile:finalPath];
-		if (!self.projects) self.projects= [NSMutableDictionary dictionary];
-		
-		finalPath= [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", cActivities]];
-		self.activities= [NSMutableArray arrayWithContentsOfFile:finalPath];
-		if (!self.activities) self.activities= [NSMutableArray array];
 	}
 	
 	return self;
 }
 
-#pragma mark KVO / Saving data
-
-// KVO
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)c {
-	NSUserDefaults *userDefaults= [NSUserDefaults standardUserDefaults];
+- (void)loadSavedData {
+	[self loadStatusFromUserDefaults];
 	
-	// Save whaterver object just changed
-	[userDefaults setObject:[object valueForKey:keyPath] forKey:keyPath];
+	NSString *path= nil;
+	
+	path= [self documentPathForFilename:[NSString stringWithFormat:@"%@.plist", cProjects]];
+	self.projects= [NSMutableDictionary dictionaryWithContentsOfFile:path];
+	if (!self.projects)
+		self.projects= [NSMutableDictionary dictionary];
+	
+	path= [self documentPathForFilename:[NSString stringWithFormat:@"%@.plist", cActivities]];
+	self.activities= [NSMutableArray arrayWithContentsOfFile:path];
+	if (!self.activities)
+		self.activities= [NSMutableArray array];
 }
 
-// Manual implementation of KVO because Apple's KVO fails when using collections
-- (void)didChangeCollection:(NSString *)keyPath {
-	NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-	NSString *finalPath= [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", keyPath]];
+- (void)loadStatusFromUserDefaults {
+	NSUserDefaults *userDefaults= [NSUserDefaults standardUserDefaults];
 	
-	// Save whaterver object just changed
-	if (![[self valueForKey:keyPath] writeToFile:finalPath atomically:YES]) {
-		NSLog(@"Writting to '%@' failed!", finalPath);
+	self.active= [userDefaults objectForKey:cStatus];
+	if (!self.active) {
+		self.active= [NSNumber numberWithBool:NO];
+	}
+}
+
+#pragma mark Custom getter
+
+- (NSTimeInterval)timeIntervalForActivity:(NSMutableDictionary *)pInterval {	
+	if (pInterval == nil) return 0;
+	
+	NSNumber *timeInterval= [pInterval objectForKey:cTimeInterval];
+	NSDate *startTime= [pInterval objectForKey:cStartTime];
+	
+	if (timeInterval) {
+		// timeInterval is already set
+		return [timeInterval doubleValue]; // NSTimeInterval == double
+	} else if (startTime) {
+		return [[NSDate date] timeIntervalSinceDate:startTime];
+	} else {
+		return 0.0;
 	}
 }
 
@@ -104,22 +115,31 @@ static WTDataModel *sharedInstace= nil;
 	[self didChangeCollection:cActivities];
 }
 
-#pragma mark Custom getter
+#pragma mark KVO / Saving data
 
-- (NSTimeInterval)timeIntervalForActivity:(NSMutableDictionary *)pInterval {	
-	if (pInterval == nil) return 0;
+// KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)c {
+	NSUserDefaults *userDefaults= [NSUserDefaults standardUserDefaults];
 	
-	NSNumber *timeInterval= [pInterval objectForKey:cTimeInterval];
-	NSDate *startTime= [pInterval objectForKey:cStartTime];
+	// Save whaterver object just changed
+	[userDefaults setObject:[object valueForKey:keyPath] forKey:keyPath];
+}
+
+// Manual implementation of KVO because Apple's KVO fails when using collections
+- (void)didChangeCollection:(NSString *)keyPath {
+	NSString *path= [self documentPathForFilename:[NSString stringWithFormat:@"%@.plist", keyPath]];
 	
-	if (timeInterval) {
-		// timeInterval is already set
-		return [timeInterval doubleValue]; // NSTimeInterval == double
-	} else if (startTime) {
-		return [[NSDate date] timeIntervalSinceDate:startTime];
-	}else {
-		return 0.0;
+	// Save whaterver object just changed
+	if (![[self valueForKey:keyPath] writeToFile:path atomically:YES]) {
+		NSLog(@"Writting to '%@' failed!", path);
 	}
+}
+
+#pragma mark Helper
+
+- (NSString *)documentPathForFilename:(NSString *)file {
+	NSString *documentDir= [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	return [documentDir stringByAppendingPathComponent:file];
 }
 
 #pragma mark -

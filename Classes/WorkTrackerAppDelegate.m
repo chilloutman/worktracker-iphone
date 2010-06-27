@@ -15,15 +15,24 @@
 #import "WTEngine.h"
 #import "WTSort.h"
 
+@interface WorkTrackerAppDelegate()
+- (void)initUI;
+@end
+
 @implementation WorkTrackerAppDelegate
 
 @synthesize window, tabBarController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-	// UI
-	window= [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	self.window= [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
-	// Initialize viewControllers
+	[self initUI];
+	
+	[self.window addSubview:self.tabBarController.view];
+	[self.window makeKeyAndVisible];
+}
+
+- (void)initUI {
 	WTMainViewController *mainController= [[WTMainViewController alloc] init]; // Tab 1
 	WTProjectsRootController *projectsController= [[WTProjectsRootController alloc] init]; // Tab 2
 	WTOverviewRootController *historyController= [[WTOverviewRootController alloc] init]; // Tab 3
@@ -31,13 +40,8 @@
 	NSArray *viewControllers= [NSArray arrayWithObjects:mainController, projectsController, historyController, nil];
 	[viewControllers makeObjectsPerformSelector:@selector(release)];	
 	
-	// Setup tabBarcontroller
 	self.tabBarController= [[UITabBarController alloc] init];
 	[self.tabBarController setViewControllers:viewControllers animated:YES];
-	
-	
-	[window addSubview:self.tabBarController.view];
-	[window makeKeyAndVisible];
 }
 
 - (void)dealloc {

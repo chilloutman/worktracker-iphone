@@ -12,6 +12,12 @@
 #import "WTEngine.h"
 #import "WTUtil.h"
 
+@interface WTSort()
+- (void)setupDays;
+- (void)setupWeeks;
+- (void)setupMonths;
+@end
+
 static WTSort *sharedSortingModel= nil;
 
 @implementation WTSort
@@ -70,13 +76,16 @@ static WTSort *sharedSortingModel= nil;
 - (NSMutableArray *)headerTitlesForSortingType:(WTSortingType)sortingType {	
 	switch (sortingType) {
 		case WTSortingByDay:
-			if (!daySectionsAreUpToDate) [self setupDays];
+			if (!daySectionsAreUpToDate)
+				[self setupDays];
 			return dayTitles;
 		case WTSortingByWeek:
-			if (!weekSectionsAreUpToDate) [self setupWeeks];
+			if (!weekSectionsAreUpToDate)
+				[self setupWeeks];
 			return weekTitles;
 		case WTSortingByMonth:
-			if (!monthSectionsAreUpToDate) [self setupMonths];
+			if (!monthSectionsAreUpToDate)
+				[self setupMonths];
 			return monthTitles;
 		default:
 			return nil;
@@ -86,13 +95,16 @@ static WTSort *sharedSortingModel= nil;
 - (NSMutableArray *)sectionArrayForSortingType:(WTSortingType)sortingType {
 	switch (sortingType) {
 		case WTSortingByDay:
-			if (!daySectionsAreUpToDate) [self setupDays];
+			if (!daySectionsAreUpToDate)
+				[self setupDays];
 			return daySections;
 		case WTSortingByWeek:
-			if (!weekSectionsAreUpToDate) [self setupWeeks];
+			if (!weekSectionsAreUpToDate)
+				[self setupWeeks];
 			return weekSections;
 		case WTSortingByMonth:
-			if (!monthSectionsAreUpToDate) [self setupMonths];
+			if (!monthSectionsAreUpToDate)
+				[self setupMonths];
 			return monthSections;
 		default:
 			return nil;

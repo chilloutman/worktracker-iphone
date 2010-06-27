@@ -18,6 +18,12 @@
 #import "WTSort.h"
 #import "WTUtil.h"
 
+@interface WTProjects()
+- (void)refreshProjects;
+- (void)editTableView;
+- (void)deleteProjectAtIndex:(NSUInteger)indexPath;
+@end
+
 @implementation WTProjects
 
 @synthesize superController;
