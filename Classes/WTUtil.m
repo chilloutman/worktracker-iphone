@@ -26,7 +26,7 @@
 		return NSLocalizedString(@"Today", @"");
 	}
 	
-	[date addTimeInterval:-86400];
+	date= [date dateByAddingTimeInterval:-86400];
 	dC= [cal components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
 	
 	if (pDateComps.year == dC.year && pDateComps.month == dC.month && pDateComps.day == dC.day) {
@@ -47,7 +47,7 @@
 		return NSLocalizedString(@"This Week", @"");
 	}
 
-	[date addTimeInterval:-604800];
+	date= [date dateByAddingTimeInterval:-604800];
 	dateComps= [cal components:NSWeekCalendarUnit | NSYearCalendarUnit fromDate:date];
 	
 	if ((pDateComps.year == dateComps.year) && (pDateComps.week == dateComps.week)) {
