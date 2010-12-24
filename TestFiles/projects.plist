@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>asdf</key>
+	<dict>
+		<key>numberOfInervals</key>
+		<integer>6</integer>
+		<key>projectColor</key>
+		<data>
+		YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9i
+		amVjdHMSAAGGoNEHCFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKjCwwUVSRu
+		dWxs1A0ODxAREhMTViRjbGFzc18QFVVJQ29sb3JDb21wb25lbnRDb3VudFdV
+		SUFscGhhV1VJV2hpdGWAAhACIj+AAADSFRYXGFgkY2xhc3Nlc1okY2xhc3Nu
+		YW1lohgZV1VJQ29sb3JYTlNPYmplY3QIERofKTI3Oj9BU1ddZm2FjZWXmZ6j
+		rLe6wgAAAAAAAAEBAAAAAAAAABoAAAAAAAAAAAAAAAAAAADL
+		</data>
+		<key>totalTime</key>
+		<real>22.616813063621521</real>
+	</dict>
+	<key>bdf</key>
+	<dict>
+		<key>numberOfInervals</key>
+		<integer>3</integer>
+		<key>projectColor</key>
+		<data>
+		YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9i
+		amVjdHMSAAGGoNEHCFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKjCwwUVSRu
+		dWxs1A0ODxAREhMTViRjbGFzc18QFVVJQ29sb3JDb21wb25lbnRDb3VudFdV
+		SUFscGhhV1VJV2hpdGWAAhACIj+AAADSFRYXGFgkY2xhc3Nlc1okY2xhc3Nu
+		YW1lohgZV1VJQ29sb3JYTlNPYmplY3QIERofKTI3Oj9BU1ddZm2FjZWXmZ6j
+		rLe6wgAAAAAAAAEBAAAAAAAAABoAAAAAAAAAAAAAAAAAAADL
+		</data>
+		<key>totalTime</key>
+		<real>3.3838929533958435</real>
+	</dict>
+	<key>blue</key>
+	<dict>
+		<key>numberOfInervals</key>
+		<integer>4</integer>
+		<key>projectColor</key>
+		<data>
+		YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9i
+		amVjdHMSAAGGoNEHCFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKjCwwXVSRu
+		dWxs1g0ODxAREhMUFRUWFFYkY2xhc3NWVUlCbHVlV1VJR3JlZW5VVUlSZWRf
+		EBVVSUNvbG9yQ29tcG9uZW50Q291bnRXVUlBbHBoYYACIj+AAAAiAAAAABAE
+		0hgZGhtYJGNsYXNzZXNaJGNsYXNzbmFtZaIbHFdVSUNvbG9yWE5TT2JqZWN0
+		CBEaHykyNzo/QVNXXWpxeICGnqaorbK0ucLN0NgAAAAAAAABAQAAAAAAAAAd
+		AAAAAAAAAAAAAAAAAAAA4Q==
+		</data>
+		<key>totalTime</key>
+		<real>76.90249502658844</real>
+	</dict>
+</dict>
+</plist>
